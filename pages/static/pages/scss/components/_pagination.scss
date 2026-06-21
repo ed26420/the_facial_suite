@@ -1,0 +1,54 @@
+@use '../utils/' as *;
+
+/*----------------------------------------*/
+/*  2.4 Pagination
+/*----------------------------------------*/
+
+.pf-pagination{
+    & li{
+        list-style: none;
+        display: inline-block;
+        &:not(:last-child){
+            margin-right: 7px;
+        }
+        & a, .active{
+            width: 50px;
+            height: 50px;
+            border: 1px solid var( --pf-theme-diper-color);
+            border-radius: 100%;
+            text-align: center;
+            line-height: 50px;
+            @include pf-transition();
+            &:hover{
+                background-color: var(--pf-primary-color);
+                color: var(--pf-theme-white-color);
+            }
+        }
+        & .active{
+            border: 1px solid transparent;
+            background-color: var(--pf-primary-color);
+            color: var(--pf-theme-white-color);
+        }
+    }
+}
+.pagination-area{
+    display: flex;
+    justify-content: space-between;
+    &-left{
+        & i{
+            margin-right: 10px;
+        }
+    }
+    &-right{
+        & i{
+            margin-left: 10px;
+        }
+    }
+    & a{
+        @include pf-transition(.3s);
+        &:hover{
+            background-color: var(--pf-primary-color);
+            color: var(--pf-theme-white-color);
+        }
+    }
+}

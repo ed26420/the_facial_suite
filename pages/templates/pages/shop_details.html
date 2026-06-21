@@ -1,0 +1,93 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <section class="pf-page-banner-area text-center bg-theme-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <h2 class="page-title mb-20">{{ member.name }} Details</h2>
+                    <ul class="breadcrumb-link">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li>-</li>
+                        <li class="active">Team Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pf-team-details-area pt-130 pb-100">
+        <div class="container">
+            <div class="pf-team-details-info mb-100 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                <div class="row">
+                    <div class="col-xl-4">
+                        <div class="pf-team-details-thumb">
+                            {% if member.photo %}
+                                <img src="{{ member.photo.url }}" alt="{{ member.name }}">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-xl-8">
+                        <div class="pf-team-details-contact pl-50">
+                            <h2 class="mb-10">{{ member.name }}</h2>
+                            <h3 class="mb-15">{{ member.role }}</h3>
+                            <p class="mb-15">{{ member.bio }}</p>
+                            <div class="pf-team-details-contact-list">
+                                <ul class="mb-15">
+                                    <li><i class="fas fa-envelope"></i><span>Email: </span><a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
+                                    <li><i class="fas fa-phone-alt"></i><span>Phone: </span><a href="tel:{{ member.phone }}">{{ member.phone }}</a></li>
+                                    <li><i class="fas fa-wallet"></i><span>Experience: </span>{{ member.experience }}</li>
+                                </ul>
+                                <ul class="contact-icon">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pf-team-details-assets mb-100">
+                <div class="row gap-x-140 gap-y-30">
+                    <div class="col-xl-6">
+                        <div class="pf-team-details-award wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
+                            <h3 class="mb-30">Award & Achievement</h3>
+                            {% for title, year, description in member.get_awards_list %}
+                            <div class="pf-team-details-award-box mb-20">
+                                <div class="pf-team-details-award-content d-flex justify-content-between">
+                                    <h3>{{ title }}</h3>
+                                    <span>{{ year }}</span>
+                                </div>
+                                <p>{{ description }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-6">
+                        <div class="pf-team-details-skills wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
+                            <h3 class="mb-30">Professional skills</h3>
+                            {% for skill, percent in member.get_skills_list %}
+                            <div class="pf-team-details-skills-bar mb-20">
+                                <div class="pf-team-details-skills-bar-title d-flex justify-content-between">
+                                    <h3>{{ skill }}</h3>
+                                    <span>{{ percent }}</span>
+                                </div>
+                                <div class="progress" style="height: 10px; background-color: #e9ecef;">
+                                    <div class="progress-bar" style="width: 85%; background-color: #6d5b4a;"></div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

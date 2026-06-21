@@ -1,0 +1,57 @@
+{% extends 'pages/base.html' %}
+{% load static %} 
+{% block content %}
+<main>
+    <section class="pf-page-banner-area text-center bg-theme-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <h2 class="page-title mb-20">Blog Grid</h2>
+                    <ul class="breadcrumb-link">
+                        <li><a href="#">Home</a></li>
+                        <li>-</li>
+                        <li class="active">Blog Grid</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pf-blog-grid-area pt-130 pb-130">
+        <div class="container">
+            <div class="row gap-x-110 gap-y-60">
+                {% for post in posts %}
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="pf-blog-grid-wrapper wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                            <div class="pf-blog-grid-thumb mb-30">
+                                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                            </div>
+                            <div class="pf-blog-grid-content">
+                                <div class="pf-blog-grid-meta">
+                                    <span>[ {{ post.category }} ]</span>
+                                    <span>[ {{ post.date|date:"F d, Y" }} ]</span>
+                                </div>
+                                <h3 class="pf-blog-grid-title">
+                                    <a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a>
+                                </h3>
+                                <p>{{ post.summary }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>No blog posts available yet.</p>
+                {% endfor %}
+            </div>
+            
+            <div class="pagination-area wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                <div class="pagination-area-left">
+                    <a class="theme-btn style-two" href="#"><i class="fal fa-arrow-left"></i>Previous</a>
+                </div>
+                <div class="pagination-area-right">
+                    <a class="theme-btn style-two" href="#">Next<i class="fal fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

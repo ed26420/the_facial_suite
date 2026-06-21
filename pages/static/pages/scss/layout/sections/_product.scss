@@ -1,0 +1,211 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.12 Product
+/*----------------------------------------*/
+
+.pf-product{
+    border: 1px solid var(--pf-theme-dip-color);
+    border-radius: 20px;
+    padding: 10px;
+    &__img{
+        & img{
+            border-radius: 15px;
+            @media #{$xs}{
+                width: 100%;
+            }
+        }
+    }
+    &__box{
+        padding: 30px 20px;
+        padding-bottom: 20px;
+        @media #{$lg}{
+            padding: 20px 10px;
+        }
+    }
+    &-content{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+
+    }
+    &__rating{
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        & span{
+            font-weight: 500;
+            font-size: 24px;
+            @media #{$lg,$md}{
+                font-size: 18px;
+            }
+        }
+        & i{
+            color: var(--pf-primary-color);
+            margin-right: 7px;
+            margin-bottom: 1px;
+            @media #{$lg,$md}{
+                font-size: 14px;
+            }
+        }
+    }
+    &__title{
+        & h3{
+            font-weight: 500;
+            font-size: 24px;
+            @media #{$lg,$md}{
+                font-size: 20px;
+            }
+        }
+    }
+    &__price{
+        margin-bottom: 30px;
+        & h4{
+            font-weight: 500;
+            font-size: 24px;
+            color: var(--pf-primary-color);
+        }
+    }
+    &__btn{
+        & a{
+            border: 1px solid var(--pf-primary-color);
+            border-radius: 30px;
+            padding-top:11px;
+            padding-bottom: 11px;
+            width: 100%;
+            font-weight: 500;
+            @include pf-transition(.3s);
+            & svg{
+                margin-right: 10px;
+                color: var(--pf-primary-color);
+                margin-bottom: 2px;
+                @include pf-transition(.3s);
+            }
+            &:hover{
+                background-color: var(--pf-primary-color);
+                color: var(--pf-theme-white-color);
+                & svg{
+                    color: var(--pf-theme-white-color);
+                }
+            }
+        }
+    }
+    &-see-all{
+        border: 1px solid var(--pf-2nd-primary-color);
+        border-radius: 30px;
+        font-weight: 500;
+        color: var(--pf-2nd-primary-color);
+        padding: 5px 20px;
+        @include pf-transition();
+        &:hover{
+            color: var(--pf-theme-white-color);
+            background-color: var(--pf-2nd-primary-color);
+        }
+    }
+    &__attributes{
+        margin-bottom: 30px;
+        & a{
+            color: var(--pf-2nd-primary-color);
+            font-size: 15px;
+            font-weight: 500;
+            border: 1px solid var(--pf-theme-diper-color);
+            border-radius: 30px;
+            padding: 1px 16px;
+            @include pf-transition(.3s);
+            &:not(:last-child){
+                margin-right: 5px;
+                margin-bottom: 5px;
+            }
+            &:hover{
+                background-color: var(--pf-primary-color);
+                color: var(--pf-theme-white-color);
+            }
+            &:focus{
+                color: var(--pf-theme-white-color);
+                background-color: var(--pf-primary-color);
+            }
+        }
+    }
+
+}
+.pf-products-area{
+    & .section-btn{
+            @media #{$xs}{
+                margin-bottom: 50px;
+            }
+       }
+    & .section-title{
+        @media #{$xs}{
+            margin-bottom: 22px;
+        }
+    }
+}
+.pfproduct{
+    background-color: var(--pf-theme-light-color);
+    padding: 30px;
+    border-radius: 10px;
+    &__title{
+        & h3{
+            font-size: 24px;
+            font-weight: 500;
+            @media #{$xl}{
+                font-size: 22px;
+            }
+        }
+    }
+    &__price{
+        & h4{
+            font-size: 24px;
+            color: var(--pf-Pink-color);
+            font-weight: 500;
+        }
+    }
+    &__box{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__rating{
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        & svg{
+            color: var(--pf-Pink-color);
+        }
+        & span{
+            font-size: 24px;
+            font-weight: 500;
+        }
+    }
+    &__btn{
+        & a{
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--pf-theme-diper-color);
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include pf-transition();
+            &:hover{
+                background-color: var(--pf-2nd-primary-color);
+                color: var(--pf-theme-white-color);
+            }
+        }
+    }
+    &__img{
+        padding: 32px 0;
+        & img{
+                transition: all 0.3s ease-in-out;
+        }
+    }
+    
+    &:hover{
+        & .pfproduct__img{
+            
+            & img{
+                transform: scale(1.1);
+                
+            }
+        }
+    }
+}

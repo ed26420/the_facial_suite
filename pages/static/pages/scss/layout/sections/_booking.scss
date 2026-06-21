@@ -1,0 +1,56 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.17 Booking
+/*----------------------------------------*/
+
+.pf-booking{
+    &-area{
+        @media #{$xl}{
+            .gap-x-110{
+                --bs-gutter-x: 1.5rem;
+            }
+        }
+        & .section-title-area{
+            @media #{$lg,$md,$xs}{
+                margin-bottom: 50px;
+            }
+        }
+    }
+    &-img{
+        & img{
+            border-radius: 20px;
+            @media #{$lg,$md,$xs}{
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    &-wrapper{
+        padding: 50px;
+        background-color: var(--pf-theme-light-color);
+        border-radius: 20px;
+        &.contact-page{
+            background-color: var(--pf-3nd-bg-color);
+        }
+    }
+    &-title{
+        font-size: 40px;
+        @media #{$xs}{
+            font-size: 30px;
+        }
+    }
+    &-form{
+        & .form-group{
+            margin-bottom: 15px;
+            display: inline-block;
+            width: 100%;
+        }
+        & .hover-bg{
+            @include pf-transition();
+            &:hover{
+                background-color: var(--pf-hover-bg-color);
+            }
+        }
+    }
+}

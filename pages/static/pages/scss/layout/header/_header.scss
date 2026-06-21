@@ -1,0 +1,204 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.1 Header
+/*----------------------------------------*/
+
+.pf-header{
+    &-area{
+        position: absolute;
+        top: 15px;
+        left: 0;
+        right: 0;
+        z-index: 9;
+        width: 100%;
+    }
+    &-cart{
+        & a{
+            background-color: var(--pf-2nd-primary-color);
+            padding: 5px 13px;
+            border-radius: 50px;
+            color: var(--pf-theme-white-color);
+            margin-right: 10px;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            @include pf-transition();
+            &:hover{
+                background-color: var(--pf-secendary-color);
+                color: var(--pf-2nd-primary-color);
+                
+            }
+        }
+        & .header-quantity{
+            width: 20px;
+            height: 20px;
+            background: var(--pf-theme-white-color);
+            color: black;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+    }
+    &-right{
+        margin-left: 40px;
+        &.v2{
+            margin-left: 0px;
+        }
+        &-two{
+            & .header-btn{
+                background-color: var(--pf-primary-color);
+                &:hover{
+                    background-color: var(--pf-hover-bg-color);
+                    color: var(--pf-theme-white-color);
+                }
+            }
+        }
+    }
+    &-button{
+        & a{
+            background-color: var(--pf-2nd-primary-color);
+            padding: 12px 24px;
+            border-radius: 50px;
+            color: var(--pf-theme-white-color);
+            display: inline-block;
+            font-weight: 500;
+            @include pf-transition();
+            &:hover{
+                background-color: var(--pf-secendary-color);
+                color: var(--pf-2nd-primary-color);
+            }
+        }
+    }
+    &-row{
+        padding: 0 10px;
+        border-radius: 80px;
+        background-color: #F1EBE7;
+        &.v1{
+            background-color: var(--pf-theme-color);
+        }
+        @media #{$lg,$md,$xs}{
+                padding: 10px 10px;
+            }
+    }
+    &-logo{
+        & img{
+            margin-left: 10px;
+        }
+    }
+    &-toggle{
+        font-size: 25px;
+        border: 1px solid #000000;
+        border-radius: 50%;
+        margin: 0 10px;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+// Menu
+.pf-main-menu{
+    & ul{
+        position: relative;
+        & > li{
+            display: inline-block;
+            position: relative;
+            list-style-type: none;
+            &:hover{
+                & > a{
+                    color: var(--pf-hover-bg-color);
+                }
+                & > .sub-menu{
+                    opacity: 1;
+                    visibility: visible;
+                    top: 100%;
+                }
+            }
+            &:not(:last-child){
+                margin-right: 35px;
+            }
+            & > a{
+                padding: 22px 0;
+                & span.dd-trigger{
+                    margin-left: 5px;
+                }
+            }
+            & a{
+                @include pf-transition();
+                font-weight: 500;
+            }
+            & .sub-menu {
+                position: absolute;
+                top: 110%;
+                left: 0;
+                width: 220px;
+                background: var(--pf-theme-color);
+                padding: 10px 0px;
+                border-radius: 7px;
+                opacity: 0;
+                visibility: hidden;
+                z-index: 999;
+                box-shadow: 0px 30px 80px 15px rgb(0 0 0 / 7%);
+                @include pf-transition();
+                & li{
+                    margin-right: 0;
+                    display: block;
+                    &:hover{
+                        & > a{
+                            margin-left: 5px;
+                        }
+                    }
+                    & a{
+                        padding: 0 30px;
+                        line-height: 2.3;
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    & .sub-menu{
+                            left: 110%;
+                            top: 0;
+                        }
+                    &:hover{
+                        & > .sub-menu{
+                            left: 100%;
+                        }
+                    }
+                }
+            }
+            & ul{
+                & li{
+                    & span.dd-trigger{
+                        position: absolute;
+                        right: 16px;
+                        top: 7px;
+                    }
+                }
+            }
+
+        }
+    }
+    
+}
+
+.header-sticky {
+    position: fixed;
+    
+    top: 15px;
+    left: 0;
+    right: 0;
+    -webkit-animation: 0.7s ease-in-out 0s normal none 1 running pfFadeInDownMenu;
+    animation: 0.7s ease-in-out 0s normal none 1 running pfFadeInDownMenu;
+    
+    & .pf-header-row{
+        box-shadow: 0px 20px 30px rgba(167, 167, 167, 0.1);
+    }
+    & .pf-header-row{
+        background-color: var(--pf-theme-color);
+    }
+}

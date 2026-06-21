@@ -1,0 +1,50 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.3 Sidemenu
+/*----------------------------------------*/
+.pf-offcanvas-menu{
+    & ul{
+        & li{
+            list-style: none;
+            position: relative;
+            & li{
+                padding-left: 20px;
+                & li{
+                    padding-left: 20px;
+                    & li{
+                        padding-left: 20px;
+                    }
+                }
+            }
+            & .dd-trigger {
+                position: absolute;
+                right: 0;
+                top: 10px;
+                height: 25px;
+                width: 25px;
+                border-radius: 3px;
+                z-index: 2;
+                cursor: pointer;
+                text-align: center;
+            }
+            & a{
+                display: block;
+                padding: 10px 0;
+                position: relative;
+            }
+            & .sub-menu{
+                display: none;
+            }
+            &.active{
+                & > a{
+                    color: var(--pf-hover-bg-color);
+                }
+            }
+            &:not(:last-child) > a {
+                border-bottom: 1px solid var(--pf-theme-diper-color);
+            }
+
+        }
+    }
+}

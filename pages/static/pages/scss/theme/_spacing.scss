@@ -1,0 +1,77 @@
+@use '../utils/' as *;
+
+/*----------------------------------------*/
+/*  1.2 Default Spacing
+/*----------------------------------------*/
+
+// margin 
+@for $i from 1 through 20{
+    .mt-#{5 * $i}{
+        margin-top: 5px * $i;
+    }
+}
+@for $i from 1 through 30{
+    .mb-#{5 * $i}{
+        margin-bottom: 5px * $i;
+    }
+}
+@for $i from 1 through 20{
+    .ml-#{5 * $i}{
+        margin-left: 5px * $i;
+    }
+}
+@for $i from 1 through 20{
+    .mr-#{5 * $i}{
+        margin-right: 5px * $i;
+    }
+}
+
+// padding 
+@for $i from 1 through 30{
+    .pb-#{5 * $i}{
+        padding-bottom: 5px * $i;
+    }
+}
+@for $i from 1 through 32{
+    .pt-#{5 * $i}{
+        padding-top: 5px * $i;
+    }
+}
+@for $i from 1 through 30{
+    .pl-#{5 * $i}{
+        padding-left: 5px * $i;
+    }
+}
+@for $i from 1 through 30{
+    .pr-#{5 * $i}{
+        padding-right: 5px * $i;
+    }
+}
+@for $i from 1 through 40{
+    .p-#{5 * $i}{
+        padding: 5px * $i;
+    }
+}
+
+
+
+@media #{$md,$xs}{
+    .pt-130 {
+        padding-top: 80px;
+    }
+    .pb-130 {
+        padding-bottom: 80px;
+    }
+}
+@media #{$md,$xs}{
+    .pt-120 {
+        padding-top: 80px;
+    }
+    .pb-120 {
+        padding-bottom: 80px;
+    }
+}
+
+.pb-250{
+    padding-bottom: 250px;
+}

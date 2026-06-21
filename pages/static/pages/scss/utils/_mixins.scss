@@ -1,0 +1,30 @@
+@mixin pf-transition($time : .3s){
+    -webkit-transition: $time;
+    -o-transition: $time;
+    transition: $time;
+}
+
+// translateX
+// pf-translateX
+@mixin pf-translateX($x: 0) {
+  -webkit-transform: translateX($x);
+  -moz-transform: translateX($x);
+  -ms-transform: translateX($x);
+  -o-transform: translateX($x);
+  transform: translateX($x);
+}
+// placeholder input
+@mixin pf-placeholder {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+}

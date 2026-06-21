@@ -1,0 +1,27 @@
+@use '../utils/' as *;
+
+/*----------------------------------------*/
+/*  2.3 Back-to-top
+/*----------------------------------------*/
+
+.back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--pf-primary-color);
+    font-size: 16px;
+    z-index: 2;
+    border: 1px solid;
+    cursor: pointer;
+    color: var(--pf-theme-white-color);
+    @include pf-transition();
+    &:hover{
+        background-color: var(--pf-hover-bg-color);
+    }
+}

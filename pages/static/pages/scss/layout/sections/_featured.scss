@@ -1,0 +1,67 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.9 Featured
+/*----------------------------------------*/
+
+.pf-featured{
+    &-area{
+        
+        @media #{$md,$xs}{
+            margin-top: -120px;
+        }
+        & .row{
+            --bs-gutter-x: 10px;
+        }
+    }
+    &-content{
+        background-color: #FCF8F3;
+        @include pf-transition();
+        &:hover{
+            background-color: #68513F;
+            .pf-featured-title, p {
+                color: #fff;
+                @include pf-transition(.3s);
+            }
+        }
+        & img{
+        @media #{$md,$xs}{
+            border-radius: 0px 0px 20px 20px !important;
+            width: 100%;
+        }
+        }
+        @media #{$md}{
+            border-radius: 20px 20px 20px 20px !important;
+            margin-bottom: 10px;
+        }
+        @media #{$xs}{
+            border-radius: 20px 20px 20px 20px !important;
+            margin-bottom: 20px;
+        }
+    }
+    &-title{
+        font-size: 24px;
+        font-weight: 600;
+    }
+    &-heading{
+        padding: 30px;
+        padding-bottom: 30px;
+        & p{
+            font-size: 16px;
+        }
+    }
+}
+.feature-cart{
+    &-one{
+        border-radius: 30px 0 0 30px;
+        & img{
+            border-radius: 0 0 0 30px;
+        }
+    }
+    &-three{
+        border-radius: 0 30px 30px 0;
+        & img{
+            border-radius: 0 0 30px 0;
+        }
+    }
+}

@@ -1,0 +1,51 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.11 Logo-slider
+/*----------------------------------------*/
+
+.pf-logo-slider{
+    & .swiper-slide{
+        width: auto;
+        display: inline-block;
+    }
+    &-transtion{
+        transition-timing-function: linear !important;
+    }
+    &::after{
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        background: linear-gradient(90deg, rgba(241, 235, 231, 0.8) 0%, rgba(241, 235, 231, 0) 48.15%, rgba(241, 235, 231, 0.8) 100%);
+    }
+    &-area{
+        &.home-two{
+            & .pf-logo-slider{
+                &::after{
+                    background: linear-gradient(90deg, #f6f1eb 0%, rgba(246, 241, 235, 0) 48.15%, #f6f1eb 100%);
+                }
+            }
+        }
+        &.home-one{
+            @media #{$xs}{
+                padding-bottom: 80px !important;
+            }
+            & .pf-logo-slider{
+                &::after{
+                    display: none;
+                }
+            }
+        }
+        &.inner-page{
+            @media #{$lg,$md,$xs}{
+                padding-bottom: 70px;
+            }
+        }
+        
+    }
+    
+}

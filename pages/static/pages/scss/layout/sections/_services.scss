@@ -1,0 +1,349 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.8 Services
+/*----------------------------------------*/
+
+.pfservices{
+    background-color: var(--pf-primary-color);
+    z-index: 1;
+    position: relative;
+    @media #{$md,$xs}{
+        margin-bottom: 20px;
+    }
+    &-area{
+        overflow: hidden;
+    }
+
+    &__title{
+        font-weight: 500;
+        color: var(--pf-theme-white-color);
+        margin-bottom: 15px;
+        font-size: 24px;
+    }
+    &__content{
+        padding-top: 26px;
+        & p{
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 34px;
+        }
+        & a{
+            &:hover{
+                color: var(--pf-theme-white-color);
+            }
+        }
+    }
+}
+// Sevices Home Two
+.pf-services{
+    &-area{
+        @media #{$xl}{
+            .gap-x-140{
+                --bs-gutter-x: 1.5rem;
+            }
+        }
+        @media #{$xs}{
+            .section-title{
+                margin-bottom: 15px;
+            }
+        }
+    }
+    &-box{
+        border: 1px solid var(--pf-theme-diper-color);
+        border-radius: 10px;
+        padding: 40px;
+        @media #{$lg,$xs}{
+            margin-bottom: 20px;
+        }
+        & p{
+            font-size: 18px;
+            @media #{$lg,$md,$xs}{
+                margin-bottom: 30px;
+            }
+        }
+        & a{
+            @include pf-transition();
+            border-color: var(--pf-theme-diper-color);
+        }
+    }
+    &-right{
+        border-radius: 10px;
+        &-content{
+            border: 1px solid var(--pf-theme-diper-color);
+            border-top: none;
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+            background-color: #F1EBE7;
+        }
+        @media #{$xs}{
+            &-title{
+                font-size: 24px;
+            }
+        }
+    }
+    &-item{
+        margin-bottom: 20px;
+    }
+    &-title{
+        &.home-one{
+            font-size: 50px;
+            @media #{$xs}{
+                font-size: 30px;
+            }
+        }
+        @media #{$lg}{
+            font-size: 29px
+        }
+        @media #{$md}{
+            font-size: 25px
+        }
+    }
+    &-tag{
+        & a{
+            &:hover{
+                background-color: var(--pf-2nd-primary-color);
+                color: var(--pf-theme-white-color);
+                border: 1px solid transparent;
+            }
+        }
+        &-box{
+            height: 100%;
+        }
+    }
+    &-btn{
+        & a{
+            @include pf-transition();
+            &:hover{
+                background-color: var(--pf-2nd-primary-color);
+                color: var(--pf-theme-white-color) !important;
+                border: 1px solid transparent;
+            }
+        }
+    }
+    &-img{
+        & img{
+            border-radius: 10px 10px 0 0;
+            width: 100%;
+            @media #{$lg}{
+                width: 100%;
+            }
+        }
+    }
+    // Services Page Start
+    &-tabs{
+        
+        & .tab-btn{
+            padding: 5px 19px;
+            @include pf-transition(.3s);
+            &:not(:last-child){
+                margin-right: 10px;
+            }
+            @media #{$lg,$md,$xs}{
+                margin-bottom: 10px;
+            }
+
+            &:hover{
+                background-color: var(--pf-primary-color);
+                color: var(--pf-theme-white-color);
+            }
+        }
+        & .active{
+            background-color: var(--pf-primary-color);
+            color: var(--pf-theme-white-color);
+        }
+    }
+
+    &-tab{
+        &-box{
+            @media #{$md,$xs}{
+                flex-direction: column;
+            }
+        }
+        &-cat{
+            & .tab-cat-btn{
+                color: var(--pf-theme-white-color);
+                font-size: 16px;
+                line-height: 30px;
+                border: 1px solid #FFFFFF4D;
+                border-radius: 30px;
+                padding: 11px 24px;
+                padding: 4px 20px;
+                @include pf-transition();
+                &:first-child{
+                    margin-right: 5px;
+                }
+                &:hover{
+                    background-color: var(--pf-hover-bg-color);
+                    border-color: transparent;
+                }
+                @media #{$lg,$md,$xs}{
+                    margin-bottom: 5px;
+                    padding: 3px 13px;
+                }
+            }
+        }
+        &-content{
+            background-color: var(--pf-primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px;
+            border-radius: 20px;
+            flex: 0 0 35%;
+            max-width: 35%;
+            z-index: 1;
+            @media #{$md,$xs}{
+                flex: 0 0 auto;
+                max-width: 100%;
+            }
+        }
+        &-btn{
+            & a{
+                border-color: #FFFFFF4D;
+                color: var(--pf-theme-white-color);
+                @include pf-transition();
+                &:hover{
+                    background-color: var(--pf-hover-bg-color);
+                    color: var(--pf-theme-white-color);
+                    border-color: transparent;
+                }
+                @media #{$lg,$md,$xs}{
+                    font-size: 16px;
+                    padding: 8px 19px;
+                }
+            }
+        }
+        &-title{
+            color: var(--pf-theme-white-color);
+            line-height: 44px;
+            @media #{$xs}{
+                font-size: 24px;
+            }
+        }
+        &-heading{
+            & p{
+                font-size: 18px;
+                color: var(--pf-theme-white-color);
+                font-weight: 400;
+                @media #{$lg,$md,$xs}{
+                    margin-bottom: 15px;
+                }
+            }
+        }
+        &-thumb{
+            flex: 1;
+            & img{
+                border-radius: 0 20px 20px 0;
+                margin-left: -17px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                @media #{$md,$xs}{
+                    margin-left: 0;
+                    border-radius: 0 0 20px 20px;
+                    margin-top: -15px;
+                }
+            }
+        }
+    }
+    // Services Page End
+}
+
+// Details Page
+.pf-services-details{
+    &-content{
+        & h2{
+            margin-bottom: 20px;
+        }
+        & p{
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
+    &-benefits{
+        &-list{
+            & li{
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 30px;
+                list-style: none;
+                &:not(:last-child){
+                    margin-bottom: 20px;
+                }
+                & i{
+                    margin-right: 5px;
+                }
+            }
+        }
+        &-box{
+            @media #{$xs}{
+                text-align: center;
+            }
+            & h3{
+                line-height: 30px;
+                margin-bottom: 10px;
+                font-size: 24px;
+                font-weight: 600;
+            }
+            & p{
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 24px;
+            }
+            & .icon{
+                width: 70px;
+                height: 70px;
+                line-height: 70px;
+                text-align: center;
+                border: 1px solid var(--pf-theme-diper-color);
+                border-radius: 100%;
+                margin-bottom: 30px;
+                display: inline-block;
+            }
+        }
+    }
+    &-related-title{
+        margin-bottom: 30px;
+    }
+    &-sidebar{
+        background-color: var(--pf-section-bg-color);
+        border-radius: 10px;
+        padding: 30px;
+        & h3{
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        &-area{
+            padding-left: 64px;
+            @media #{$xl}{
+                padding-left: 0;
+            }
+            @media #{$lg,$md,$xs}{
+                padding-left: 0;
+                margin-top: 30px;
+            }
+        }
+    }
+    &-services-list{
+        li{
+            list-style: none;
+            & a{
+                font-weight: 500;
+                border: 1px solid var(--pf-theme-dip-color);
+                border-radius: 30px;
+                padding: 11px 26px;
+                width: 100%;
+                @include pf-transition(.3s);
+                &:hover{
+                    background-color: var(--pf-primary-color);
+                    color: var(--pf-theme-white-color);
+                }
+            }
+            &:not(:last-child){
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

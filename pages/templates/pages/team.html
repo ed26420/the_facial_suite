@@ -1,0 +1,37 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <section class="pf-page-banner-area text-center bg-theme-color">
+        <div class="container">
+            <h2 class="page-title mb-20">Team</h2>
+        </div>
+    </section>
+
+    <section class="pf-our-team-area pt-130 pb-130">
+        <div class="container">
+            <div class="row row-gap-10">
+                {% for member in members %}
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="pf-our-team-item wow pfFadeInUp">
+                        <img src="{{ member.photo.url }}" alt="{{ member.name }}">
+                        <div class="pf-our-team-content">
+                            <div class="pf-our-team-author">
+                                <h3 class="pf-our-team-name">
+                                    <a href="{% url 'team_details' member.member_code %}">{{ member.name }}</a>
+                                </h3>
+                                <span>{{ member.role }}</span>
+                            </div>
+                            <div class="pf-our-team-icon">
+                                <a href="{% url 'team_details' member.member_code %}"><i class="fal fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

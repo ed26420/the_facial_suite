@@ -1,0 +1,93 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block content %}
+<main>
+    <section class="pf-page-banner-area text-center bg-theme-color">
+        <div class="container">
+            <h2 class="page-title mb-20">Cart</h2>
+        </div>
+    </section>
+
+    <section class="pf-cart-page-area pt-120 pb-120">
+        <div class="container">
+            <div class="row gap-x-110">
+                <div class="col-xl-8 col-lg-8">
+                    <div class="pf-cart-table table-responsive mb-30 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in cart_items %}
+                                <tr>
+                                    <td>
+                                        <div class="pf-cart-product-thumb">
+                                            {% if item.product %}
+                                                <img src="{{ item.product.main_image.url }}" alt="{{ item.product.name }}">
+                                            {% else %}
+                                                <img src="{{ item.treatment.main_thumbnail.url }}" alt="{{ item.treatment.name }}">
+                                            {% endif %}
+                                        </div>
+                                        <span>{% if item.product %}{{ item.product.name }}{% else %}{{ item.treatment.name }}{% endif %}</span>
+                                    </td>
+                                    <td><div class="pf-cart-product-price"><span>${{ item.get_total_price }}</span></div></td>
+                                    <td>
+                                        <div class="pf-cart-quantity pf-shop-details-info">
+                                            <div class="input-quantity pf-shop-details-cart-variation">
+                                                <button class="quantity-down hidden-btn" disabled><i class="fal fa-plus"></i></button>
+                                                <input class="quantity" type="text" value="{{ item.quantity }}" name="quantity" readonly>
+                                                <button class="quantity-up hidden-btn" disabled><i class="fal fa-minus"></i></button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><div class="pf-cart-totla-price"><span>${{ item.get_total_price }}</span></div></td>
+                                </tr>
+                                {% empty %}
+                                <tr><td colspan="4">Your cart is empty.</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-lg-4">
+                    <div class="pf-cart-sidebar-area mb-30 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <div class="pf-cart-sidebar-info">
+                            <h3 class="pf-cart-sidebar-title mb-30">Total Cart Info</h3>
+                            <ul>
+                                <li>
+                                    <div class="item-title">Subtotal</div>
+                                    <div class="subtotal">${{ subtotal }}</div>
+                                </li>
+                                <li>
+                                    <div class="item-title">VAT</div>
+                                    <div class="subtotal">Included</div>
+                                </li>
+                                <li>
+                                    <div class="item-title-total">Total</div>
+                                    <div class="subtotal-total">${{ subtotal }}</div>
+                                </li>
+                            </ul>
+                            <div class="pf-cart-sidebar-btn">
+                                <a href="{% url 'checkout' %}" class="theme-btn style-one w-100">Proceed to Checkout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<style>
+    .hidden-btn {
+        visibility: hidden !important;
+        pointer-events: none;
+    }
+</style>
+{% endblock content %}

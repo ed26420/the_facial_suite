@@ -1,0 +1,279 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.7 Hero
+/*----------------------------------------*/
+
+.pf-hero{
+    &-area{
+        background-size: cover;
+        padding-top: 80px;
+        margin: 30px;
+        &.v2{
+            & p{
+                color: var(--pf-theme-white-color);
+            }
+            & .pf-logo-slider-area.home-one {
+                    @media #{$xs}{
+                        padding-bottom: 25px !important;
+                    }
+                }
+            @media #{$mx5}{
+                margin: 10px;
+            }
+        }
+        @media #{$xl,$lg}{
+            background-position: center center;
+        }
+        
+        @media #{$md}{
+            padding-bottom: 90px;
+        }
+        @media #{$xs}{
+            padding-bottom: 60px;
+        }
+    }
+    &-overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+        border-radius: 30px;
+    }
+    &-wrappper{
+        border-radius: 30px;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        @media #{$mx12}{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+    &-button-area{
+        @media #{$xs}{
+            padding-bottom: 100px;
+        }
+        & a:not(:last-child){
+           margin-right: 20px;
+           @media #{$xs}{
+                margin-bottom: 10px;
+            }
+           @media #{$mx5}{
+                margin-right: 0px;
+            }
+        }
+        & a{
+            display: inline-block;
+            @include pf-transition();
+            &:hover{
+                color: var(--pf-theme-white-color);
+            }
+        }
+        & .style-one.v1{
+                background-color: var(--pf-theme-white-color);
+                color: var(--pf-theme-black-color);
+            &:hover{
+                
+            }
+        }
+        & .style-two{
+            border-color: var(--pf-theme-white-color);
+            color: var(--pf-theme-white-color);
+            &:hover{
+                background-color: var(--pf-theme-white-color);
+                color: var(--pf-theme-black-color);
+            }
+        }
+    }
+    &-title{
+        margin-bottom: 18px;
+        color: var(--pf-theme-white-color);
+        @media #{$lg}{
+            font-size: 86px;
+        }
+        @media #{$md}{
+            font-size: 70px;
+        }
+        @media #{$xs}{
+            font-size: 50px;
+        }
+        & span{
+            color: #68513F;
+        }
+        &-area{
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+    }
+    
+}
+
+
+// Home Two Banner section
+.pf-banner{
+    &-area{
+        background: linear-gradient(184deg, #f6f1eb 0%, #f3efe6 100%);
+        border: 1px solid var(--pf-theme-diper-color);
+        // @media #{$lg,$md,$xs}{
+        //     .mt--100{
+        //         margin-top: 0;
+        //     }
+        // }
+    }
+    &-title{
+        font-size: 128px;
+        font-weight: 200;
+        color: var(--pf-theme-black-color);
+        position: relative;
+        z-index: 1;
+        @media #{$xl}{
+            font-size: 110px;
+            font-weight: 300;
+        }
+        @media #{$lg}{
+            font-size: 100px;
+            font-weight: 300;
+        }
+        @media #{$md}{
+            font-size: 73px;
+            font-weight: 300;
+        }
+        @media #{$xs}{
+            font-size: 53px;
+            font-weight: 300;
+        }
+    }
+    &-heading{
+        & p{
+            max-width: 405px;
+            margin-bottom: 30px;
+        }
+        &-area{
+            & img{
+                position: absolute;
+                top: -23px;
+                right: 106px;
+                @media #{$xl,$lg,$md,$xs}{
+                    display: none;
+                }
+            }
+        }
+    }
+    &-thumb{
+            margin-bottom: -1px;
+            @media #{$md,$xs}{
+                margin-bottom: 20px;
+                & img{
+                    width: 100%;
+                }
+            }
+        }
+    &-product{
+        border: 1px solid var(--pf-theme-diper-color);
+        padding: 40px;
+        border-radius: 300px 300px 0 0;
+        background: linear-gradient(184deg, #f6f1eb 0%, #f3efe6 100%);
+        margin-bottom: -1px;
+        border-bottom: none;
+        @media #{$md,$xs}{
+            border-bottom: 1px solid var(--pf-theme-diper-color);
+            margin-bottom: 20px;
+            margin-top: 60px;
+        }
+        
+        &-info{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            & h3{
+                font-size: 25px;
+            }
+            & .icon{
+                color: var(--pf-theme-white-color);
+                width: 44px;
+                height: 44px;
+                border-radius: 100%;
+                background-color: var(--pf-2nd-primary-color);
+                display: inline-block;
+                flex: 0 0 auto;
+                text-align: center;
+                line-height: 44px;
+                @include pf-transition();
+                
+                & i{
+                    transform: rotate(-45deg);
+                    @include pf-transition(.3s);
+                }
+                
+            }
+        }
+        &-info{
+            &:hover{
+                    & i{
+                        transform: rotate(0deg);
+                    }
+                    & .icon{
+                        background-color: var(--pf-secendary-color);
+                        color: var(--pf-theme-black-color);
+                    }
+                }
+
+        }
+    }
+    &-video{
+        & img{
+            border-radius: 300px 300px 0 0;
+        }
+        & .video-icon{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            & a{
+                width: 44px;
+                height: 44px;
+                line-height: 44px;
+                text-align: center;
+                background-color: var(--pf-secendary-color);
+                border-radius: 100%;
+                @include pf-transition();
+                & i{
+                    font-size: 16px;
+                }
+                &:hover{
+                    background-color: var(--pf-2nd-primary-color);
+                    color: var(--pf-theme-white-color);
+                }
+            }
+        }
+    }
+    &-client{
+    @media #{$md,$xs}{
+        text-align: center;
+    }
+    }
+    &-counter{
+        display: flex;
+        @media #{$md,$xs}{
+            justify-content: center;
+            align-items: center;
+        }
+        & span{
+            font-weight: 600;
+            font-size: 48px;
+            color: var(--pf-theme-text-color);
+        }
+        & span{
+            color: var(--pf-theme-text-color);
+        }
+        & p{
+            font-size: 18px;
+            color: var(--pf-theme-text-color);
+        }
+    }
+    
+}

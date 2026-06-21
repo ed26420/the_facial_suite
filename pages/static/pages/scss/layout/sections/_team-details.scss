@@ -1,0 +1,186 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.23 Team-details
+/*----------------------------------------*/
+
+.pf-team-details{
+    &-info{
+        background-color: var(--pf-3nd-bg-color);
+        border: 1px solid var(--pf-theme-dip-color);
+        border-radius: 20px;
+        padding: 30px;
+        @media #{$md,$xs}{
+            margin-bottom: 70px;
+        }
+    }
+    &-assets{
+        @media #{$md,$xs}{
+            margin-bottom: 0px;
+        }
+    }
+    &-thumb{
+        & img{
+            border-radius: 20px;
+        }
+    }
+    &-contact{
+        @media #{$lg,$md,$xs}{
+            padding-left: 0;
+            padding-top: 30px;
+        }
+        
+        & h2{
+            font-weight: 500;
+            font-size: 35px;
+        }
+        & h3{
+            font-weight: 400;
+            font-size: 24px;
+        }
+        & p{
+            font-size: 18px;
+        }
+        &-list{
+            li{
+                list-style: none;
+                line-height: 40px;
+                & i{
+                    margin-right: 10px;
+                }
+                & span{
+                    width: 150px;
+                }
+            }
+            & .contact-icon{
+                & li{
+                    display: inline-block;
+                    &:not(:last-child){
+                        margin-right: 6px;
+                    }
+                    & a{
+                        width: 40px;
+                        height: 40px;
+                        border: 1px solid var(--pf-body-color);
+                        border-radius: 100%;
+                        line-height: 40px;
+                        text-align: center;
+                        @include pf-transition();
+                        &:hover{
+                            color: var(--pf-theme-white-color);
+                            background-color: var(--pf-primary-color);
+                            border-color: var(--pf-primary-color);
+                        }
+                        & i{
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-award{
+        &-content{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        &-btn{
+            flex: 0 0 auto;
+        }
+        &-title{
+            & h3{
+                font-weight: 700;
+                font-size: 20px;
+            }
+        }
+        &-btn{
+            & span{
+                font-size: 16px;
+                font-weight: 500;
+                background-color: var(--pf-primary-color);
+                color: var(--pf-theme-white-color);
+                padding: 3px 15px;
+                border-radius: 30px;
+            }
+        }
+        &-box{
+            margin-bottom: 20px;
+            & p{
+                font-size: 16px;
+            }
+        }
+    }
+    &-skills{
+        &-bar{
+            margin-bottom: 35px;
+            &-title{
+                display: flex;
+                justify-content: space-between;
+                & h3{
+                    font-size: 20px;
+                    font-weight: 700;
+                    margin-bottom: 15px;
+                }
+                & span{
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+            }
+            & .progress-bar{
+                background-color: var(--pf-primary-color);
+                border-radius: 30px;
+            }
+            & .progress{
+                height: 8px;
+                width: 100%;
+                background: rgba(104, 81, 63, 0.2);
+            }
+        }
+
+    }
+    &-contact-heading{
+        & p{
+            font-size: 16px;
+            line-height: 30px;
+        }
+        & ul{
+            padding-left: 20px;
+            & li{
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+    }
+}
+.pf-team-contact{
+        &-form{
+            padding: 40px;
+            background-color: var(--pf-3nd-bg-color);
+            border-radius: 20px;
+            border: 1px solid var(--pf-theme-dip-color);
+            @media #{$lg,$md,$xs}{
+                margin-top: 50px;
+            }
+        & .form-group{
+            margin-bottom: 30px;
+            line-height: 1;
+            & input{
+                border-radius: 60px;
+            }
+            & textarea{
+                border-radius: 20px;
+            }
+        }
+    }
+    &-btn{
+        & button{
+            border: none;
+            @include pf-transition();
+            &:hover{
+                background-color: var(--pf-hover-bg-color);
+            }
+        }
+    }
+}

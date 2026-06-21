@@ -1,0 +1,82 @@
+{% extends 'pages/base.html' %}
+{% load static %} 
+
+{% block content %}
+<main>
+    <section class="pf-page-banner-area text-center bg-theme-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <h2 class="page-title mb-20">Blog Details</h2>
+                    <ul class="breadcrumb-link">
+                        <li><a href="#">Home</a></li>
+                        <li>-</li>
+                        <li class="active">Blog Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pf-blog-details pt-130 pb-130">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-8">
+                    <div class="postbox-wrapper">
+                        <div class="postbox-details-content">
+                            <div class="postbox-thumb wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
+                                {% if video_url %}
+                                <img src="{{ image_url }}" alt="">
+                                <div class="pf-video-6-popup">
+                                    <a class="popup-video" href="{{ video_url }}">
+                                        <i class="fas fa-play"></i>
+                                    </a>
+                                </div>
+                                {% else %}
+                                    <img src="{{ image_url }}" alt="{{ title }}">
+                                {% endif %}
+                            </div>
+                            <div class="postbox-content p-0 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
+                                <div class="postbox-meta">
+                                    <span><img src="{{ author_image }}" alt="{{ author_name }}"><a href="#">{{ author_name }}</a></span>
+                                    <span><i class="far fa-tags"></i><a href="#">{{ category }}</a></span>
+                                </div>
+                                
+                                <h2 class="postbox-title">{{ title }}</h2>
+                                
+                                <div class="blog-body">
+                                    {{ content|safe }}
+                                </div>
+
+                                {% if image_1 or image_2 %}
+                                    <div class="row mb-30">
+                                        {% if image_1 %}
+                                            <div class="col-6"><img class="br-10" src="{{ image_1 }}" alt="Additional image 1"></div>
+                                        {% endif %}
+                                        {% if image_2 %}
+                                            <div class="col-6"><img class="br-10" src="{{ image_2 }}" alt="Additional image 2"></div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="entry-footer">
+                                <div class="tagcloud">
+                                    <span>Tags:</span>
+                                    <a href="#">{{ tags }}</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-lg-4">
+                    <div class="blog-sidebar-wrapper">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

@@ -1,0 +1,38 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.19 Story
+/*----------------------------------------*/
+
+.pf-story{
+    &-area{
+        & p{
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 30px;
+            margin-bottom: 40px;
+        }
+        & .section-title-area{
+            @media #{$lg,$md,$xs}{
+                margin-bottom: 40px;
+            }
+        }
+    }
+    &-btn{
+        & a{
+            @include pf-transition();
+        }
+        & .style-one{
+            &:hover{
+                background-color: var(--pf-hover-bg-color);
+                color: var(--pf-theme-white-color);
+            }
+        }
+        & .style-two{
+            &:hover{
+                background-color: var(--pf-primary-color);
+                color: var(--pf-theme-white-color);
+            }
+        }
+    }
+}

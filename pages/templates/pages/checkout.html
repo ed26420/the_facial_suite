@@ -1,0 +1,211 @@
+
+{% extends 'pages/base.html' %}
+{% load static %} 
+{% block content %}
+
+            <main>
+                <!-- Page-Banner Area Start -->
+                <section class="pf-page-banner-area text-center bg-theme-color">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <h2 class="page-title mb-20">Checkout</h2>
+                                <ul class="breadcrumb-link">
+                                    <li><a href="#">Home</a></li>
+                                    <li>-</li>
+                                    <li class="active">Checkout</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- Page-Banner Area End -->
+                <!-- Cart Page Area Start -->
+                <section class="pf-checkout-page-area pt-120 pb-120">
+                    <div class="container">
+                        <form >
+                        <div class="row gap-x-110">
+                            <div class="col-xl-8 col-lg-8">
+                                <div class="pf-checkout-form wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                    <h3 class="pf-checkout-title mb-30">Billing Details</h3>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>First Name</label>
+                                                <input type="text" class="form_control" placeholder="Enter first name" name="first_name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form_control" placeholder="Enter last name" name="last_name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>Company Name</label>
+                                                <input type="text" class="form_control" placeholder="Company Name" name="compnay_name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>Country / Region<span>*</span></label>
+                                                <select class="wide" name="country">
+                                                    <option value="United States">United States</option>
+                                                    <option value="England">England</option>
+                                                    <option value="New Zealand">New Zealand</option>
+                                                    <option value="Switzerland">Switzerland</option>
+                                                    <option value="Germany">Germany</option>
+                                                    <option value="Sweden">Sweden</option>
+                                                    <option value="Canada">Canada</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form_group">
+                                                <label>Street address<span>*</span></label>
+                                                <input type="text" name="address" class="form_control" placeholder="House number and street name" required>
+                                                <input type="text" name="address" class="form_control" placeholder="Apartment, suite, unit, etc (optional)" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form_group">
+                                                <label>Town / City <span>*</span></label>
+                                                <input type="text" class="form_control" placeholder="Town / City " name="city" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>State<span>*</span></label>
+                                                <select class="wide" name="state">
+                                                    <option value="New York">New York</option>
+                                                    <option value="London">London</option>
+                                                    <option value="Wellington">Wellington</option>
+                                                    <option value="Zürich">Zürich</option>
+                                                    <option value="Berlin">Berlin</option>
+                                                    <option value="Stockholm">Stockholm</option>
+                                                    <option value="Toronto">Toronto</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>Zipcode<span>*</span></label>
+                                                <input type="text" class="form_control" placeholder="Zip Code" name="zipcode" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form_group">
+                                                <label>Phone Number <span>*</span></label>
+                                                <input type="text" class="form_control" placeholder="Phone Number" name="phone" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form_group">
+                                                <label>Email address<span>*</span></label>
+                                                <input type="email" class="form_control" placeholder="Email Address" name="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-check">
+                                                <label class="form-check-label" for="check_one">
+                                                    <input class="form-check-input" type="checkbox"  id="check_one" name="check">
+                                                    Ship to a different address?
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-check">
+                                                <label class="form-check-label" for="check_two">
+                                                    <input class="form-check-input" type="checkbox"  id="check_two" name="check">
+                                                    Create an account?
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form_group">
+                                                <label>Order notes (optional)</label>
+                                                <textarea name="message" placeholder="Note about your order" class="form_control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4">
+                                <div class="pf-checkout-sidebar wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                    <div class="pf-cart-sidebar-area mb-30">
+                                        <div class="pf-cart-sidebar-info">
+                                            <h4 class="pf-cart-sidebar-title mb-30">Order Summary</h4>
+                                            <ul>
+                                                <li>
+                                                    <div class="item-title">Subtotal</div>
+                                                    <div class="subtotal">$234.00</div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-title">Shopping </div>
+                                                    <div class="subtotal">Free</div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-title">Discount </div>
+                                                    <div class="subtotal">$00.00</div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-title-total">Total </div>
+                                                    <div class="subtotal-total">$234.00</div>
+                                                </li>
+                                            </ul>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="pf-checkout-payment-area wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                        <h4 class="pf-cart-sidebar-title mb-30">Payment Method</h4>
+                                        <ul id="pf-paymentMethod" class="mb-20">
+                                            <!-- Default unchecked -->
+                                            <li class="form-check">
+                                                <label class="form-check-label" for="method1" data-bs-toggle="collapse" data-bs-target="#collapse0">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="method1" checked>
+                                                    Cash On Delivery
+                                                </label>
+                                                <div id="collapse0" class="collapse show" data-bs-parent="#pf-paymentMethod">
+                                                    <p>You can pay via PayPal, or use your credit 
+                                                    card if you don’t have a PayPal account.</p>
+                                                </div>
+                                            </li>
+                                            <!-- Default unchecked -->
+                                            <li class="form-check">
+                                                <label class="form-check-label" for="method2" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="method2">
+                                                    Bank Transfer
+                                                </label>
+                                                <div id="collapse1" class="collapse" data-bs-parent="#pf-paymentMethod">
+                                                    <p>You can pay via PayPal, or use your credit 
+                                                    card if you don’t have a PayPal account.</p>
+                                                </div>
+                                            </li>
+                                            <!-- Default unchecked -->
+                                            <li class="form-check">
+                                                <label class="form-check-label" for="method3" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="method3">
+                                                    PayPal
+                                                </label>
+                                                <div id="collapse2" class="collapse" data-bs-parent="#pf-paymentMethod">
+                                                    <p>You can pay via PayPal, or use your credit 
+                                                    card if you don’t have a PayPal account.</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!--=== Order Button ===-->
+                                        <div class="checkout-btn">
+                                            <button type="submit" class="theme-btn style-one w-100">Place Your Order</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </section>
+                <!-- Cart Page Area End -->
+            </main>
+{% endblock content %}
