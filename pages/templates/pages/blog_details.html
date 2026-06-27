@@ -1,20 +1,15 @@
 {% extends 'pages/base.html' %}
 {% load static %} 
-
 {% block content %}
 <main>
     <section class="pf-page-banner-area text-center bg-theme-color">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <h2 class="page-title mb-20">Blog Details</h2>
-                    <ul class="breadcrumb-link">
-                        <li><a href="#">Home</a></li>
-                        <li>-</li>
-                        <li class="active">Blog Details</li>
-                    </ul>
-                </div>
-            </div>
+            <h2 class="page-title mb-20">{{ title }}</h2>
+            <ul class="breadcrumb-link">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li>-</li>
+                <li class="active">Blog Details</li>
+            </ul>
         </div>
     </section>
 
@@ -25,55 +20,109 @@
                     <div class="postbox-wrapper">
                         <div class="postbox-details-content">
                             <div class="postbox-thumb wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
+                                <img src="{{ image_url }}" alt="{{ title }}">
                                 {% if video_url %}
-                                <img src="{{ image_url }}" alt="">
                                 <div class="pf-video-6-popup">
-                                    <a class="popup-video" href="{{ video_url }}">
-                                        <i class="fas fa-play"></i>
-                                    </a>
+                                    <a class="popup-video" href="{{ video_url }}"><i class="fas fa-play"></i></a>
                                 </div>
-                                {% else %}
-                                    <img src="{{ image_url }}" alt="{{ title }}">
                                 {% endif %}
                             </div>
+
                             <div class="postbox-content p-0 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
                                 <div class="postbox-meta">
-                                    <span><img src="{{ author_image }}" alt="{{ author_name }}"><a href="#">{{ author_name }}</a></span>
+                                    <span><img src="{{ author_image }}" alt=""><a href="#">{{ author_name }}</a></span>
                                     <span><i class="far fa-tags"></i><a href="#">{{ category }}</a></span>
+                                    <span><i class="far fa-comment"></i><a href="#">Comment ({{ comments.count }})</a></span>
                                 </div>
-                                
                                 <h2 class="postbox-title">{{ title }}</h2>
-                                
-                                <div class="blog-body">
-                                    {{ content|safe }}
-                                </div>
+                                <div class="blog-body">{{ content|safe }}</div>
+                            </div>
 
-                                {% if image_1 or image_2 %}
-                                    <div class="row mb-30">
-                                        {% if image_1 %}
-                                            <div class="col-6"><img class="br-10" src="{{ image_1 }}" alt="Additional image 1"></div>
-                                        {% endif %}
-                                        {% if image_2 %}
-                                            <div class="col-6"><img class="br-10" src="{{ image_2 }}" alt="Additional image 2"></div>
-                                        {% endif %}
+                            <div class="postbox__comment pt-75 pb-20 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                                <h3 class="postbox__comment-title">Comments ({{ comments.count }})</h3>
+                                <ul>
+                                    {% for comment in comments %}
+                                    <li>
+                                        <div class="postbox__comment-box d-flex">
+                                            <div class="postbox__comment-info">
+                                                <div class="postbox__comment-avater mr-30">
+                                                    <img src="{% static 'assets/img/blog/author-01.png' %}" alt="Avatar">
+                                                </div>
+                                            </div>
+                                            <div class="postbox__comment-text">
+                                                <div class="postbox__comment-name d-flex justify-content-between align-items-center">
+                                                    <h4>By {{ comment.user.username }}</h4>
+                                                    <span class="post-meta">{{ comment.created_on|date:"F d, Y" }}</span>
+                                                </div>
+                                                <p>{{ comment.body }}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="postbox-comment-form wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                                <h3 class="postbox-comment-form-title mb-10">Leave a Reply</h3>
+                                {% if user.is_authenticated %}
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="postbox-comment-form-wrapper">
+                                        <div class="form-group mb-20">
+                                            {{ comment_form.body }}
+                                        </div>
+                                        <div class="postbox-comment-btn">
+                                            <button type="submit" class="theme-btn style-one">Post Comment</button>
+                                        </div>
                                     </div>
+                                </form>
+                                {% else %}
+                                <p>Please <a href="{% url 'login' %}">login</a> to leave a comment.</p>
                                 {% endif %}
                             </div>
-
-                            <div class="entry-footer">
-                                <div class="tagcloud">
-                                    <span>Tags:</span>
-                                    <a href="#">{{ tags }}</a>
-                                </div>
-                            </div>
-                            
                         </div>
                     </div>
                 </div>
 
                 <div class="col-xl-4 col-lg-4">
                     <div class="blog-sidebar-wrapper">
+                        <div class="sidebar-widget p-0">
+                            <form action="{% url 'blog_grid' %}" method="GET">
+                                <div class="sidebar-search-input">
+                                    <input type="search" class="form_control" placeholder="Keywords" name="q">
+                                    <button class="search-btn" type="submit"><i class="far fa-search"></i></button>
+                                </div>
+                            </form>
                         </div>
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-widget-title">Categories</h3>
+                            <div class="sidebar-widget-category">
+                                <ul>
+                                    {% for cat in categories %}
+                                    <li>
+                                        <a href="{% url 'blog_grid' %}?category={{ cat.category }}">
+                                            {{ cat.category }} <span>{{ cat.count }}</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-widget-title">Latest Posts</h3>
+                            <div class="recent-post-wrap">
+                                {% for post in latest_posts %}
+                                <div class="recent-post">
+                                    <img src="{{ post.image.url }}" alt="" style="width: 70px; height: 70px; object-fit: cover; border-radius: 5px;">
+                                    <div class="recent-post-content ml-15">
+                                        <span class="posted-on"><a href="#">{{ post.date|date:"F d, Y" }}</a></span>
+                                        <h4 class="recent-post-title"><a href="{% url 'blog_detail' post.slug %}">{{ post.title|truncatechars:25 }}</a></h4>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

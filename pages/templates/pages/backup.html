@@ -1,322 +1,760 @@
 {% extends 'pages/base.html' %}
 {% load static %} 
 {% block content %}
-            <main>
-                <!-- Page-Banner Area Start -->
-                <section class="pf-page-banner-area text-center bg-theme-color">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <h2 class="page-title mb-20">Blog Details</h2>
-                                <ul class="breadcrumb-link">
-                                    <li><a href="#">Home</a></li>
-                                    <li>-</li>
-                                    <li class="active">Blog Details</li>
-                                </ul>
+
+                <main>
+                    <!-- Hero Area Start -->
+                    <section class="pf-hero-area v2 pt-254">
+                        <div class="pf-hero-wrappper text-center pt-130 pb-30" data-bg-img="pages/img/Hero/hero.png' %}">
+                            <div class="pf-hero-overlay"></div>
+                            <div class="pf-hero-title-area">
+                                <h1 class="pf-hero-title wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">Your Glow-Up Journey <br>Starts Right Here</h1>
+                                <p class=" wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">Start your transformation today with simple steps, expert tips, and confidence-boosting habits that help you <br>look and feel your absolute best every day.</p>
                             </div>
-                        </div>
-                    </div>
-                </section><!-- Page-Banner Area End -->
-                <!-- Blog Area Start -->
-                <section class="pf-blog-details pt-130 pb-130">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-8">
-                                <div class="postbox-wrapper">
-                                    <div class="postbox-details-content">
-                                        <!-- Post Thumb -->
-                                        <div class="postbox-thumb wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
-                                            <img src="assets/img/blog/blog-standart-01.png" alt="">
-                                        </div>
-                                        <!-- Post Content -->
-                                        <div class="postbox-content p-0 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
-                                            <div class="postbox-meta ">
-                                                <span><img src="assets/img/blog/author-01.png" alt=""><a href="#">Charlotte Harris</a></span>
-                                                <span><i class="far fa-tags"></i><a href="#">Skincare</a></span>
-                                                <span><i class="far fa-comment"></i><a href="#">Comment (03)</a></span>
-                                            </div>
-                                            <h2 class="postbox-title ">Skincare Mistakes That Damage Your Skin Over Time</h2>
-                                            <p>This article highlights common skincare mistakes that can harm your skin over time and explains simple ways to correct them. Learn practical skincare habits that help protect your skin, improve texture, and maintain a healthy, radiant appearance.</p>
-                                            <h3 class="mb-20">Natural Remedies Benefits</h3>
-                                            <p>Natural remedies offer gentle, chemical-free skincare solutions using plant-based and nutrient-rich ingredients. They help soothe irritation, reduce inflammation, and nourish the skin without harsh side effects. Ideal for sensitive skin, these remedies promote long-term skin health by harnessing the power of nature. From aloe vera to turmeric, natural ingredients provide safe, effective care for radiant, balanced skin.</p>
-                                            <div class="row mb-30">
-                                                <div class="col-6">
-                                                    <img class="br-10" src="assets/img/blog/blog-details-desription-01.png" alt="">
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="br-10" src="assets/img/blog/blog-details-desription-02.png" alt="">
-                                                </div>
-                                            </div>
-                                            <h3 class="mb-20">Target Dryness and Skin Discomfort</h3>
-                                            <p>Dryness and skin discomfort can result from environmental factors, harsh products, or an imbalanced skin barrier. Our targeted skincare solutions are formulated with hydrating and soothing ingredients like hyaluronic acid, ceramides, and botanical extracts to restore moisture and comfort. Whether you’re dealing with flakiness, tightness, or sensitivity, our products work to deeply nourish, protect, and repair your skin.</p>
-                                            <blockquote>
-                                                <div class="icon">
-                                                    <i class="fas fa-quote-right"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>"I started seeing a glow within a week! My skin feels more hydrated, plump, and healthy. I love how light yet effective the formulas are—perfect for my busy lifestyle and so easy to use as part of my routine."</p>
-                                                </div>
-                                            </blockquote>
-                                            <p>Learn about common skincare mistakes that damage your skin and discover simple habits to maintain healthier, smoother, and radiant skin.</p>
-                                        </div>
-                                        <!-- Post Entry Footer -->
-                                        <div class="entry-footer">
-                                            <div class="tagcloud">
-                                                <span>Tags:</span>
-                                                <a href="#">Health</a>
-                                                <a href="#">Glowing</a>
-                                                <a href="#">Organic</a>
-                                            </div>
-                                            <div class="social-share">
-                                                <span>Share:</span>
-                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                            </div>
-                                        </div>
-                                        <!-- Post Comment List -->
-                                        <div class="postbox__comment pt-75 pb-20 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                            <h3 class="postbox__comment-title">Comments(02)</h3>
-                                            <ul>
-                                                <li>
-                                                    <div class="postbox__comment-box d-flex">
-                                                        <div class="postbox__comment-info ">
-                                                            <div class="postbox__comment-avater mr-30">
-                                                                <img src="assets/img/blog/author-01.png" alt="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="postbox__comment-text">
-                                                            <div class="postbox__comment-name d-flex justify-content-between align-items-center">
-                                                                <h4>By Ella Brooks</h4>
-                                                                <span class="post-meta">January 2, 2025</span>
-                                                            </div>
-                                                            <p>
-                                                                I love this theme. Sometimes it’s difficult to work with some themes, because even if they are created with Elementor, you can’t edit all the things with Elementor.
-                                                            </p>
-                                                            <div class="postbox__comment-reply">
-                                                                <a href="#">
-                                                                    Reply
-                                                                    <span>
-                                                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M1 9L9 1M9 1V9M9 1L1 1" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                                    </svg>
-                                                                    </span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="children">
-                                                    <div class="postbox__comment-box d-flex">
-                                                    <div class="postbox__comment-info ">
-                                                        <div class="postbox__comment-avater mr-30">
-                                                            <img src="assets/img/blog/author-02.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="postbox__comment-text">
-                                                        <div class="postbox__comment-name d-flex justify-content-between align-items-center">
-                                                            <h4>By Oliver Williams</h4>
-                                                            <span class="post-meta">January 2, 2025</span>
-                                                        </div>
-                                                        <p>
-                                                            They have really taken their timeto work appearance of the theme, also, they have a very intereactive client assistance service, I like() !
-                                                        </p>
-                                                        <div class="postbox__comment-reply">
-                                                            <a href="#">
-                                                                Reply
-                                                                <span>
-                                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M1 9L9 1M9 1V9M9 1L1 1" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                                </svg>
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="postbox__comment-box d-flex">
-                                                    <div class="postbox__comment-info ">
-                                                        <div class="postbox__comment-avater mr-30">
-                                                            <img src="assets/img/blog/author-03.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="postbox__comment-text">
-                                                        <div class="postbox__comment-name d-flex justify-content-between align-items-center">
-                                                            <h4>By James Taylor</h4>
-                                                            <span class="post-meta">January 2, 2025</span>
-                                                        </div>
-                                                        <p>
-                                                            They have clearly invested a lot of time into perfecting the theme’s design, and their client support is very responsive and helpful. I really appreciate()!
-                                                        </p>
-                                                        <div class="postbox__comment-reply">
-                                                            <a href="#">
-                                                                Reply
-                                                                <span>
-                                                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M1 9L9 1M9 1V9M9 1L1 1" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                                    </svg>
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- Post Comment Form -->
-                                        <div class="postbox-comment-form mb-4 mb-lg-0 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                            <h3 class="postbox-comment-form-title mb-10">Leave a Reply</h3>
-                                            <p>Your email address will not be published. Required fields are marked *</p>
-                                            <div class="postbox-comment-form-wrapper">
-                                                <form>
-                                                    <div class="postbox-comment-form-area">
-                                                        <div class="row">
-                                                            <div class="col-xl-6">
-                                                                <div class="form-group">
-                                                                        <label>Name *</label>
-                                                                        <input type="text" class="form_control" name="name" placeholder="Enter Your Full Name" required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-6">
-                                                                <div class="form-group">
-                                                                    <label>Email *</label>
-                                                                    <input type="email" class="form_control" name="email" placeholder="Enter Your Email" required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-12">
-                                                                <div class="form-group">
-                                                                    <label>Website</label>
-                                                                    <input type="text" class="form_control" name="website" placeholder="Enter Your Website Address">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-12">
-                                                                <div class="form-group">
-                                                                    <label>Comment *</label>
-                                                                    <textarea id="msg" name="comments" placeholder="Comments" rows="5"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    
-                                                    </div>
-                                                    <div class="postbox-comment-remeber mb-20">
-                                                        <label class="form-check-label" for="check_two">
-                                                            <input class="form-check-input" type="checkbox"  id="check_two" name="check">
-                                                            Save my name, email, and website in this browser for the next time I comment.
-                                                        </label>
-                                                    </div>
-                                                    <div class="postbox-comment-btn">
-                                                    <button type="submit" class="theme-btn style-one">Post Comment</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="pf-hero-button-area wow pfFadeInUp pb-250" data-wow-duration=".6s" data-wow-delay=".6s">
+                                <a class="theme-btn style-one v1" href="{% url 'contact' %}">Book a Consultation</a>
+                                <a class="theme-btn style-two v2" href="{% url 'services' %}">Explore Services</a>
                             </div>
-                            <div class="col-xl-4 col-lg-4">
-                                <div class="blog-sidebar-wrapper">
-                                    <div class="sidebar-widget p-0 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
-                                        <div class="widget-content">
-                                            <div class="sidebar-search">
-                                                <form action="#">
-                                                    <div class="sidebar-search-input">
-                                                        <input type="search" class="form_control" placeholder="Keywords" name="search" required="">
-                                                        <button class="search-btn"><i class="far fa-search"></i></button>
-                                                    </div>
-                                                </form>
+                            <div class="pf-logo-slider-area home-one p-relative">
+                                <div class="pf-logo-slider">
+                                    <div class="swiper pf-logo-slider-active">
+                                        <div class="swiper-wrapper pf-logo-slider-transtion align-items-center">
+                                            <div class="swiper-slide">
+                                                <img src="{% static 'pages/img/logo-slider/logo-slider-01.png' %}" alt="">
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="sidebar-widget wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                        <div class="widget-content">
-                                            <h3 class="sidebar-widget-title">Categories</h3>
-                                            <div class="sidebar-widget-category">
-                                                <ul>
-                                                    <li><a href="#">
-                                                        Skin Care Tips
-                                                        <span>03</span>
-                                                    </a></li>
-                                                    <li><a href="#">
-                                                        Product Reviews
-                                                        <span>05</span>
-                                                    </a></li>
-                                                    <li><a href="#">
-                                                        Natural Remedies
-                                                        <span>04</span>
-                                                    </a></li>
-                                                    <li><a href="#">
-                                                        Anti-Aging
-                                                        <span>08</span>
-                                                    </a></li>
-                                                    <li><a href="#">
-                                                        Skin Conditions
-                                                        <span>10</span>
-                                                    </a></li>
-                                                    <li><a href="#">
-                                                        Beauty Science
-                                                        <span>07</span>
-                                                    </a></li>
-                                                </ul>
+                                            <div class="swiper-slide">
+                                                <img src="{% static 'pages/img/logo-slider/logo-slider-02.png' %}" alt="">
                                             </div>
-                                        </div>    
-                                    </div>
-                                    <div class="sidebar-widget wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                        <div class="widget-content">
-                                            <h3 class="sidebar-widget-title">Latest Posts</h3>
-                                            <div class="recent-post-wrap">
-                                                <div class="recent-post">
-                                                    <img src="assets/img/blog/blog-standart-01.png" alt="">
-                                                    <div class="recent-post-content">
-                                                        <span class="posted-on"><a href="#">July 28, 2025</a></span>
-                                                        <h4 class="recent-post-title"><a href="blog-details.html">Skincare Mistakes That Damage Your Skin</a></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="recent-post">
-                                                    <img src="assets/img/blog/blog-standart-02.png" alt="">
-                                                    <div class="recent-post-content">
-                                                        <span class="posted-on"><a href="#">July 28, 2025</a></span>
-                                                        <h4 class="recent-post-title"><a href="blog-details.html">Natural Remedies vs. </a></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="recent-post">
-                                                    <img src="assets/img/blog/blog-standart-03.png" alt="">
-                                                    <div class="recent-post-content">
-                                                        <span class="posted-on"><a href="#">July 28, 2025</a></span>
-                                                        <h4 class="recent-post-title"><a href="blog-details.html">Choosing the Right Moisturizer </a></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="recent-post">
-                                                    <img src="assets/img/blog/blog-standart-04.png" alt="">
-                                                    <div class="recent-post-content">
-                                                        <span class="posted-on"><a href="#">July 28, 2025</a></span>
-                                                        <h4 class="recent-post-title"><a href="blog-details.html">The Science Behind Hyaluronic Acid</a></h4>
-                                                    </div>
-                                                </div>
+                                            <div class="swiper-slide">
+                                                <img src="{% static 'pages/img/logo-slider/logo-slider-01.png' %}" alt="">
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="sidebar-widget wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                        <div class="widget-content">
-                                            <h3 class="sidebar-widget-title">Tags</h3>
-                                            <div class="tagcloud">
-                                                <a href="#">Skincare</a>
-                                                <a href="#">Health</a>
-                                                <a href="#">Glowing</a>
-                                                <a href="#">Hydration</a>
-                                                <a href="#">Natural</a>
-                                                <a href="#">Organic</a>
-                                                <a href="#">Dry</a>
-                                                <a href="#">Herbal</a>
+                                            <div class="swiper-slide">
+                                                <img src="{% static 'pages/img/logo-slider/logo-slider-03.png' %}" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="{% static 'pages/img/logo-slider/logo-slider-04.png' %}" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="{% static 'pages/img/logo-slider/logo-slider-05.png' %}" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="{% static 'pages/img/logo-slider/logo-slider-01.png' %}" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="{% static 'pages/img/logo-slider/logo-slider-02.png' %}" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="{% static 'pages/img/logo-slider/logo-slider-03.png' %}" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="{% static 'pages/img/logo-slider/logo-slider-04.png' %}" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="{% static 'pages/img/logo-slider/logo-slider-05.png' %}" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="{% static 'pages/img/logo-slider/logo-slider-01.png' %}" alt="">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </section><!-- Hero Area End -->
+                    
+                    <!-- featured Area Start -->
+                    <section class="pf-featured-area pt-130">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="section-title-area text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                        <span class="section-subtitle mb-20">Category</span>
+                                        <h2 class="section-title mb-60">Our Top Categories</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-xl-4 col-lg-4 col-md-6">
+                                    <div class="pf-featured-content feature-cart-one wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                        <div class="pf-featured-heading">
+                                            <h2 class="pf-featured-title">Facial Treatments</h2>
+                                            <p>Deep cleansing, exfoliation, hydration, and mask application tailored to skin type.</p>
+                                        </div>
+                                        <div class="pf-featured-img">
+                                            <img src="{% static 'pages/img/featured/featured-01.png' %}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-6">
+                                    <div class="pf-featured-content feature-cart-two wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                                        <div class="pf-featured-heading">
+                                            <h2 class="pf-featured-title">Microdermabrasion</h2>
+                                            <p>A non-invasive procedure that exfoliates & removes dead skin to reveal smoother, brighter skin.</p>
+                                        </div>
+                                        <div class="pf-featured-img">
+                                            <img src="{% static 'pages/img/featured/featured-02.png' %}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-6">
+                                    <div class="pf-featured-content feature-cart-three wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
+                                        <div class="pf-featured-heading">
+                                            <h2 class="pf-featured-title">Chemical Peels</h2>
+                                            <p>Removes dead skin cells using acids to improve tone, texture, and reduce fine lines or acne.</p>
+                                        </div>
+                                        <div class="pf-featured-img">
+                                            <img src="{% static 'pages/img/featured/featured-03.png' %}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </section><!-- featured Area End -->
+                    
+                    <!-- About Area Start -->
+                    <section class="pf-about-area pt-130 pb-80">
+                        <div class="container">
+                            <div class="row justify-content-center pb-130">
+                                <div class="col-xl-11">
+                                    <div class="section-title-area text-center">
+                                        <span class="section-subtitle mb-35 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">About Us</span>
+                                        <h2 class="section-about-description mb-40 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">We craft clean <span class="abou-section-sm-img wow pf-img-custom-anim-left" data-wow-duration=".6s" data-wow-delay=".4s"><img src="{% static 'pages/img/About/about-sm-img-01.png' %}" alt=""></span> gentle skincare using nature & science. Our cruelty-free products <span class="abou-section-sm-img wow pf-img-custom-anim-left1-5" data-wow-duration=".6s" data-wow-delay=".6s"><img src="{% static 'pages/img/About/about-sm-img-02.png' %}" alt=""></span> nourish all skin types, helping you <span class="abou-section-sm-img wow pf-img-custom-anim-left1" data-wow-duration=".6s" data-wow-delay=".7s"><img src="{% static 'pages/img/About/about-sm-img-03.png' %}" alt=""></span> achieve healthy, radiant skin with confidence every day.</h2>
+                                        <div class="section-btn pf-about-two-btn wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
+                                            <a class="theme-btn style-one " href="about.html">More About Us</a>
+                                            <a class="theme-btn style-two" href="{% url 'contact' %}">Visit Our Clinic</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-x-gap">
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="pf-about-box d-flex align-items-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                        <img src="{% static 'pages/img/About/about-box-01.png' %}" alt="">
+                                        <div class="pf-about-content">
+                                            <h2 class="pf-about-box-title"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="97">97</span>%</h2>
+                                            <p class="pf-about-box-desc">Our Client Satisfaction</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="pf-about-box d-flex align-items-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                                        <img src="{% static 'pages/img/About/about-box-02.png' %}" alt="">
+                                        <div class="pf-about-content">
+                                            <h2 class="pf-about-box-title"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="23">23</span>K</h2>
+                                            <p class="pf-about-box-desc">Completed Project</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section><!-- About Area end -->
+                    
+                    <!-- Services Area Start -->
+                    <section class="pfservices-area bg-theme-color pt-130 pb-80 p-relative">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-xxl-5 col-xl-6 col-lg-7 col-md-8">
+                                    <div class="section-title-area text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                        <span class="section-subtitle mb-20">Our Services</span>
+                                        <h2 class="section-title mb-40">Your Journey to <span>Radiant</span> <span>Skin</span> Starts Here</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pf-services-main">
+                                <div class="horizontal-scroll-wrapper">
+                                    <div class="row flex-nowrap horizontal-scroll">
+                                        <div class="col-xl-4 col-lg-4 col-md-6">
+                                            <div class="pfservices p-10 br-10">
+                                                <div class="pfservices__img">
+                                                    <img class="br-10 w-100" src="{% static 'pages/img/services/services-img-01.png' %}" alt="">
+                                                </div>
+                                                <div class="pfservices__content p-20">
+                                                    <h3 class="pfservices__title"><a href="{% url 'services' %}">Hydrating Facial Treatment</a></h3>
+                                                    <p>Replenishes deep hydration, soothes irritation, relieves dryness, & helps restore the skin’s natural...</p>
+                                                    <a class="style-three" href="{% url 'services' %}">Read More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6">
+                                            <div class="pfservices p-10 br-10">
+                                                <div class="pfservices__img">
+                                                    <img class="br-10 w-100" src="{% static 'pages/img/services/services-img-02.png' %}" alt="">
+                                                </div>
+                                                <div class="pfservices__content p-20">
+                                                    <h3 class="pfservices__title"><a href="{% url 'services' %}">Micro needling Treatment</a></h3>
+                                                    <p>Stimulates natural collagen production, smooths skin texture, reduces fine lines and wrinkles, and fades imperfections.</p>
+                                                    <a class="style-three" href="{% url 'services' %}">Read More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6">
+                                            <div class="pfservices p-10 br-10">
+                                                <div class="pfservices__img">
+                                                    <img class="br-10 w-100" src="{% static 'pages/img/services/services-img-03.png' %}" alt="">
+                                                </div>
+                                                <div class="pfservices__content p-20">
+                                                    <h3 class="pfservices__title"><a href="{% url 'services' %}">Acne Treatment Facial</a></h3>
+                                                    <p>Clears clogged pores, minimizes breakouts, soothes and irritation & restores balance to acne-prone...</p>
+                                                    <a class="style-three" href="{% url 'services' %}">Read More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6">
+                                            <div class="pfservices p-10 br-10">
+                                                <div class="pfservices__img">
+                                                    <img class="br-10 w-100" src="{% static 'pages/img/services/services-img-04.png' %}" alt="">
+                                                </div>
+                                                <div class="pfservices__content p-20">
+                                                    <h3 class="pfservices__title"><a href="{% url 'services' %}">Brightening Enzyme Facial</a></h3>
+                                                    <p>A gentle exfoliating treatment that removes dead skin cells, evens tone, and boosts natural radiance for a glowing complexion.</p>
+                                                    <a class="style-three" href="{% url 'services' %}">Read More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6">
+                                            <div class="pfservices p-10 br-10">
+                                                <div class="pfservices__img">
+                                                    <img class="br-10 w-100" src="{% static 'pages/img/services/services-img-02.png' %}" alt="">
+                                                </div>
+                                                <div class="pfservices__content p-20">
+                                                    <h3 class="pfservices__title"><a href="{% url 'services' %}">Micro needling Treatment</a></h3>
+                                                    <p>Stimulates natural collagen production, smooths skin texture, reduces fine lines and wrinkles, and fades imperfections.</p>
+                                                    <a class="style-three" href="{% url 'services' %}">Read More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6">
+                                            <div class="pfservices p-10 br-10">
+                                                <div class="pfservices__img">
+                                                    <img class="br-10 w-100" src="{% static 'pages/img/services/services-img-05.png' %}" alt="">
+                                                </div>
+                                                <div class="pfservices__content p-20">
+                                                    <h3 class="pfservices__title"><a href="{% url 'services' %}">Acne Treatment Facial</a></h3>
+                                                    <p>Clears clogged pores, minimizes breakouts, soothes and irritation & restores balance to acne-prone...</p>
+                                                    <a class="style-three" href="{% url 'services' %}">Read More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section><!-- Services Area End -->
+                    
+                    <!-- Product Area Start -->
+                    <section class="pf-products-area pt-130 pb-130">
+                        <div class="container">
+                            <div class="row justify-content-center mb-20">
+                                <div class="col-xl-7">
+                                    <div class="section-title-area text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                        <span class="section-subtitle mb-20">Our Product</span>
+                                        <h2 class="section-title mb-40"><span>Glow</span> Starts with the Right <span>Products</span></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-x-10 gap-y-30 justify-content-center">
+                                <div class="col-xl-4 col-lg-4 col-md-6">
+                                    <div class="pf-product wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                        <div class="pf-product__img">
+                                            <img src="{% static 'pages/img/product/product-01.png' %}" alt="">
+                                        </div>
+                                        <div class="pf-product__box">
+                                            <div class="pf-product-content">
+                                                <div class="pf-product__title">
+                                                    <h3><a href="{% url 'shop' %}">Hydrating Face Serum</a></h3>
+                                                </div>
+                                                <div class="pf-product__rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <span>4.9</span>
+                                                </div>
+                                            </div>
+                                            <div class="pf-product__price">
+                                                <h4>$78.00</h4>
+                                            </div>
+                                            <div class="pf-product__attributes">
+                                                <a href="#">100ml</a>
+                                                <a href="#">200ml</a>
+                                                <a href="#">300ml</a>
+                                            </div>
+                                            <div class="pf-product__btn text-center">
+                                                <a href="{% url 'shop' %}"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4.16634 6.45703C4.05128 6.45703 3.95801 6.55031 3.95801 6.66536V17.4987C3.95801 17.6138 4.05128 17.707 4.16634 17.707H15.833C15.9481 17.707 16.0413 17.6138 16.0413 17.4987V6.66536C16.0413 6.55031 15.9481 6.45703 15.833 6.45703H4.16634ZM2.70801 6.66536C2.70801 5.85995 3.36092 5.20703 4.16634 5.20703H15.833C16.6384 5.20703 17.2913 5.85995 17.2913 6.66536V17.4987C17.2913 18.3041 16.6384 18.957 15.833 18.957H4.16634C3.36092 18.957 2.70801 18.3041 2.70801 17.4987V6.66536Z" fill="currentColor" />
+                                                <path d="M9.99967 2.29102C8.73401 2.29102 7.70801 3.31703 7.70801 4.58268V7.49935C7.70801 7.84452 7.42818 8.12435 7.08301 8.12435C6.73783 8.12435 6.45801 7.84452 6.45801 7.49935V4.58268C6.45801 2.62667 8.04367 1.04102 9.99967 1.04102C11.9557 1.04102 13.5413 2.62667 13.5413 4.58268V7.49935C13.5413 7.84452 13.2615 8.12435 12.9163 8.12435C12.5712 8.12435 12.2913 7.84452 12.2913 7.49935V4.58268C12.2913 3.31703 11.2653 2.29102 9.99967 2.29102Z" fill="currentColor" />
+                                                </svg>Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-6">
+                                    <div class="pf-product wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                                        <div class="pf-product__img">
+                                            <img src="{% static 'pages/img/product/product-02.png' %}" alt="">
+                                        </div>
+                                        <div class="pf-product__box">
+                                            <div class="pf-product-content">
+                                                <div class="pf-product__title">
+                                                    <h3><a href="{% url 'shop' %}">Clarifying Clay Mask</a></h3>
+                                                </div>
+                                                <div class="pf-product__rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <span>4.9</span>
+                                                </div>
+                                            </div>
+                                            <div class="pf-product__price">
+                                                <h4>$78.00</h4>
+                                            </div>
+                                            <div class="pf-product__attributes">
+                                                <a href="#">100ml</a>
+                                                <a href="#">200ml</a>
+                                                <a href="#">300ml</a>
+                                            </div>
+                                            <div class="pf-product__btn text-center">
+                                                <a href="{% url 'shop' %}"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4.16634 6.45703C4.05128 6.45703 3.95801 6.55031 3.95801 6.66536V17.4987C3.95801 17.6138 4.05128 17.707 4.16634 17.707H15.833C15.9481 17.707 16.0413 17.6138 16.0413 17.4987V6.66536C16.0413 6.55031 15.9481 6.45703 15.833 6.45703H4.16634ZM2.70801 6.66536C2.70801 5.85995 3.36092 5.20703 4.16634 5.20703H15.833C16.6384 5.20703 17.2913 5.85995 17.2913 6.66536V17.4987C17.2913 18.3041 16.6384 18.957 15.833 18.957H4.16634C3.36092 18.957 2.70801 18.3041 2.70801 17.4987V6.66536Z" fill="currentColor" />
+                                                <path d="M9.99967 2.29102C8.73401 2.29102 7.70801 3.31703 7.70801 4.58268V7.49935C7.70801 7.84452 7.42818 8.12435 7.08301 8.12435C6.73783 8.12435 6.45801 7.84452 6.45801 7.49935V4.58268C6.45801 2.62667 8.04367 1.04102 9.99967 1.04102C11.9557 1.04102 13.5413 2.62667 13.5413 4.58268V7.49935C13.5413 7.84452 13.2615 8.12435 12.9163 8.12435C12.5712 8.12435 12.2913 7.84452 12.2913 7.49935V4.58268C12.2913 3.31703 11.2653 2.29102 9.99967 2.29102Z" fill="currentColor" />
+                                                </svg>Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-6">
+                                    <div class="pf-product wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
+                                        <div class="pf-product__img">
+                                            <img src="{% static 'pages/img/product/product-02.png' %}" alt="">
+                                        </div>
+                                        <div class="pf-product__box">
+                                            <div class="pf-product-content">
+                                                <div class="pf-product__title">
+                                                    <h3><a href="{% url 'shop' %}">Eye Revive Cream</a></h3>
+                                                </div>
+                                                <div class="pf-product__rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <span>4.9</span>
+                                                </div>
+                                            </div>
+                                            <div class="pf-product__price">
+                                                <h4>$78.00</h4>
+                                            </div>
+                                            <div class="pf-product__attributes">
+                                                <a href="#">100ml</a>
+                                                <a href="#">200ml</a>
+                                                <a href="#">300ml</a>
+                                            </div>
+                                            <div class="pf-product__btn text-center">
+                                                <a href="{% url 'shop' %}"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M4.16634 6.45703C4.05128 6.45703 3.95801 6.55031 3.95801 6.66536V17.4987C3.95801 17.6138 4.05128 17.707 4.16634 17.707H15.833C15.9481 17.707 16.0413 17.6138 16.0413 17.4987V6.66536C16.0413 6.55031 15.9481 6.45703 15.833 6.45703H4.16634ZM2.70801 6.66536C2.70801 5.85995 3.36092 5.20703 4.16634 5.20703H15.833C16.6384 5.20703 17.2913 5.85995 17.2913 6.66536V17.4987C17.2913 18.3041 16.6384 18.957 15.833 18.957H4.16634C3.36092 18.957 2.70801 18.3041 2.70801 17.4987V6.66536Z" fill="currentColor" />
+                                                <path d="M9.99967 2.29102C8.73401 2.29102 7.70801 3.31703 7.70801 4.58268V7.49935C7.70801 7.84452 7.42818 8.12435 7.08301 8.12435C6.73783 8.12435 6.45801 7.84452 6.45801 7.49935V4.58268C6.45801 2.62667 8.04367 1.04102 9.99967 1.04102C11.9557 1.04102 13.5413 2.62667 13.5413 4.58268V7.49935C13.5413 7.84452 13.2615 8.12435 12.9163 8.12435C12.5712 8.12435 12.2913 7.84452 12.2913 7.49935V4.58268C12.2913 3.31703 11.2653 2.29102 9.99967 2.29102Z" fill="currentColor" />
+                                                </svg>Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section><!-- Product Area End -->
+                    
+                    <!-- Testimonials Aea Start -->
+                    <section class="pf-testimonial-area overflow-hidden pb-130">
+                        <div class="container">
+                            <div class="row justify-content-center mb-20">
+                                <div class="col-xxl-5 col-xl-6 col-lg-7 col-md-8">
+                                    <div class="section-title-area text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                        <span class="section-subtitle mb-20">Testimonials</span>
+                                        <h2 class="section-title mb-40"><span>Glow-Up</span> Reviews from Happy <span>Clients</span></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- testimonials-slider Start -->
+                        <div class="swiper testimonials-slider-active wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                            <div class="swiper-wrapper pf-logo-slider-transtion">
+                            <div class="swiper-slide">
+                                <div class="pf-testimonial__box">
+                                    <div class="pf-testimonial__content pb-30">
+                                        <div class="pf-testimonial__author">
+                                            <div class="pf-testimonial__img mr-15">
+                                                <img class="br-100 " src="{% static 'pages/img/testimonial/testimonial-01.png' %}" alt="">
+                                            </div>
+                                            <div class="pf-testimonial__bio">
+                                                <div class="pf-testimonial__name">
+                                                    <h3 class="mb-5">Ava Richardson</h3>
+                                                </div>
+                                                <div class="pf-testimonial__position">
+                                                    <span>CEO</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pf-testimonial__rating">
+                                            <i class="fas fa-star"></i>
+                                            <span>4.9</span>
+                                        </div>
+                                    </div>
+                                    <div class="pf-testimonial__description pt-30">
+                                        <p>“I love that this brand is cruelty-free and ethical. My skin feels amazing, and I feel good supporting them.”</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="pf-testimonial__box">
+                                    <div class="pf-testimonial__content pb-30">
+                                        <div class="pf-testimonial__author">
+                                            <div class="pf-testimonial__img mr-15">
+                                                <img class="br-100 " src="{% static 'pages/img/testimonial/testimonial-02.png' %}" alt="">
+                                            </div>
+                                            <div class="pf-testimonial__bio">
+                                                <div class="pf-testimonial__name">
+                                                    <h3 class="mb-5">Ava Richardson</h3>
+                                                </div>
+                                                <div class="pf-testimonial__position">
+                                                    <span>CEO</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pf-testimonial__rating">
+                                            <i class="fas fa-star"></i>
+                                            <span>4.9</span>
+                                        </div>
+                                    </div>
+                                    <div class="pf-testimonial__description pt-30">
+                                        <p>“The serum absorbed quickly, reduced my fine lines, and gave me a youthful, look in just a few weeks.”</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="pf-testimonial__box">
+                                    <div class="pf-testimonial__content pb-30">
+                                        <div class="pf-testimonial__author">
+                                            <div class="pf-testimonial__img mr-15">
+                                                <img class="br-100 " src="{% static 'pages/img/testimonial/testimonial-03.png' %}" alt="">
+                                            </div>
+                                            <div class="pf-testimonial__bio">
+                                                <div class="pf-testimonial__name">
+                                                    <h3 class="mb-5">Ava Richardson</h3>
+                                                </div>
+                                                <div class="pf-testimonial__position">
+                                                    <span>CEO</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pf-testimonial__rating">
+                                            <i class="fas fa-star"></i>
+                                            <span>4.9</span>
+                                        </div>
+                                    </div>
+                                    <div class="pf-testimonial__description pt-30">
+                                        <p>“After years of trying different brands, I finally found a cream that soothes my skin without any irritation.”</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="pf-testimonial__box">
+                                    <div class="pf-testimonial__content pb-30">
+                                        <div class="pf-testimonial__author">
+                                            <div class="pf-testimonial__img mr-15">
+                                                <img class="br-100 " src="{% static 'pages/img/testimonial/testimonial-04.png' %}" alt="">
+                                            </div>
+                                            <div class="pf-testimonial__bio">
+                                                <div class="pf-testimonial__name">
+                                                    <h3 class="mb-5">Ava Richardson</h3>
+                                                </div>
+                                                <div class="pf-testimonial__position">
+                                                    <span>CEO</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pf-testimonial__rating">
+                                            <i class="fas fa-star"></i>
+                                            <span>4.9</span>
+                                        </div>
+                                    </div>
+                                    <div class="pf-testimonial__description pt-30">
+                                        <p>“Friends keep complimenting my skin since I switched. This is the only brand that truly delivers results.”</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="pf-testimonial__box">
+                                    <div class="pf-testimonial__content pb-30">
+                                        <div class="pf-testimonial__author">
+                                            <div class="pf-testimonial__img mr-15">
+                                                <img class="br-100 " src="{% static 'pages/img/testimonial/testimonial-01.png' %}" alt="">
+                                            </div>
+                                            <div class="pf-testimonial__bio">
+                                                <div class="pf-testimonial__name">
+                                                    <h3 class="mb-5">Ava Richardson</h3>
+                                                </div>
+                                                <div class="pf-testimonial__position">
+                                                    <span>CEO</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pf-testimonial__rating">
+                                            <i class="fas fa-star"></i>
+                                            <span>4.9</span>
+                                        </div>
+                                    </div>
+                                    <div class="pf-testimonial__description pt-30">
+                                        <p>“I love that this brand is cruelty-free and ethical. My skin feels amazing, and I feel good supporting them.”</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="pf-testimonial__box">
+                                    <div class="pf-testimonial__content pb-30">
+                                        <div class="pf-testimonial__author">
+                                            <div class="pf-testimonial__img mr-15">
+                                                <img class="br-100 " src="{% static 'pages/img/testimonial/testimonial-02.png' %}" alt="">
+                                            </div>
+                                            <div class="pf-testimonial__bio">
+                                                <div class="pf-testimonial__name">
+                                                    <h3 class="mb-5">Ava Richardson</h3>
+                                                </div>
+                                                <div class="pf-testimonial__position">
+                                                    <span>CEO</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pf-testimonial__rating">
+                                            <i class="fas fa-star"></i>
+                                            <span>4.9</span>
+                                        </div>
+                                    </div>
+                                    <div class="pf-testimonial__description pt-30">
+                                        <p>“The serum absorbed quickly, reduced my fine lines, and gave me a youthful, look in just a few weeks.”</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!-- testimonials-slider End -->
+                    </section><!-- Testimonials Aea End -->
+                    
+                    <!-- Faq Area Start -->
+                    <section class="pf-faq-area bg-theme-color pt-130 pb-130">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6">
+                                    <div class="section-title-area text-center text-lg-start pr-60 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                        <span class="section-subtitle mb-20">FAQ’s</span>
+                                        <h2 class="section-title mb-40"><span>Got</span> Questions? We’ve Got <span>Answers</span></h2>
+                                    </div>
+                                    <div class="pf-faq wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                                        <div class="pf-accordion" id="accordionExample">
+                                            <div class="pf-accordion-item active">
+                                                <h2 class="pf-accordion-header">
+                                                <button class="pf-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    Which products are best for my skin type?
+                                                </button>
+                                                </h2>
+                                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                                <div class="pf-accordion-body">
+                                                    We offer a range of products tailored for dry, oily, combination, sensitive, and acne-prone skin. Check our product labels or use our Skin.
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="pf-accordion-item">
+                                                <h2 class="pf-accordion-header">
+                                                <button class="pf-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    Are your products suitable for sensitive skin?
+                                                </button>
+                                                </h2>
+                                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                                <div class="pf-accordion-body">
+                                                    We offer a range of products tailored for dry, oily, combination, sensitive, and acne-prone skin. Check our product labels or use our Skin.
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="pf-accordion-item">
+                                                <h2 class="pf-accordion-header">
+                                                <button class="pf-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    Do your products contain parabens or sulfates?
+                                                </button>
+                                                </h2>
+                                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                                <div class="pf-accordion-body">
+                                                    We offer a range of products tailored for dry, oily, combination, sensitive, and acne-prone skin. Check our product labels or use our Skin.
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="pf-accordion-item">
+                                                <h2 class="pf-accordion-header">
+                                                <button class="pf-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                    How long before I see visible results?
+                                                </button>
+                                                </h2>
+                                                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                                <div class="pf-accordion-body">
+                                                    We offer a range of products tailored for dry, oily, combination, sensitive, and acne-prone skin. Check our product labels or use our Skin.
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6">
+                                    <div class="pf-faq-img text-end wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
+                                        <img class="br-20" src="{% static 'pages/img/faq/faq.png' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section><!-- Faq Area End -->
+                    
+                    <!-- Gallery Area Start -->
+                    <section class="pf-gallery-area pt-130 pb-130">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                    <a class="popup-img" href="pages/img/gallery/gallery-01.png' %}"><img src="{% static 'pages/img/gallery/gallery-01.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="pf-gallery-content d-flex justify-content-center align-items-center h-100 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
+                                    <div class="section-title-area text-center">
+                                        <a class="theme-btn style-two style-four mb-20" href="#">Follow Us</a>
+                                    <h2 class="section-title mb-40"><span>Let’s Glow on Instagram</span></h2>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                                    <a class="popup-img" href="pages/img/gallery/gallery-02.png' %}"><img src="{% static 'pages/img/gallery/gallery-02.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".5s">
+                                    <a class="popup-img" href="pages/img/gallery/gallery-03.png' %}"><img src="{% static 'pages/img/gallery/gallery-03.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
+                                    <a class="popup-img" href="pages/img/gallery/gallery-04.png' %}"><img src="{% static 'pages/img/gallery/gallery-04.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".7s">
+                                    <a class="popup-img" href="pages/img/gallery/gallery-05.png' %}"><img src="{% static 'pages/img/gallery/gallery-05.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".8s">
+                                    <a class="popup-img" href="pages/img/gallery/gallery-06.png' %}"><img src="{% static 'pages/img/gallery/gallery-06.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="pf-gallery-content d-flex justify-content-center align-items-center h-100 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".9s">
+                                    <div class="section-title-area text-center">
+                                        <p class=" mb-40">Follow us on Instagram for skincare<br> tips & glowing inspiration.</p>
+                                        <a class="theme-btn style-two" href="#">Visit Instagram</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay="1s">
+                                    <a class="popup-img" href="pages/img/gallery/gallery-07.png' %}"><img src="{% static 'pages/img/gallery/gallery-07.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </section>
-                <!-- Blog Area End -->
-            </main>
+                    </section><!-- Gallery Area End -->
+                    
+                    <!-- Blog Area Start -->
+                    <section class="pf-blog-area">
+                    <div class="container">
+                        <div class="row align-items-center mb-10 sm-mb">
+                            <div class="col-xxl-5 col-xl-6 col-lg-6 col-md-8">
+                                <div class="section-title-area text-center text-md-start wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                                    <span class="section-subtitle mb-20">Our Blog Post</span>
+                                    <h2 class="section-title mb-40">Your Journey to <span>Radiant </span> <span> Skin</span> Starts Here</h2>
+                                </div>
+                            </div>
+                            <div class="col-xxl-7 col-xl-6 col-lg-6 col-md-4">
+                                <div class="section-btn text-center text-md-end wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                                    <a class="pf-blog-see-all" href="blog-standard.html">See All</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pf-blog-post wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-2">
+                                    <div class="pf-blog-data">
+                                        <span class="data">Published</span>
+                                        <span>September 23, 2025</span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-4">
+                                    <div class="pf-blog-thumb">
+                                        <img src="{% static 'pages/img/blog/blog-01.png' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="pf-blog-content ml-25">
+                                        <div class="pf-blog-title-area">
+                                            <h3 class="pf-blog-title"><a href="{% url 'blog_grid' %}">Natural Remedies vs. Science-Backed Skincare What Works Best?</a></h3>
+                                        </div>
+                                        <div class="pf-blog-author">
+                                            <h4>Author</h4>
+                                            <span>John smith</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pf-blog-post wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-2">
+                                    <div class="pf-blog-data">
+                                        <span class="data">Published</span>
+                                        <span>September 23, 2025</span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-4">
+                                    <div class="pf-blog-thumb">
+                                        <img src="{% static 'pages/img/blog/blog-02.png' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="pf-blog-content ml-25">
+                                        <div class="pf-blog-title-area">
+                                            <h3 class="pf-blog-title"><a href="{% url 'blog_grid' %}">Everything You Should Know About Choosing the Right Moisturizer for Skin</a></h3>
+                                        </div>
+                                        <div class="pf-blog-author">
+                                            <h4>Author</h4>
+                                            <span>John smith</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pf-blog-post wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-2">
+                                    <div class="pf-blog-data">
+                                        <span class="data">Published</span>
+                                        <span>September 23, 2025</span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-4">
+                                    <div class="pf-blog-thumb">
+                                        <img src="{% static 'pages/img/blog/blog-03.png' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="pf-blog-content ml-25">
+                                        <div class="pf-blog-title-area">
+                                            <h3 class="pf-blog-title"><a href="{% url 'blog_grid' %}">Comon Skincare Mistakes That Could Be Damaging Your Skin Over Time</a></h3>
+                                        </div>
+                                        <div class="pf-blog-author">
+                                            <h4>Author</h4>
+                                            <span>John smith</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </section><!-- Blog Area End -->
+                </main>
 {% endblock content %}

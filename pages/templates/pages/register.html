@@ -1,0 +1,93 @@
+{% extends 'pages/base.html' %}
+{% load static %} 
+{% block content %}
+<main>
+    <section class="pf-page-banner-area text-center bg-theme-color">
+        <div class="container">
+            <h2 class="page-title mb-20">Create an Account</h2>
+            <ul class="breadcrumb-link">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li>-</li>
+                <li class="active">Register</li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="pf-img-banner-area">
+        <div class="pf-img-banner-space p-175 bg-theme-color"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="pf-img-banner-wrapper wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                        <img class="br-20 mt-minus-350" src="{% static 'assets/img/img-banner/banner-03.png' %}" alt="Banner">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><section class="pf-booking-area pt-130 pb-130">
+        <div class="container">
+            <div class="row gap-x-110 align-items-center">
+                <div class="col-xl-6">
+                    <div class="section-title-area mb-70">
+                        <span class="section-subtitle mb-20">Join Us</span>
+                        <h2 class="section-title">Start Your Skincare Journey Today</h2>
+                    </div>
+                    <div class="pf-booking-img">
+                        <img src="{% static 'assets/img/booking/booking-01.png' %}" alt="Register">
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="pf-booking-wrapper contact-page">
+                        <h3 class="pf-booking-title mb-50">Create Your Account</h3>
+                        
+                        <form method="POST" class="pf-booking-form">
+                            {% csrf_token %}
+                            
+                            {% if form.errors %}
+                                <div class="alert alert-danger">
+                                    {% for field in form %}{{ field.errors }}{% endfor %}
+                                </div>
+                            {% endif %}
+
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        {{ form.username }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        {{ form.email }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        {{ form.password }}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label>Confirm Password</label>
+                                        {{ form.confirm_password }}
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12 mt-20">
+                                    <div class="pf-booking-btn">
+                                        <button type="submit" class="theme-btn style-one w-100 hover-bg">Register Now</button>
+                                    </div>
+                                    <p class="mt-20 text-center">Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

@@ -119,11 +119,7 @@
                     </div>
                     <div class="col-xl-6 col-lg-8 col-md-7">
                         <div class="pf-testimonial-content">
-                            <p>"I started seeing a glow within a week! 
-                                My skin feels hydrated, plump, and healthy. 
-                                I love how light yet effective the formulas are-perfect for my busy lifestyle. 
-                                Its like having a mini facial everyday and my skin has never looked better"
-                            </p>
+                            <p>"I started seeing a glow within a week! My skin feels hydrated, plump, and healthy. I love how light yet effective the formulas are-perfect for my busy lifestyle. Its like having a mini facial everyday and my skin has never looked better"</p>
                         </div>
                     </div>
                 </div>
@@ -139,11 +135,26 @@
                         <span class="section-subtitle mb-20">FAQ’s</span>
                         <h2 class="section-title mb-40"><span>Got</span> Questions?</h2>
                     </div>
+                    
                     <div class="pf-accordion" id="accordionExample">
-                        <div class="pf-accordion-item active">
-                            <h2 class="pf-accordion-header"><button class="pf-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">Which products are best?</button></h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show"><div class="pf-accordion-body">We offer a range of products for all skin types.</div></div>
+                        {% for faq in faqs %}
+                        <div class="pf-accordion-item {% if forloop.first %}active{% endif %}">
+                            <h2 class="pf-accordion-header">
+                                <button class="pf-accordion-button" type="button" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#collapse{{ forloop.counter }}">
+                                    {{ faq.question }}
+                                </button>
+                            </h2>
+                            <div id="collapse{{ forloop.counter }}" 
+                                 class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" 
+                                 data-bs-parent="#accordionExample">
+                                <div class="pf-accordion-body">
+                                    {{ faq.answer }}
+                                </div>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">

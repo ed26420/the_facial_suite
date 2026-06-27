@@ -1,9 +1,16 @@
 from django.contrib import admin
-from .models import ServiceCategory, Treatment, Product, CartItem, TeamMember,BlogPost, Page, SiteImage
+from django.forms import Textarea
+from django.db import models
+from .models import (
+    ServiceCategory, Treatment, Product, CartItem, 
+    TeamMember, BlogPost, Page, SiteImage, Comment, IndexPageContent
+)
+
 
 class SiteImageInline(admin.TabularInline):
     model = SiteImage
     extra = 1
+
 
 @admin.register(ServiceCategory)
 class ServiceCategoryAdmin(admin.ModelAdmin):
@@ -48,20 +55,31 @@ class TeamMemberAdmin(admin.ModelAdmin):
     save_as = True
     list_display = ('name', 'role')
 
-
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
-    save_as = True
-    list_display = ('title', 'slug')
-    prepopulated_fields = {"slug": ("title",)}
     inlines = [SiteImageInline]
+    fieldsets = (
+        (None, {'fields': ('title', 'slug', 'story_text')}),
+        ('Contact Info (For Contact Page)', {
+            'fields': ('email_field', 'phone_field', 'address'),
+            'classes': ('collapse',),
+        }),
+        ('FAQ Data (About & Contact Pages)', {
+            'fields': ('faq_data',),
+            'description': "Format: Question|Answer,Question|Answer. Use | to separate question from answer, and , to separate items.",
+        }),
+    )
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows': 6, 'cols': 40})},
+    }
+    list_display = ('title', 'slug')
+    prepopulated_fields = {'slug': ('title',)}
 
 @admin.register(SiteImage)
 class SiteImageAdmin(admin.ModelAdmin):
     save_as = True
     list_display = ('name', 'page')
     list_filter = ('page',)
-
 
 @admin.register(BlogPost)
 class BlogPostAdmin(admin.ModelAdmin):
@@ -79,3 +97,19 @@ class BlogPostAdmin(admin.ModelAdmin):
             'fields': ('summary', 'content', 'tags')
         }),
     )
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    save_as = True
+    list_display = ('user', 'body', 'blog_post', 'created_on', 'active')
+    list_filter = ('active', 'created_on')
+    search_fields = ('name', 'email', 'body')
+    actions = ['approve_comments']
+    
+    @admin.action(description='Approve selected comments')
+    def approve_comments(self, request, queryset):
+        queryset.update(active=True)
+
+@admin.register(IndexPageContent)
+class IndexPageAdmin(admin.ModelAdmin):
+    list_display = ('__str__',)
