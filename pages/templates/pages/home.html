@@ -1,664 +1,553 @@
 {% extends 'pages/base.html' %}
 {% load static %} 
 {% block content %}
-            <main>
-                <section class="pf-banner-area pt-160">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="pf-banner-heading btn-style-two">
-                                    <div class="pf-banner-heading-area p-relative">
-                                    <h2 class="pf-banner-title mb-20 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">Let Your Skin Breathe</h2>
-                                    <img class=" wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s" src="{% static 'pages/img/banner/text-style-img.png' %}" alt="">
-                                    </div>
-                                    <p class="wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">Let your skin breathe naturally with our gentle, nourishing formulas designed to cleanse, hydrate, and restore</p>
-                                    <a class="theme-btn style-one bg-2nd wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s" href="{% url 'contact' %}">Book a Consultation</a>
-                                </div>
+<main>
+    <section class="pf-banner-area pt-160">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="pf-banner-heading btn-style-two">
+                        <div class="pf-banner-heading-area p-relative">
+                        <h2 class="pf-banner-title mb-20 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">{{content.banner_title}}</h2>
+                        <img class=" wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s" src="{{ content.banner_text_img.url }}" alt="">
+                        </div>
+                        <p class="wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">{{content.banner_description}}</p>
+                        <a class="theme-btn style-one bg-2nd wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s" href="{% url 'contact' %}">Book a Consultation</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-end justify-content-center mt--100">
+                <div class="col-xl-4 col-lg-4 col-md-8">
+                    <div class="pf-banner-product wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".7s">
+                        <div class="pf-banner-product-thumb text-center mb-40">
+                            <img src="{{ content.banner_product_img.url }}" alt="">                           
+                        </div>
+                        <div class="pf-banner-product-info">
+                            <h3><a href="{% url 'shop' %}">Skin care Product Collection</a></h3>
+                            <a class="icon" href="{% url 'shop' %}"><i class="far fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-8 d-lg-block d-none">
+                    <div class="pf-banner-thumb wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".8s">
+                        <img src="{{ content.main_banner_thumb.url }}" alt="">
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-8 offset-xl-1 offset-lg-0">
+                    <div class="pf-banner-info mb-70 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".9s">
+                        <div class="pf-banner-video p-relative mb-50">
+                            <img class="w-100" src="{{ content.video_bg_img.url }}" alt="">
+                            <div class="video-icon">
+                                <a class="popup-video" href="#"> <i class="fas fa-play"></i></a>
                             </div>
                         </div>
-                        <div class="row align-items-end justify-content-center mt--100">
-                            <div class="col-xl-4 col-lg-4 col-md-8">
-                                <div class="pf-banner-product wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".7s">
-                                    <div class="pf-banner-product-thumb text-center mb-40">
-                                        <img src="{% static 'pages/img/banner/banner-product-img.png' %}" alt="">                           
-                                    </div>
-                                    <div class="pf-banner-product-info">
-                                        <h3><a href="{% url 'shop' %}">Skin care Product Collection</a></h3>
-                                        <a class="icon" href="{% url 'shop' %}"><i class="far fa-arrow-right"></i></a>
-                                    </div>
+                        <div class="pf-banner-client">
+                            <img class="mb-30" src="{{ content.client_img.url }}" alt="">
+                            <div class="pf-banner-counter">
+                                <div class="counter mr-10">
+                                    <span class="purecounter" data-purecounter-start="0" data-purecounter-end="67">{{content.satisfied_clients_count}}</span><span>k+</span>
                                 </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-8 d-lg-block d-none">
-                                <div class="pf-banner-thumb wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".8s">
-                                    <img src="{% static 'pages/img/banner/thumb.png' %}" alt="">
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-8 offset-xl-1 offset-lg-0">
-                                <div class="pf-banner-info mb-70 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".9s">
-                                    <div class="pf-banner-video p-relative mb-50">
-                                        <img class="w-100" src="{% static 'pages/img/banner/video-bg-img.png' %}" alt="">
-                                        <div class="video-icon">
-                                            <a class="popup-video" href="#"> <i class="fas fa-play"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="pf-banner-client">
-                                        <img class="mb-30" src="{% static 'pages/img/banner/banner-client-img.png' %}" alt="">
-                                        <div class="pf-banner-counter">
-                                            <div class="counter mr-10">
-                                                <span class="purecounter" data-purecounter-start="0" data-purecounter-end="67">67</span><span>k+</span>
-                                            </div>
-                                            <p>Satisfied Clients</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <p>Satisfied Clients</p>
                             </div>
                         </div>
                     </div>
-                </section>
-                <div class="pf-logo-slider-area home-two p-relative pb-30 pt-30 bg-2nd-color">
-                    <div class="pf-logo-slider">
-                        <div class="swiper pf-logo-slider-active">
-                            <div class="swiper-wrapper pf-logo-slider-transtion align-items-center">
-                                <div class="swiper-slide">
-                                    <img src="{% static 'pages/img/logo-slider/logo-01.jpeq' %}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{% static 'pages/img/logo-slider/logo-02.png' %}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{% static 'pages/img/logo-slider/logo-03.png' %}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{% static 'pages/img/logo-slider/logo-04.png' %}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{% static 'pages/img/logo-slider/logo-05.png' %}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{% static 'pages/img/logo-slider/logo-06.png' %}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{% static 'pages/img/logo-slider/logo-04.png' %}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{% static 'pages/img/logo-slider/logo-01.png' %}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{% static 'pages/img/logo-slider/logo-02.png' %}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{% static 'pages/img/logo-slider/logo-03.png' %}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{% static 'pages/img/logo-slider/logo-04.png' %}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{% static 'pages/img/logo-slider/logo-05.png' %}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><section class="pf-about-us-area pt-130 pb-130 bg-2nd-color">
-                    <div class="container">
-                        <div class="row mb-30">
-                            <div class="col-xl-8">
-                                <div class="section-title-area text-xl-start text-center">
-                                    <span class="section-subtitle mb-20 color-2nd border-2nd-color wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">About </span>
-                                    <h2 class="section-title mb-30 color-2nd wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">Discover our journey of passion, quality, and craftsmanship, dedicated to delivering exceptional coffee experiences that inspire</h2>
-                                </div>
-                            </div>
-                            <div class="col-xl-4">
-                                <div class="pf-about-us-thumb wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".5s">
-                                    <img class="br-10 " src="{% static 'pages/img/About/about-home-two.png' %}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-3">
-                                <div class="pf-about-rotated-circle">
-                                        <svg viewBox="0 0 200 200" class="rotating">
-                                            <path id="circlePath"
-                                            d="M 100, 100
-                                                m -75, 0
-                                                a 75,75 0 1,1 150,0
-                                                a 75,75 0 1,1 -150,0" />
+                </div>
+            </div>
+        </div>
+    </section>
 
-                                            <text>
-                                            <textPath href="#circlePath">
-                                                GET IN TOUCH • GET IN TOUCH • GET IN TOUCH
-                                            </textPath>
-                                            </text>
-                                        </svg>
-                                        <div class="arrow"><a href="{% url 'contact' %}"><i class="fal fa-long-arrow-right"></i></a></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="section-title-area text-xl-start text-center">
-                                    <p class="mb-20 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".5s">Glow naturally every single day with carefully crafted skincare products. Infused with gentle, nourishing ingredients, each formula supports healthy, radiant skin bringing out your natural beauty.</p>
-                                    <a class="theme-btn style-one bg-2nd wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".5s" href="{% url 'about' %}">More About Us</a>
-                                </div>
-                            </div>
-                            <div class="col-xl-3"></div>
-                        </div>
 
-                        <div class="pf-about-us-count wow pfFadeInUp pt-130" data-wow-duration=".6s" data-wow-delay=".5s">
-                            <div class="pf-about-us-count-box">
-                                <h3 class="counter"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="200">200</span><span>K</span></h3>
-                                <p>Total Clients</p>
-                            </div>
-                            <div class="pf-about-us-count-box">
-                                <h3 class="counter"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="51">51</span><span>K</span></h3>
-                                <p>Completed Project</p>
-                            </div>
-                            <div class="pf-about-us-count-box">
-                                <h3 class="counter"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="12">12</span><span>+</span></h3>
-                                <p>National Award</p>
-                            </div>
-                            <div class="pf-about-us-count-box">
-                                <h3 class="counter"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="12">50</span><span>M</span></h3>
-                                <p>National Award</p>
-                            </div>
-                        </div>
+    <div class="pf-logo-slider-area home-two p-relative pb-30 pt-30 bg-2nd-color">
+        <div class="pf-logo-slider">
+            <div class="swiper pf-logo-slider-active">
+                <div class="swiper-wrapper pf-logo-slider-transtion align-items-center">
+                    {% for partner in partners %}
+                    <div class="swiper-slide">
+                        {% if partner.logo %}
+                        <img src="{{partner.logo.url}}" alt="">
+                            {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 
+
+    <section class="pf-about-us-area pt-130 pb-130 bg-2nd-color">
+        <div class="container">
+            <div class="row mb-30">
+                <div class="col-xl-8">
+                    <div class="section-title-area text-xl-start text-center">
+                        <span class="section-subtitle mb-20 color-2nd border-2nd-color wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">About </span>
+                        <h2 class="section-title mb-30 color-2nd wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">{{content.about_description_main}}</h2>
                     </div>
-                </section><section class="pf-choose-area bg-2nd-color pb-130">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-5">
-                                <div class="section-title-area text-center mb-60 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                    <span class="section-subtitle mb-20 color-2nd border-2nd-color">Why Choose Us</span>
-                                    <h2 class="section-title mb-30 color-2nd">Passionately Caring for Your Skin</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row gap-x-30 justify-content-center">
-                            <div class="col-xl-4 col-lg-8">
-                                <div class="pf-choose-box mb-30 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
-                                    <div class="pf-choose-icon mb-20">
-                                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17.5 16.7708C21.1385 16.7708 24.0625 12.3813 24.0625 8.75C24.0625 5.11875 21.1167 2.1875 17.5 2.1875C13.8833 2.1875 10.9375 5.13333 10.9375 8.75C10.9375 12.3667 13.8615 16.7708 17.5 16.7708ZM17.5 3.64583C20.3146 3.64583 22.6042 5.93542 22.6042 8.75C22.6042 11.5646 20.1979 15.3125 17.5 15.3125C14.8021 15.3125 12.3958 11.6448 12.3958 8.75C12.3958 5.85521 14.6854 3.64583 17.5 3.64583Z" fill="currentColor" />
-                                        <path d="M22.6035 17.5C22.5379 17.5 22.465 17.5073 22.3993 17.5292C16.8796 19.1406 12.8618 17.5 12.3952 17.5C8.37747 17.5 5.10352 20.774 5.10352 24.7917V30.0563C5.10352 31.1719 5.93477 32.1052 7.0431 32.2292C13.9775 33.0021 21.0212 33.0021 27.9629 32.2292C29.0639 32.1052 29.8952 31.1719 29.8952 30.0563V24.7917C29.8952 20.774 26.6212 17.5 22.6035 17.5ZM12.3952 23.3333C12.7962 23.3333 13.1243 23.6615 13.1243 24.0625C13.1243 24.4635 12.7962 24.7917 12.3952 24.7917C11.9941 24.7917 11.666 24.4635 11.666 24.0625C11.666 23.6615 11.9941 23.3333 12.3952 23.3333ZM28.4368 30.0563C28.4368 30.4281 28.1598 30.7417 27.7952 30.7781C20.9629 31.5365 14.0358 31.5365 7.20352 30.7781C6.83893 30.7344 6.56185 30.4281 6.56185 30.049V24.7844C6.56185 21.8167 8.7931 19.3594 11.666 18.9948V21.999C10.8202 22.2979 10.2077 23.1 10.2077 24.0552C10.2077 25.2583 11.1921 26.2427 12.3952 26.2427C13.5983 26.2427 14.5827 25.2583 14.5827 24.0552C14.5827 23.1073 13.9702 22.3052 13.1243 21.999V19.1552C16.0046 19.8406 18.9941 19.8406 21.8743 19.1552V23.399C20.2118 23.7344 18.9577 25.2073 18.9577 26.9719V28.4302C18.9577 28.8313 19.2858 29.1594 19.6868 29.1594H20.416C21.3785 29.1594 21.3785 27.701 20.416 27.701V26.9719C20.416 25.7688 21.4004 24.7844 22.6035 24.7844C23.8066 24.7844 24.791 25.7688 24.791 26.9719V27.701C23.8285 27.701 23.8285 29.1594 24.791 29.1594H25.5202C25.9212 29.1594 26.2493 28.8313 26.2493 28.4302V26.9719C26.2493 25.2146 24.9952 23.7417 23.3327 23.399V18.9948C26.2056 19.3521 28.4368 21.8094 28.4368 24.7844V30.049V30.0563Z" fill="currentColor" />
-                                        </svg>
-                                    </div>
-                                    <h3 class="pf-choose-title mb-10">Expert Skin Specialists</h3>
-                                    <p>Trained professionals delivering trusted skincare treatments.</p>
-                                </div>
-                                <div class="pf-choose-box wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
-                                    <div class="pf-choose-icon mb-20">
-                                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M29.8744 5.12559C26.569 1.82034 22.1744 0 17.5 0C12.8256 0 8.43097 1.82034 5.12559 5.12559C1.82034 8.43097 0 12.8256 0 17.5C0 22.1744 1.82034 26.569 5.12559 29.8744C8.43097 33.1797 12.8256 35 17.5 35C22.1744 35 26.569 33.1797 29.8744 29.8744C33.1797 26.569 35 22.1744 35 17.5C35 12.8256 33.1797 8.43097 29.8744 5.12559ZM17.5 32.9492C8.98126 32.9492 2.05078 26.0187 2.05078 17.5C2.05078 8.98126 8.98126 2.05078 17.5 2.05078C26.0187 2.05078 32.9492 8.98126 32.9492 17.5C32.9492 26.0187 26.0187 32.9492 17.5 32.9492Z" fill="currentColor" />
-                                        <path d="M25.3444 6.424C24.3461 6.06081 23.3708 6.18119 22.524 6.7727C21.6724 7.36743 20.9847 8.40875 20.4216 9.95599C20.0585 10.9534 19.7765 12.0822 19.6075 13.186C18.9289 13.0308 18.2213 12.9505 17.5 12.9505C16.7787 12.9505 16.0712 13.0308 15.3925 13.186C15.2236 12.0822 14.9415 10.9534 14.5785 9.95599C14.0153 8.40868 13.3276 7.36743 12.476 6.7727C11.6292 6.18125 10.654 6.06081 9.65565 6.424C8.65733 6.78733 7.98774 7.50661 7.71923 8.50404C7.44914 9.50701 7.59167 10.7468 8.15482 12.294C8.68426 13.7486 9.54497 15.3318 10.442 16.5305C9.84774 17.4803 9.53253 18.5451 9.53253 19.655C9.53253 19.8708 9.54682 20.0907 9.57594 20.3188C8.73136 21.3883 8.2715 22.7025 8.2715 24.0721C8.2715 27.421 10.996 30.1455 14.345 30.1455C15.4576 30.1455 16.5532 29.8344 17.5 29.2586C18.4469 29.8344 19.5425 30.1455 20.6551 30.1455C24.004 30.1455 26.7285 27.421 26.7285 24.0721C26.7285 22.7023 26.2685 21.3879 25.4238 20.3183C25.4524 20.0916 25.4665 19.8719 25.4665 19.655C25.4665 18.5453 25.1515 17.4808 24.5576 16.5311C25.4549 15.3323 26.3157 13.7489 26.8453 12.294C27.4084 10.7467 27.551 9.50694 27.2809 8.50404C27.0123 7.50661 26.3427 6.7874 25.3444 6.424ZM10.0819 11.5927C9.07227 8.81876 10.0393 8.46678 10.357 8.35119C10.6747 8.23552 11.6418 7.88354 12.6514 10.6574C13.0079 11.6369 13.2827 12.8023 13.4203 13.8909C12.8904 14.1567 12.3942 14.4758 11.9421 14.8456C11.9023 14.8781 11.8633 14.9112 11.8244 14.9443C11.1396 13.9582 10.4973 12.7339 10.0819 11.5927ZM24.6778 24.0721C24.6778 26.2902 22.8732 28.0947 20.6551 28.0947C19.8905 28.0947 19.1631 27.8839 18.5254 27.4823V25.8815C19.019 25.7241 19.4832 25.4509 19.8741 25.06C20.2745 24.6596 20.2745 24.0103 19.8741 23.6099C19.4737 23.2095 18.8244 23.2095 18.424 23.6099C17.9145 24.1193 17.0856 24.1193 16.5761 23.6099C16.1756 23.2094 15.5264 23.2095 15.126 23.6099C14.7256 24.0103 14.7256 24.6595 15.126 25.06C15.5168 25.4509 15.9811 25.724 16.4746 25.8815V27.4823C15.837 27.8839 15.1095 28.0947 14.345 28.0947C12.1268 28.0947 10.3223 26.2902 10.3223 24.0721C10.3223 23.0504 10.7102 22.0743 11.4146 21.3236C11.6437 21.0795 11.7392 20.7388 11.6703 20.4111C11.6117 20.1324 11.5833 19.885 11.5833 19.655C11.5833 17.0889 14.2376 15.0013 17.5001 15.0013C20.762 15.0013 23.4158 17.0889 23.4158 19.655C23.4158 19.8885 23.3877 20.1358 23.3298 20.4111C23.2609 20.7388 23.3564 21.0794 23.5855 21.3236C24.2898 22.0743 24.6778 23.0504 24.6778 24.0721ZM24.9182 11.5927C24.5027 12.734 23.8604 13.9584 23.1754 14.9446C23.1364 14.9114 23.0973 14.8783 23.0574 14.8457C22.6055 14.4759 22.1094 14.1568 21.5797 13.891C21.7172 12.8025 21.9921 11.6369 22.3487 10.6574C23.3583 7.88354 24.3253 8.23552 24.643 8.35119C24.9608 8.46678 25.9278 8.81876 24.9182 11.5927Z" fill="currentColor" />
-                                        </svg>
-                                    </div>
-                                    <h3 class="pf-choose-title mb-10">Cruelty-Free & Ethical</h3>
-                                    <p>We never test on animals and use only ethically sourced safe ingredients</p>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-8">
-                                <div class="pf-choose-box middle-box bg-2nd wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                    <div class="pf-choose-icon mb-20">
-                                        <svg width="34" height="35" viewBox="0 0 34 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M14.2051 30.207V31.1899C14.2051 32.7279 15.4519 33.9746 16.9898 33.9746C18.5278 33.9746 19.7745 32.7279 19.7745 31.1899V30.207" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
-                                        <path d="M26.3263 16.9933C26.3263 11.8366 22.146 7.65625 16.9893 7.65625C11.8327 7.65625 7.65234 11.8366 7.65234 16.9933C7.65234 20.5496 9.64085 23.6414 12.5666 25.218C12.5666 26.3061 12.5666 29.873 12.5666 29.873H21.4121V25.218C24.3378 23.6414 26.3263 20.5497 26.3263 16.9933Z" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
-                                        <path d="M12.5137 25.5684H21.6869" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
-                                        <path d="M16.9902 4.44336V0" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
-                                        <path d="M25.8613 8.1185L29.0033 4.97656" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
-                                        <path d="M29.5371 16.9902H33.9805" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
-                                        <path d="M25.8613 25.8613L29.0033 29.0033" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
-                                        <path d="M8.11868 25.8613L4.97674 29.0033" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
-                                        <path d="M4.44336 16.9902H0" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
-                                        <path d="M8.1185 8.1185L4.97656 4.97656" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
-                                        <path d="M13.5215 16.7817L15.6986 18.9588L20.4582 14.1992" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
-                                        </svg>
-                                    </div>
-                                    <h3 class="pf-choose-title mb-10">Tailored Skin Solutions</h3>
-                                    <p class="mb-40">Personalized treatments crafted to meet your unique skin type and concerns.</p>
-                                    <div class="pf-choose-thumb">
-                                        <img src="{% static 'pages/img/choose/thumb.png' %}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-8">
-                                <div class="pf-choose-box mb-30 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
-                                    <div class="pf-choose-icon mb-20">
-                                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7.24609 1.02478V4.62314C10.0548 2.37159 13.6201 1.02478 17.5 1.02478C26.5609 1.02478 33.9746 8.43849 33.9746 17.4994C33.9746 21.193 32.6856 24.6699 30.6257 27.4121" stroke="currentColor" stroke-width="2.05078" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M27.7539 33.9746V30.3762C24.9452 32.6278 21.3799 33.9746 17.5 33.9746C8.4391 33.9746 1.02539 26.5609 1.02539 17.5C1.02539 13.8063 2.31438 10.3294 4.37425 7.58728" stroke="currentColor" stroke-width="2.05078" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M25.7031 19.5508C25.7031 25.2139 22.0304 25.7715 17.5 25.7715C12.9696 25.7715 9.29688 25.2139 9.29688 19.5508C9.29688 13.8877 17.5 5.12696 17.5 5.12696C17.5 5.12696 25.7031 13.8877 25.7031 19.5508Z" stroke="currentColor" stroke-width="2.05078" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M17.5 15.4492V29.873" stroke="currentColor" stroke-width="2.05078" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M15.4492 13.3984L17.5 15.4492L19.5508 13.3984" stroke="currentColor" stroke-width="2.05078" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M13.3984 17.5L17.5 21.6016L21.6016 17.5" stroke="currentColor" stroke-width="2.05078" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                    <h3 class="pf-choose-title mb-10">Eco-Friendly Beauty</h3>
-                                    <p>Sustainable, cruelty-free practices that care for you and the planet.</p>
-                                </div>
-                                <div class="pf-choose-box wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".7s">
-                                    <div class="pf-choose-icon mb-20">
-                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M15.6752 31.3508C15.1141 31.3516 14.5583 31.2416 14.0398 31.0272C13.5212 30.8127 13.0501 30.498 12.6535 30.101L11.0625 28.5085C10.8693 28.3143 10.6395 28.1603 10.3865 28.0554C10.1334 27.9505 9.86205 27.8968 9.58811 27.8975H7.72436C6.59146 27.8963 5.5053 27.4458 4.70423 26.6447C3.90315 25.8436 3.4526 24.7575 3.45144 23.6246V21.7623C3.45229 21.4884 3.39885 21.2171 3.29422 20.9641C3.18959 20.711 3.03584 20.4812 2.84186 20.2879L1.24936 18.6969C0.449297 17.8948 0 16.8081 0 15.6752C0 14.5423 0.449297 13.4556 1.24936 12.6535L2.84186 11.0625C3.0361 10.8693 3.19012 10.6395 3.295 10.3865C3.39989 10.1334 3.45355 9.86205 3.4529 9.58811V7.72436C3.45405 6.59146 3.90461 5.5053 4.70568 4.70423C5.50676 3.90315 6.59292 3.4526 7.72581 3.45144H9.58811C9.86195 3.45229 10.1332 3.39885 10.3863 3.29422C10.6394 3.18959 10.8692 3.03584 11.0625 2.84186L12.6535 1.24936C13.4556 0.449297 14.5423 0 15.6752 0C16.8081 0 17.8948 0.449297 18.6969 1.24936L20.2879 2.84186C20.4811 3.0361 20.7108 3.19012 20.9639 3.295C21.217 3.39989 21.4883 3.45355 21.7623 3.4529H23.626C24.7589 3.45405 25.8451 3.90461 26.6462 4.70568C27.4472 5.50676 27.8978 6.59292 27.8989 7.72581V9.58811C27.8981 9.86195 27.9515 10.1332 28.0562 10.3863C28.1608 10.6394 28.3145 10.8692 28.5085 11.0625L30.0996 12.6535C30.8996 13.4556 31.3489 14.5423 31.3489 15.6752C31.3489 16.8081 30.8996 17.8948 30.0996 18.6969L28.5085 20.2879C28.3143 20.4811 28.1603 20.7108 28.0554 20.9639C27.9505 21.217 27.8968 21.4883 27.8975 21.7623V23.626C27.8963 24.7589 27.4458 25.8451 26.6447 26.6462C25.8436 27.4472 24.7575 27.8978 23.6246 27.8989H21.7623C21.4883 27.8983 21.217 27.9519 20.9639 28.0568C20.7108 28.1617 20.4811 28.3157 20.2879 28.51L18.6969 30.101C18.3002 30.498 17.8292 30.8127 17.3106 31.0272C16.7921 31.2416 16.2363 31.3516 15.6752 31.3508ZM7.72436 5.63894C7.17139 5.63932 6.64118 5.85916 6.25017 6.25017C5.85916 6.64118 5.63894 7.17139 5.63894 7.72436V9.58811C5.64096 10.1501 5.53126 10.7069 5.3162 11.2261C5.10115 11.7454 4.78503 12.2167 4.38623 12.6127L2.79665 14.2023C2.40588 14.594 2.18643 15.1248 2.18643 15.6781C2.18643 16.2314 2.40588 16.7622 2.79665 17.1539L4.38623 18.7435C4.78468 19.1392 5.1006 19.61 5.31564 20.1287C5.53068 20.6474 5.64058 21.2037 5.63894 21.7652V23.6289C5.63932 24.1819 5.85916 24.7121 6.25017 25.1031C6.64118 25.4941 7.17139 25.714 7.72436 25.7144H9.58811C10.1496 25.713 10.7057 25.8231 11.2244 26.0381C11.7431 26.2531 12.2139 26.5689 12.6098 26.9671L14.1994 28.5566C14.5911 28.9474 15.1219 29.1669 15.6752 29.1669C16.2285 29.1669 16.7593 28.9474 17.151 28.5566L18.7406 26.9671C19.1364 26.5689 19.6073 26.2531 20.126 26.0381C20.6447 25.8231 21.2008 25.713 21.7623 25.7144H23.626C24.179 25.714 24.7092 25.4941 25.1002 25.1031C25.4912 24.7121 25.7111 24.1819 25.7114 23.6289V21.7623C25.7098 21.2008 25.8197 20.6445 26.0347 20.1258C26.2498 19.6071 26.5657 19.1363 26.9641 18.7406L28.5537 17.151C28.9445 16.7593 29.1639 16.2285 29.1639 15.6752C29.1639 15.1219 28.9445 14.5911 28.5537 14.1994L26.9641 12.6127C26.566 12.2168 26.2502 11.746 26.0352 11.2273C25.8202 10.7086 25.7101 10.1525 25.7114 9.59102V7.72436C25.7111 7.17139 25.4912 6.64118 25.1002 6.25017C24.7092 5.85916 24.179 5.63932 23.626 5.63894H21.7623C21.2003 5.64096 20.6435 5.53126 20.1242 5.3162C19.605 5.10115 19.1337 4.78503 18.7377 4.38623L17.1481 2.79665C16.7563 2.40588 16.2256 2.18643 15.6723 2.18643C15.1189 2.18643 14.5882 2.40588 14.1964 2.79665L12.6127 4.38623C12.217 4.78468 11.7462 5.1006 11.2275 5.31564C10.7088 5.53068 10.1525 5.64058 9.59102 5.63894H7.72436Z" fill="currentColor" />
-                                        <path d="M14.2165 19.685C14.0729 19.6853 13.9306 19.6571 13.7979 19.6021C13.6652 19.547 13.5448 19.4661 13.4436 19.3641L10.527 16.4475C10.3338 16.2401 10.2286 15.9659 10.2336 15.6825C10.2386 15.3992 10.3534 15.1288 10.5538 14.9284C10.7541 14.728 11.0245 14.6132 11.3079 14.6082C11.5912 14.6032 11.8654 14.7084 12.0728 14.9016L14.2165 17.0439L19.277 11.985C19.4843 11.7918 19.7585 11.6866 20.0419 11.6916C20.3252 11.6966 20.5956 11.8114 20.796 12.0118C20.9964 12.2122 21.1112 12.4825 21.1162 12.7659C21.1212 13.0492 21.016 13.3235 20.8228 13.5308L14.9894 19.3641C14.8883 19.4661 14.7679 19.547 14.6352 19.6021C14.5025 19.6571 14.3602 19.6853 14.2165 19.685Z" fill="currentColor" />
-                                        </svg>
-                                    </div>
-                                    <h3 class="pf-choose-title mb-10">Trusted by Thousands</h3>
-                                    <p>Loved by skincare enthusiasts worldwide, with thousands of happy glowing customers.</p>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="pf-about-us-thumb wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".5s">
+                        <img class="br-10 " src="{{ content.about_image.url }}" alt="">
                     </div>
-                </section><section class="pf-services-area pt-130">
-                    <div class="container">
-                        <div class="row align-items-center mb-70">
-                            <div class="col-xl-6">
-                                <div class="section-title-area text-xl-start text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
-                                    <span class="section-subtitle mb-20 color-2nd border-2nd-color">Our Services</span>
-                                    <h2 class="section-title color-2nd">Tailored Treatments for Radiant Skin</h2>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="section-title-area text-xl-start text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                    <p>Discover personalized skincare treatments designed to meet your unique needs. From deep cleansing facials to targeted therapies, our expert care helps you achieve healthy, glowing, and beautiful.</p>
-                                </div>
-                            </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3">
+                    <div class="pf-about-rotated-circle">
+                            <svg viewBox="0 0 200 200" class="rotating">
+                                <path id="circlePath"
+                                d="M 100, 100
+                                    m -75, 0
+                                    a 75,75 0 1,1 150,0
+                                    a 75,75 0 1,1 -150,0" />
+
+                                <text>
+                                <textPath href="#circlePath">
+                                    GET IN TOUCH • GET IN TOUCH • GET IN TOUCH
+                                </textPath>
+                                </text>
+                            </svg>
+                            <div class="arrow"><a href="{% url 'contact' %}"><i class="fal fa-long-arrow-right"></i></a></div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="section-title-area text-xl-start text-center">
+                        <p class="mb-20 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".5s">{{content.about_description_two}} .</p>
+                        <a class="theme-btn style-one bg-2nd wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".5s" href="{% url 'about' %}">More About Us</a>
+                    </div>
+                </div>
+                <div class="col-xl-3"></div>
+            </div>
+
+            <div class="pf-about-us-count wow pfFadeInUp pt-130" data-wow-duration=".6s" data-wow-delay=".5s">
+                <div class="pf-about-us-count-box">
+                    <h3 class="counter"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="200">200</span><span>K</span></h3>
+                    <p>Total Clients</p>
+                </div>
+                <div class="pf-about-us-count-box">
+                    <h3 class="counter"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="51">51</span><span>K</span></h3>
+                    <p>Completed Project</p>
+                </div>
+                <div class="pf-about-us-count-box">
+                    <h3 class="counter"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="12">12</span><span>+</span></h3>
+                    <p>National Award</p>
+                </div>
+                <div class="pf-about-us-count-box">
+                    <h3 class="counter"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="12">50</span><span>M</span></h3>
+                    <p>National Award</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+
+    <section class="pf-choose-area bg-2nd-color pb-130">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5">
+                    <div class="section-title-area text-center mb-60 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                        <span class="section-subtitle mb-20 color-2nd border-2nd-color">Why Choose Us</span>
+                        <h2 class="section-title mb-30 color-2nd">Passionately Caring for Your Skin</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row gap-x-30 justify-content-center">
+                <div class="col-xl-4 col-lg-8">
+                    <div class="pf-choose-box mb-30 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <div class="pf-choose-icon mb-20">
+                            <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.5 16.7708C21.1385 16.7708 24.0625 12.3813 24.0625 8.75C24.0625 5.11875 21.1167 2.1875 17.5 2.1875C13.8833 2.1875 10.9375 5.13333 10.9375 8.75C10.9375 12.3667 13.8615 16.7708 17.5 16.7708ZM17.5 3.64583C20.3146 3.64583 22.6042 5.93542 22.6042 8.75C22.6042 11.5646 20.1979 15.3125 17.5 15.3125C14.8021 15.3125 12.3958 11.6448 12.3958 8.75C12.3958 5.85521 14.6854 3.64583 17.5 3.64583Z" fill="currentColor" />
+                            <path d="M22.6035 17.5C22.5379 17.5 22.465 17.5073 22.3993 17.5292C16.8796 19.1406 12.8618 17.5 12.3952 17.5C8.37747 17.5 5.10352 20.774 5.10352 24.7917V30.0563C5.10352 31.1719 5.93477 32.1052 7.0431 32.2292C13.9775 33.0021 21.0212 33.0021 27.9629 32.2292C29.0639 32.1052 29.8952 31.1719 29.8952 30.0563V24.7917C29.8952 20.774 26.6212 17.5 22.6035 17.5ZM12.3952 23.3333C12.7962 23.3333 13.1243 23.6615 13.1243 24.0625C13.1243 24.4635 12.7962 24.7917 12.3952 24.7917C11.9941 24.7917 11.666 24.4635 11.666 24.0625C11.666 23.6615 11.9941 23.3333 12.3952 23.3333ZM28.4368 30.0563C28.4368 30.4281 28.1598 30.7417 27.7952 30.7781C20.9629 31.5365 14.0358 31.5365 7.20352 30.7781C6.83893 30.7344 6.56185 30.4281 6.56185 30.049V24.7844C6.56185 21.8167 8.7931 19.3594 11.666 18.9948V21.999C10.8202 22.2979 10.2077 23.1 10.2077 24.0552C10.2077 25.2583 11.1921 26.2427 12.3952 26.2427C13.5983 26.2427 14.5827 25.2583 14.5827 24.0552C14.5827 23.1073 13.9702 22.3052 13.1243 21.999V19.1552C16.0046 19.8406 18.9941 19.8406 21.8743 19.1552V23.399C20.2118 23.7344 18.9577 25.2073 18.9577 26.9719V28.4302C18.9577 28.8313 19.2858 29.1594 19.6868 29.1594H20.416C21.3785 29.1594 21.3785 27.701 20.416 27.701V26.9719C20.416 25.7688 21.4004 24.7844 22.6035 24.7844C23.8066 24.7844 24.791 25.7688 24.791 26.9719V27.701C23.8285 27.701 23.8285 29.1594 24.791 29.1594H25.5202C25.9212 29.1594 26.2493 28.8313 26.2493 28.4302V26.9719C26.2493 25.2146 24.9952 23.7417 23.3327 23.399V18.9948C26.2056 19.3521 28.4368 21.8094 28.4368 24.7844V30.049V30.0563Z" fill="currentColor" />
+                            </svg>
                         </div>
-                        <div class="row gap-x-140 pb-130 services-pin">
-                            <div class="col-xl-5 col-lg-5 col-md-12">
-                                <div class="services-pin-space">
-                                    <div class="pf-services-pin">
-                                        <div class="pf-services-box mb-50">
-                                            <h3 class="pf-services-title home-one mb-15">All Services</h3>
-                                            <p class="mb-60">Replenishes deep hydration, soothes irritation relieves dryness, and helps restore the skin’s natural.</p>
-                                            <div class="pf-services-btn">
-                                                <a class="theme-btn style-two color-2nd" href="{% url 'services' %}">View All</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-7 col-lg-7 col-md-12">
-                                <div class="pf-services-right">
-                                    <div class="pf-services-item">
-                                        <div class="pf-services-img"><img src="{% static 'pages/img/services/services-thumb-01.png' %}" alt=""></div>
-                                        <div class="pf-services-right-content">
-                                            <h3 class="pf-services-right-title mb-15"><a href="{% url 'services' %}">Hydrating Facial Treatment</a></h3>
-                                            <p class="mb-40">Replenishes deep hydration, soothes irritation relieves dryness, and helps restore the skin’s natural.</p>
-                                            <div class="pf-services-btn">
-                                                <a class="theme-btn style-two color-2nd" href="{% url 'services' %}">Read More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="pf-services-item">
-                                        <div class="pf-services-img"><img src="{% static 'pages/img/services/services-thumb-02.png' %}" alt=""></div>
-                                        <div class="pf-services-right-content">
-                                            <h3 class="pf-services-right-title mb-15"><a href="{% url 'services' %}">Hydrating Facial Treatment</a></h3>
-                                            <p class="mb-40">Replenishes deep hydration, soothes irritation relieves dryness, and helps restore the skin’s natural.</p>
-                                            <div class="pf-services-btn">
-                                                <a class="theme-btn style-two color-2nd" href="{% url 'services' %}">Read More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="pf-services-item">
-                                        <div class="pf-services-img"><img src="{% static 'pages/img/services/services-thumb-03.png' %}" alt=""></div>
-                                        <div class="pf-services-right-content">
-                                            <h3 class="pf-services-right-title mb-15"><a href="{% url 'services' %}">Hydrating Facial Treatment</a></h3>
-                                            <p class="mb-40">Replenishes deep hydration, soothes irritation relieves dryness, and helps restore the skin’s natural.</p>
-                                            <div class="pf-services-btn">
-                                                <a class="theme-btn style-two color-2nd" href="{% url 'services' %}">Read More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="pf-services-item">
-                                        <div class="pf-services-img"><img src="{% static 'pages/img/services/services-thumb-04.png' %}" alt=""></div>
-                                        <div class="pf-services-right-content">
-                                            <h3 class="pf-services-right-title mb-15"><a href="{% url 'services' %}">Hydrating Facial Treatment</a></h3>
-                                            <p class="mb-40">Replenishes deep hydration, soothes irritation relieves dryness, and helps restore the skin’s natural.</p>
-                                            <div class="pf-services-btn">
-                                                <a class="theme-btn style-two color-2nd" href="{% url 'services' %}">Read More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <h3 class="pf-choose-title mb-10">Expert Skin Specialists</h3>
+                        <p>{{content.chooseus_text_one}}</p>
+                    </div>
+                    <div class="pf-choose-box wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
+                        <div class="pf-choose-icon mb-20">
+                            <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M29.8744 5.12559C26.569 1.82034 22.1744 0 17.5 0C12.8256 0 8.43097 1.82034 5.12559 5.12559C1.82034 8.43097 0 12.8256 0 17.5C0 22.1744 1.82034 26.569 5.12559 29.8744C8.43097 33.1797 12.8256 35 17.5 35C22.1744 35 26.569 33.1797 29.8744 29.8744C33.1797 26.569 35 22.1744 35 17.5C35 12.8256 33.1797 8.43097 29.8744 5.12559ZM17.5 32.9492C8.98126 32.9492 2.05078 26.0187 2.05078 17.5C2.05078 8.98126 8.98126 2.05078 17.5 2.05078C26.0187 2.05078 32.9492 8.98126 32.9492 17.5C32.9492 26.0187 26.0187 32.9492 17.5 32.9492Z" fill="currentColor" />
+                            <path d="M25.3444 6.424C24.3461 6.06081 23.3708 6.18119 22.524 6.7727C21.6724 7.36743 20.9847 8.40875 20.4216 9.95599C20.0585 10.9534 19.7765 12.0822 19.6075 13.186C18.9289 13.0308 18.2213 12.9505 17.5 12.9505C16.7787 12.9505 16.0712 13.0308 15.3925 13.186C15.2236 12.0822 14.9415 10.9534 14.5785 9.95599C14.0153 8.40868 13.3276 7.36743 12.476 6.7727C11.6292 6.18125 10.654 6.06081 9.65565 6.424C8.65733 6.78733 7.98774 7.50661 7.71923 8.50404C7.44914 9.50701 7.59167 10.7468 8.15482 12.294C8.68426 13.7486 9.54497 15.3318 10.442 16.5305C9.84774 17.4803 9.53253 18.5451 9.53253 19.655C9.53253 19.8708 9.54682 20.0907 9.57594 20.3188C8.73136 21.3883 8.2715 22.7025 8.2715 24.0721C8.2715 27.421 10.996 30.1455 14.345 30.1455C15.4576 30.1455 16.5532 29.8344 17.5 29.2586C18.4469 29.8344 19.5425 30.1455 20.6551 30.1455C24.004 30.1455 26.7285 27.421 26.7285 24.0721C26.7285 22.7023 26.2685 21.3879 25.4238 20.3183C25.4524 20.0916 25.4665 19.8719 25.4665 19.655C25.4665 18.5453 25.1515 17.4808 24.5576 16.5311C25.4549 15.3323 26.3157 13.7489 26.8453 12.294C27.4084 10.7467 27.551 9.50694 27.2809 8.50404C27.0123 7.50661 26.3427 6.7874 25.3444 6.424ZM10.0819 11.5927C9.07227 8.81876 10.0393 8.46678 10.357 8.35119C10.6747 8.23552 11.6418 7.88354 12.6514 10.6574C13.0079 11.6369 13.2827 12.8023 13.4203 13.8909C12.8904 14.1567 12.3942 14.4758 11.9421 14.8456C11.9023 14.8781 11.8633 14.9112 11.8244 14.9443C11.1396 13.9582 10.4973 12.7339 10.0819 11.5927ZM24.6778 24.0721C24.6778 26.2902 22.8732 28.0947 20.6551 28.0947C19.8905 28.0947 19.1631 27.8839 18.5254 27.4823V25.8815C19.019 25.7241 19.4832 25.4509 19.8741 25.06C20.2745 24.6596 20.2745 24.0103 19.8741 23.6099C19.4737 23.2095 18.8244 23.2095 18.424 23.6099C17.9145 24.1193 17.0856 24.1193 16.5761 23.6099C16.1756 23.2094 15.5264 23.2095 15.126 23.6099C14.7256 24.0103 14.7256 24.6595 15.126 25.06C15.5168 25.4509 15.9811 25.724 16.4746 25.8815V27.4823C15.837 27.8839 15.1095 28.0947 14.345 28.0947C12.1268 28.0947 10.3223 26.2902 10.3223 24.0721C10.3223 23.0504 10.7102 22.0743 11.4146 21.3236C11.6437 21.0795 11.7392 20.7388 11.6703 20.4111C11.6117 20.1324 11.5833 19.885 11.5833 19.655C11.5833 17.0889 14.2376 15.0013 17.5001 15.0013C20.762 15.0013 23.4158 17.0889 23.4158 19.655C23.4158 19.8885 23.3877 20.1358 23.3298 20.4111C23.2609 20.7388 23.3564 21.0794 23.5855 21.3236C24.2898 22.0743 24.6778 23.0504 24.6778 24.0721ZM24.9182 11.5927C24.5027 12.734 23.8604 13.9584 23.1754 14.9446C23.1364 14.9114 23.0973 14.8783 23.0574 14.8457C22.6055 14.4759 22.1094 14.1568 21.5797 13.891C21.7172 12.8025 21.9921 11.6369 22.3487 10.6574C23.3583 7.88354 24.3253 8.23552 24.643 8.35119C24.9608 8.46678 25.9278 8.81876 24.9182 11.5927Z" fill="currentColor" />
+                            </svg>
+                        </div>
+                        <h3 class="pf-choose-title mb-10">Cruelty-Free & Ethical</h3>
+                        <p>{{content.chooseus_text_two}}</p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-8">
+                    <div class="pf-choose-box middle-box bg-2nd wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                        <div class="pf-choose-icon mb-20">
+                            <svg width="34" height="35" viewBox="0 0 34 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.2051 30.207V31.1899C14.2051 32.7279 15.4519 33.9746 16.9898 33.9746C18.5278 33.9746 19.7745 32.7279 19.7745 31.1899V30.207" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
+                            <path d="M26.3263 16.9933C26.3263 11.8366 22.146 7.65625 16.9893 7.65625C11.8327 7.65625 7.65234 11.8366 7.65234 16.9933C7.65234 20.5496 9.64085 23.6414 12.5666 25.218C12.5666 26.3061 12.5666 29.873 12.5666 29.873H21.4121V25.218C24.3378 23.6414 26.3263 20.5497 26.3263 16.9933Z" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
+                            <path d="M12.5137 25.5684H21.6869" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
+                            <path d="M16.9902 4.44336V0" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
+                            <path d="M25.8613 8.1185L29.0033 4.97656" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
+                            <path d="M29.5371 16.9902H33.9805" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
+                            <path d="M25.8613 25.8613L29.0033 29.0033" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
+                            <path d="M8.11868 25.8613L4.97674 29.0033" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
+                            <path d="M4.44336 16.9902H0" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
+                            <path d="M8.1185 8.1185L4.97656 4.97656" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
+                            <path d="M13.5215 16.7817L15.6986 18.9588L20.4582 14.1992" stroke="white" stroke-width="2.05078" stroke-miterlimit="10" />
+                            </svg>
+                        </div>
+                        <h3 class="pf-choose-title mb-10">Tailored Skin Solutions</h3>
+                        <p class="mb-40">{{content.chooseus_text_three}}</p>
+                        <div class="pf-choose-thumb">
+                            <img src="{{content.chooseus_image.url}}" alt="">
                         </div>
                     </div>
-                </section><section class="pf-products-area bg-2nd-color pt-130 pb-130">
-                    <div class="container">
-                        <div class="row align-items-center mb-lg-4">
-                            <div class="col-xl-5 col-lg-7 col-md-7">
-                                <div class="section-title-area text-center text-md-start wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
-                                    <span class="section-subtitle color-2nd border-2nd-color mb-20">Our Product</span>
-                                    <h2 class="section-title mb-35">Naturally Nourishing Deeply Restoring</h2>
+                </div>
+                <div class="col-xl-4 col-lg-8">
+                    <div class="pf-choose-box mb-30 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
+                        <div class="pf-choose-icon mb-20">
+                            <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.24609 1.02478V4.62314C10.0548 2.37159 13.6201 1.02478 17.5 1.02478C26.5609 1.02478 33.9746 8.43849 33.9746 17.4994C33.9746 21.193 32.6856 24.6699 30.6257 27.4121" stroke="currentColor" stroke-width="2.05078" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M27.7539 33.9746V30.3762C24.9452 32.6278 21.3799 33.9746 17.5 33.9746C8.4391 33.9746 1.02539 26.5609 1.02539 17.5C1.02539 13.8063 2.31438 10.3294 4.37425 7.58728" stroke="currentColor" stroke-width="2.05078" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M25.7031 19.5508C25.7031 25.2139 22.0304 25.7715 17.5 25.7715C12.9696 25.7715 9.29688 25.2139 9.29688 19.5508C9.29688 13.8877 17.5 5.12696 17.5 5.12696C17.5 5.12696 25.7031 13.8877 25.7031 19.5508Z" stroke="currentColor" stroke-width="2.05078" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17.5 15.4492V29.873" stroke="currentColor" stroke-width="2.05078" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15.4492 13.3984L17.5 15.4492L19.5508 13.3984" stroke="currentColor" stroke-width="2.05078" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.3984 17.5L17.5 21.6016L21.6016 17.5" stroke="currentColor" stroke-width="2.05078" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="pf-choose-title mb-10">Eco-Friendly Beauty</h3>
+                        <p>{{content.chooseus_text_four}}</p>
+                    </div>
+                    <div class="pf-choose-box wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".7s">
+                        <div class="pf-choose-icon mb-20">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.6752 31.3508C15.1141 31.3516 14.5583 31.2416 14.0398 31.0272C13.5212 30.8127 13.0501 30.498 12.6535 30.101L11.0625 28.5085C10.8693 28.3143 10.6395 28.1603 10.3865 28.0554C10.1334 27.9505 9.86205 27.8968 9.58811 27.8975H7.72436C6.59146 27.8963 5.5053 27.4458 4.70423 26.6447C3.90315 25.8436 3.4526 24.7575 3.45144 23.6246V21.7623C3.45229 21.4884 3.39885 21.2171 3.29422 20.9641C3.18959 20.711 3.03584 20.4812 2.84186 20.2879L1.24936 18.6969C0.449297 17.8948 0 16.8081 0 15.6752C0 14.5423 0.449297 13.4556 1.24936 12.6535L2.84186 11.0625C3.0361 10.8693 3.19012 10.6395 3.295 10.3865C3.39989 10.1334 3.45355 9.86205 3.4529 9.58811V7.72436C3.45405 6.59146 3.90461 5.5053 4.70568 4.70423C5.50676 3.90315 6.59292 3.4526 7.72581 3.45144H9.58811C9.86195 3.45229 10.1332 3.39885 10.3863 3.29422C10.6394 3.18959 10.8692 3.03584 11.0625 2.84186L12.6535 1.24936C13.4556 0.449297 14.5423 0 15.6752 0C16.8081 0 17.8948 0.449297 18.6969 1.24936L20.2879 2.84186C20.4811 3.0361 20.7108 3.19012 20.9639 3.295C21.217 3.39989 21.4883 3.45355 21.7623 3.4529H23.626C24.7589 3.45405 25.8451 3.90461 26.6462 4.70568C27.4472 5.50676 27.8978 6.59292 27.8989 7.72581V9.58811C27.8981 9.86195 27.9515 10.1332 28.0562 10.3863C28.1608 10.6394 28.3145 10.8692 28.5085 11.0625L30.0996 12.6535C30.8996 13.4556 31.3489 14.5423 31.3489 15.6752C31.3489 16.8081 30.8996 17.8948 30.0996 18.6969L28.5085 20.2879C28.3143 20.4811 28.1603 20.7108 28.0554 20.9639C27.9505 21.217 27.8968 21.4883 27.8975 21.7623V23.626C27.8963 24.7589 27.4458 25.8451 26.6447 26.6462C25.8436 27.4472 24.7575 27.8978 23.6246 27.8989H21.7623C21.4883 27.8983 21.217 27.9519 20.9639 28.0568C20.7108 28.1617 20.4811 28.3157 20.2879 28.51L18.6969 30.101C18.3002 30.498 17.8292 30.8127 17.3106 31.0272C16.7921 31.2416 16.2363 31.3516 15.6752 31.3508ZM7.72436 5.63894C7.17139 5.63932 6.64118 5.85916 6.25017 6.25017C5.85916 6.64118 5.63894 7.17139 5.63894 7.72436V9.58811C5.64096 10.1501 5.53126 10.7069 5.3162 11.2261C5.10115 11.7454 4.78503 12.2167 4.38623 12.6127L2.79665 14.2023C2.40588 14.594 2.18643 15.1248 2.18643 15.6781C2.18643 16.2314 2.40588 16.7622 2.79665 17.1539L4.38623 18.7435C4.78468 19.1392 5.1006 19.61 5.31564 20.1287C5.53068 20.6474 5.64058 21.2037 5.63894 21.7652V23.6289C5.63932 24.1819 5.85916 24.7121 6.25017 25.1031C6.64118 25.4941 7.17139 25.714 7.72436 25.7144H9.58811C10.1496 25.713 10.7057 25.8231 11.2244 26.0381C11.7431 26.2531 12.2139 26.5689 12.6098 26.9671L14.1994 28.5566C14.5911 28.9474 15.1219 29.1669 15.6752 29.1669C16.2285 29.1669 16.7593 28.9474 17.151 28.5566L18.7406 26.9671C19.1364 26.5689 19.6073 26.2531 20.126 26.0381C20.6447 25.8231 21.2008 25.713 21.7623 25.7144H23.626C24.179 25.714 24.7092 25.4941 25.1002 25.1031C25.4912 24.7121 25.7111 24.1819 25.7114 23.6289V21.7623C25.7098 21.2008 25.8197 20.6445 26.0347 20.1258C26.2498 19.6071 26.5657 19.1363 26.9641 18.7406L28.5537 17.151C28.9445 16.7593 29.1639 16.2285 29.1639 15.6752C29.1639 15.1219 28.9445 14.5911 28.5537 14.1994L26.9641 12.6127C26.566 12.2168 26.2502 11.746 26.0352 11.2273C25.8202 10.7086 25.7101 10.1525 25.7114 9.59102V7.72436C25.7111 7.17139 25.4912 6.64118 25.1002 6.25017C24.7092 5.85916 24.179 5.63932 23.626 5.63894H21.7623C21.2003 5.64096 20.6435 5.53126 20.1242 5.3162C19.605 5.10115 19.1337 4.78503 18.7377 4.38623L17.1481 2.79665C16.7563 2.40588 16.2256 2.18643 15.6723 2.18643C15.1189 2.18643 14.5882 2.40588 14.1964 2.79665L12.6127 4.38623C12.217 4.78468 11.7462 5.1006 11.2275 5.31564C10.7088 5.53068 10.1525 5.64058 9.59102 5.63894H7.72436Z" fill="currentColor" />
+                            <path d="M14.2165 19.685C14.0729 19.6853 13.9306 19.6571 13.7979 19.6021C13.6652 19.547 13.5448 19.4661 13.4436 19.3641L10.527 16.4475C10.3338 16.2401 10.2286 15.9659 10.2336 15.6825C10.2386 15.3992 10.3534 15.1288 10.5538 14.9284C10.7541 14.728 11.0245 14.6132 11.3079 14.6082C11.5912 14.6032 11.8654 14.7084 12.0728 14.9016L14.2165 17.0439L19.277 11.985C19.4843 11.7918 19.7585 11.6866 20.0419 11.6916C20.3252 11.6966 20.5956 11.8114 20.796 12.0118C20.9964 12.2122 21.1112 12.4825 21.1162 12.7659C21.1212 13.0492 21.016 13.3235 20.8228 13.5308L14.9894 19.3641C14.8883 19.4661 14.7679 19.547 14.6352 19.6021C14.5025 19.6571 14.3602 19.6853 14.2165 19.685Z" fill="currentColor" />
+                            </svg>
+                        </div>
+                        <h3 class="pf-choose-title mb-10">Trusted by Thousands</h3>
+                        <p>{{content.chooseus_text_five}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section class="pf-services-area pt-130">
+        <div class="container">
+            <div class="row align-items-center mb-70">
+                <div class="col-xl-6">
+                    <div class="section-title-area text-xl-start text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <span class="section-subtitle mb-20 color-2nd border-2nd-color">Our Services</span>
+                        <h2 class="section-title color-2nd">Tailored Treatments for Radiant Skin</h2>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="section-title-area text-xl-start text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                        <p>{{content.treatment_text_one}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row gap-x-140 pb-130 services-pin">
+                <div class="col-xl-5 col-lg-5 col-md-12">
+                    <div class="services-pin-space">
+                        <div class="pf-services-pin">
+                            <div class="pf-services-box mb-50">
+                                <h3 class="pf-services-title home-one mb-15">All Services</h3>
+                                <p class="mb-60">Replenishes deep hydration, soothes irritation relieves dryness, and helps restore the skin’s natural.</p>
+                                <div class="pf-services-btn">
+                                    <a class="theme-btn style-two color-2nd" href="{% url 'services' %}">View All</a>
                                 </div>
                             </div>
-                            <div class="col-xl-7 col-lg-5 col-md-5">
-                                <div class="section-btn text-center text-md-end wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                <a class="pf-product-see-all" href="{% url 'shop' %}">See All</a>
-                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-12">
+                    <div class="pf-services-right">
+                        {%for treatment in treatments%}
+                        <div class="pf-services-item">
+                            <div class="pf-services-img"><img src="{{treatment.main_thumbnail.url}}" alt=""></div>
+                            <div class="pf-services-right-content">
+                                <h3 class="pf-services-right-title mb-15"><a href="{% url 'services' %}">{{treatment.name}}</a></h3>
+                                <p class="mb-40">{{treatment.services_page_description}}</p>
+                                <div class="pf-services-btn">
+                                    <a class="theme-btn style-two color-2nd" href="{% url 'services' %}">Read More</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="row row-x-30 gap-y-30">
-                            
-                            {% for product in products %}
-                            <div class="col-xl-3 col-lg-6 col-md-6">
-                                <div class="pfproduct wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
-                                    <div class="pfproduct-content mb-15">
-                                        <div class="pfproduct__title">
-                                            <h3><a href="{% url 'shop_details' product.product_code %}">{{ product.name }}</a></h3>
-                                        </div>
-                                    </div>
-                                    <div class="pfproduct__price">
-                                        <h4>${{ product.price }}</h4>
-                                    </div>
-                                    <div class="pfproduct__img">
-                                        {% if product.main_image %}
-                                            <img src="{{ product.main_image.url }}" alt="{{ product.name }}">
-                                        {% else %}
-                                            <img src="{% static 'pages/img/product/product-home-two-01.png' %}" alt="{{ product.name }}">
-                                        {% endif %}
-                                    </div>
-                                    <div class="pfproduct__box">
-                                        <div class="pfproduct__rating">
-                                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section class="pf-products-area bg-2nd-color pt-130 pb-130">
+        <div class="container">
+            <div class="row align-items-center mb-lg-4">
+                <div class="col-xl-5 col-lg-7 col-md-7">
+                    <div class="section-title-area text-center text-md-start wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <span class="section-subtitle color-2nd border-2nd-color mb-20">Our Product</span>
+                        <h2 class="section-title mb-35">Naturally Nourishing Deeply Restoring</h2>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-5 col-md-5">
+                    <div class="section-btn text-center text-md-end wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                    <a class="pf-product-see-all" href="{% url 'shop' %}">See All</a>
+                </div>
+                </div>
+            </div>
+            <div class="row row-x-30 gap-y-30">
+                
+                {% for product in products %}
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="pfproduct wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <div class="pfproduct-content mb-15">
+                            <div class="pfproduct__title">
+                                <h3><a href="{% url 'shop_details' product.product_code %}">{{ product.name }}</a></h3>
+                            </div>
+                        </div>
+                        <div class="pfproduct__price">
+                            <h4>${{ product.price }}</h4>
+                        </div>
+                        <div class="pfproduct__img">
+                            {% if product.main_image %}
+                                <img src="{{ product.main_image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <img src="{% static 'pages/img/product/product-home-two-01.png' %}" alt="{{ product.name }}">
+                            {% endif %}
+                        </div>
+                        <div class="pfproduct__box">
+                            <div class="pfproduct__rating">
+                                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.38586 0.690724C8.68521 -0.230587 9.98862 -0.230588 10.288 0.690722L11.8066 5.36448C11.9404 5.77651 12.3244 6.05547 12.7576 6.05547H17.6719C18.6406 6.05547 19.0434 7.29508 18.2597 7.86448L14.284 10.753C13.9335 11.0077 13.7868 11.459 13.9207 11.8711L15.4393 16.5448C15.7386 17.4661 14.6842 18.2323 13.9004 17.6629L9.9247 14.7743C9.57421 14.5197 9.09962 14.5197 8.74913 14.7743L4.77339 17.6629C3.98968 18.2323 2.9352 17.4661 3.23455 16.5448L4.75314 11.8711C4.88702 11.459 4.74036 11.0077 4.38987 10.753L0.414135 7.86448C-0.369579 7.29508 0.0331967 6.05547 1.00192 6.05547H5.9162C6.34943 6.05547 6.73339 5.77651 6.86726 5.36448L8.38586 0.690724Z" fill="currentColor" />
+                                </svg>
+                                <span>{{ product.rating }}</span>
+                            </div>
+                            <div class="pfproduct__btn">
+                                <a href="{% url 'shop_details' product.product_code %}"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.16634 6.45703C4.05128 6.45703 3.95801 6.55031 3.95801 6.66536V17.4987C3.95801 17.6138 4.05128 17.707 4.16634 17.707H15.833C15.9481 17.707 16.0413 17.6138 16.0413 17.4987V6.66536C16.0413 6.55031 15.9481 6.45703 15.833 6.45703H4.16634ZM2.70801 6.66536C2.70801 5.85995 3.36092 5.20703 4.16634 5.20703H15.833C16.6384 5.20703 17.2913 5.85995 17.2913 6.66536V17.4987C17.2913 18.3041 16.6384 18.957 15.833 18.957H4.16634C3.36092 18.957 2.70801 18.3041 2.70801 17.4987V6.66536Z" fill="currentColor" />
+                                <path d="M9.99967 2.29102C8.73401 2.29102 7.70801 3.31703 7.70801 4.58268V7.49935C7.70801 7.84452 7.42818 8.12435 7.08301 8.12435C6.73783 8.12435 6.45801 7.84452 6.45801 7.49935V4.58268C6.45801 2.62667 8.04367 1.04102 9.99967 1.04102C11.9557 1.04102 13.5413 2.62667 13.5413 4.58268V7.49935C13.5413 7.84452 13.2615 8.12435 12.9163 8.12435C12.5712 8.12435 12.2913 7.84452 12.2913 7.49935V4.58268C12.2913 3.31703 11.2653 2.29102 9.99967 2.29102Z" fill="currentColor" />
+                                </svg></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center pt-30">
+                    <p class="color-2nd">No retail products currently on display. Log into Django Admin to add stock rows!</p>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    
+    
+    <section class="pf-team-area bg-2nd-color pb-130">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <div class="section-title-area mb-60 text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <span class="section-subtitle mb-20 color-2nd border-2nd-color">Our Team</span>
+                        <h2 class="section-title mb-30 color-2nd pr-10 pl-10">Skincare Specialists You Can Trust</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="pf-team">
+                {% for teammember in teammembers%}
+                <div class="pf-team-box wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
+                    <img src="{{teammember.photo.url}}" alt="">
+                    <div class="pf-team-content">
+                        <h3 class="pf-team-title"><a href="{% url 'about' %}">{{teammember.name}}</a></h3>
+                        <span class="pf-team-designation">{{teammember.role}}</span>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+
+        </div>
+    </section>
+    <section class="pf-review-area pb-130 pt-130">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xxl-5">
+                    <div class="section-title-area text-center mb-70 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <span class="section-subtitle mb-20 color-2nd border-2nd-color">Testimonials</span>
+                        <h2 class="section-title color-2nd">Trusted Feedback from Real Clients</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="pf-review-wrapper wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                <div class="swiper review-slider-active">
+                    <div class="swiper-wrapper align-items-center">
+                        {%for testimonial in testimonials%}
+                        <div class="swiper-slide">
+                            <div class="pf-review-item" data-bg-img="{{testimonial.background_image.url}}">
+                                <div class="pf-review-content">
+                                    <img src="{{testimonial.small_image.url}}" alt="">
+                                    <div class="pf-review-rating">
+                                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M8.38586 0.690724C8.68521 -0.230587 9.98862 -0.230588 10.288 0.690722L11.8066 5.36448C11.9404 5.77651 12.3244 6.05547 12.7576 6.05547H17.6719C18.6406 6.05547 19.0434 7.29508 18.2597 7.86448L14.284 10.753C13.9335 11.0077 13.7868 11.459 13.9207 11.8711L15.4393 16.5448C15.7386 17.4661 14.6842 18.2323 13.9004 17.6629L9.9247 14.7743C9.57421 14.5197 9.09962 14.5197 8.74913 14.7743L4.77339 17.6629C3.98968 18.2323 2.9352 17.4661 3.23455 16.5448L4.75314 11.8711C4.88702 11.459 4.74036 11.0077 4.38987 10.753L0.414135 7.86448C-0.369579 7.29508 0.0331967 6.05547 1.00192 6.05547H5.9162C6.34943 6.05547 6.73339 5.77651 6.86726 5.36448L8.38586 0.690724Z" fill="currentColor" />
-                                            </svg>
-                                            <span>{{ product.rating }}</span>
-                                        </div>
-                                        <div class="pfproduct__btn">
-                                            <a href="{% url 'shop_details' product.product_code %}"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M4.16634 6.45703C4.05128 6.45703 3.95801 6.55031 3.95801 6.66536V17.4987C3.95801 17.6138 4.05128 17.707 4.16634 17.707H15.833C15.9481 17.707 16.0413 17.6138 16.0413 17.4987V6.66536C16.0413 6.55031 15.9481 6.45703 15.833 6.45703H4.16634ZM2.70801 6.66536C2.70801 5.85995 3.36092 5.20703 4.16634 5.20703H15.833C16.6384 5.20703 17.2913 5.85995 17.2913 6.66536V17.4987C17.2913 18.3041 16.6384 18.957 15.833 18.957H4.16634C3.36092 18.957 2.70801 18.3041 2.70801 17.4987V6.66536Z" fill="currentColor" />
-                                            <path d="M9.99967 2.29102C8.73401 2.29102 7.70801 3.31703 7.70801 4.58268V7.49935C7.70801 7.84452 7.42818 8.12435 7.08301 8.12435C6.73783 8.12435 6.45801 7.84452 6.45801 7.49935V4.58268C6.45801 2.62667 8.04367 1.04102 9.99967 1.04102C11.9557 1.04102 13.5413 2.62667 13.5413 4.58268V7.49935C13.5413 7.84452 13.2615 8.12435 12.9163 8.12435C12.5712 8.12435 12.2913 7.84452 12.2913 7.49935V4.58268C12.2913 3.31703 11.2653 2.29102 9.99967 2.29102Z" fill="currentColor" />
-                                            </svg></a>
-                                        </div>
+                                        </svg>
+                                        <span>{{testimonial.rating}}</span>
                                     </div>
                                 </div>
+                                <p>{{testimonial.review_text}}</p>
+                                <div class="pf-review-author">
+                                    <h3>{{testimonial.client_name}}</h3>
+                                    <span>{{testimonial.client_position}}</span>
+                                </div>
                             </div>
-                            {% empty %}
-                            <div class="col-12 text-center pt-30">
-                                <p class="color-2nd">No retail products currently on display. Log into Django Admin to add stock rows!</p>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+         </div>
+    </section>
+    <section class="pf-booking-area bg-2nd-color pt-130 pb-130">
+        <div class="container">
+            <div class="row gap-x-110 justify-content-center">
+                <div class="col-xl-6 col-lg-8">
+                    <div class="section-title-area mb-70 text-center text-xl-start wow pfFadeInLeft" data-wow-duration=".6s" data-wow-delay=".3s">
+                        <span class="section-subtitle mb-20 color-2nd border-2nd-color">Booking Appointment</span>
+                        <h2 class="section-title color-2nd">Schedule Your Appointment Today</h2>
+                    </div>
+                    <div class="pf-booking-img wow pfFadeInLeft" data-wow-duration=".6s" data-wow-delay=".3s">
+                        <img src="{% static 'pages/img/booking/booking-01.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8">
+                    <div class="pf-booking-wrapper wow pfFadeInRight" data-wow-duration=".6s" data-wow-delay=".3s">
+                        <h3 class="pf-booking-title mb-50 text-center text-xl-start">Share Your Information</h3>
+                        <form class="pf-booking-form" action="{% static 'pages/mail.php' %}" method="post" id="contact-form">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form_control" placeholder="Enter your name*" name="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form_control" placeholder="Enter your email*" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label>Phone</label>
+                                        <input type="text" class="form_control" placeholder="Enter your phone*" name="phone" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label>Select Options</label>
+                                        <select class="wide" name="services" required>
+                                            <option value="" disabled selected>Select Options</option>
+                                            <option value="01">01 People</option>
+                                            <option value="02">02 People</option>
+                                            <option value="03">03 People</option>
+                                            <option value="04">04 People</option>
+                                            <option value="05">05 People</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label>Select Schedule</label>
+                                        <input type="date" class="form_control" name="schedule" id="datepicker" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <label>Message</label>
+                                        <textarea name="message" class="form_control" placeholder="Writhe message.." rows="5" cols="5" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="pf-booking-btn">
+                                        <button type="submit" class="theme-btn style-one bg-2nd w-100">Send Message</button>
+                                    </div>
+                                    <p class="ajax-response"></p>
+                                </div>
                             </div>
-                            {% endfor %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        </div>
-                    </div>
-                </section><section class="pf-team-area bg-2nd-color pb-130">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-6">
-                                <div class="section-title-area mb-60 text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
-                                    <span class="section-subtitle mb-20 color-2nd border-2nd-color">Our Team</span>
-                                    <h2 class="section-title mb-30 color-2nd pr-10 pl-10">Skincare Specialists You Can Trust</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pf-team">
-                            <div class="pf-team-box wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
-                                <img src="{% static 'pages/img/team/team-01.png' %}" alt="">
-                                <div class="pf-team-content">
-                                    <h3 class="pf-team-title"><a href="{% url 'team'%}">Olivia Bennett</a></h3>
-                                    <span class="pf-team-designation">Senior Aesthetic Specialist</span>
-                                </div>
-                            </div>
-                            <div class="pf-team-box active wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                <img src="{% static 'pages/img/team/team-02.png' %}" alt="">
-                                <div class="pf-team-content">
-                                    <h3 class="pf-team-title"><a href="{% url 'team' %}">Amelia Carter</a></h3>
-                                    <span class="pf-team-designation">Skin Treatment Expert</span>
-                                </div>
-                            </div>
-                            <div class="pf-team-box wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".5s">
-                                <img src="{% static 'pages/img/team/team-03.png' %}" alt="">
-                                <div class="pf-team-content">
-                                    <h3 class="pf-team-title"><a href="{% url 'team'%}">Ella Brooks</a></h3>
-                                    <span class="pf-team-designation">Cosmetic Therapist</span>
-                                </div>
-                            </div>
-                            <div class="pf-team-box wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
-                                <img src="{% static 'pages/img/team/team-04.png' %}" alt="">
-                                <div class="pf-team-content">
-                                    <h3 class="pf-team-title"><a href="{% url 'team'%}">Sophia Reynolds</a></h3>
-                                    <span class="pf-team-designation">Beauty Consultant</span>
-                                </div>
-                            </div>
-                            <div class="pf-team-box wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".7s">
-                                <img src="{% static 'pages/img/team/team-05.png' %}" alt="">
-                                <div class="pf-team-content">
-                                    <h3 class="pf-team-title"><a href="{% url 'team'%}">Ema Whitmore</a></h3>
-                                    <span class="pf-team-designation">Dermatology Assistant</span>
-                                </div>
-                            </div>
-                        </div>
 
+
+    <section class="pf-news-area bg-2nd-color pb-130">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5">
+                    <div class="section-title-area text-center mb-70 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
+                        <span class="section-subtitle mb-20 color-2nd border-2nd-color">Our Blog </span>
+                        <h2 class="section-title">Glow Smarter Beauty & Wellness Blog</h2>
                     </div>
-                </section><section class="pf-review-area pb-130 pt-130">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-xxl-5">
-                                <div class="section-title-area text-center mb-70 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
-                                    <span class="section-subtitle mb-20 color-2nd border-2nd-color">Testimonials</span>
-                                    <h2 class="section-title color-2nd">Trusted Feedback from Real Clients</h2>
+                </div>
+            </div>
+            <div class="row gap-x-30 gap-y-30">
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="pf-news wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                        <div class="pf-news-thumb">
+                            <img src="{% static 'pages/img/blog/news-thumb-01.png' %}" alt="">
+                        </div>
+                        <div class="pf-news-content">
+                            <div class="pf-news-meta mb-15">
+                                <div class="pf-news-cat">
+                                    <span>[ Skin Renewal ]</span>
+                                </div>
+                                <div class="pf-news-date">
+                                    <span>[ July 02, 2025 ]</span>
                                 </div>
                             </div>
-                        </div>
-                    <div class="pf-review-wrapper wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                        <div class="swiper review-slider-active">
-                            <div class="swiper-wrapper align-items-center">
-                                <div class="swiper-slide">
-                                    <div class="pf-review-item" data-bg-img="{% static 'pages/img/testimonial/review-bg-img-01.png' %}">
-                                        <div class="pf-review-content">
-                                            <img src="{% static 'pages/img/testimonial/reivew-01.png' %}" alt="">
-                                            <div class="pf-review-rating">
-                                                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.38586 0.690724C8.68521 -0.230587 9.98862 -0.230588 10.288 0.690722L11.8066 5.36448C11.9404 5.77651 12.3244 6.05547 12.7576 6.05547H17.6719C18.6406 6.05547 19.0434 7.29508 18.2597 7.86448L14.284 10.753C13.9335 11.0077 13.7868 11.459 13.9207 11.8711L15.4393 16.5448C15.7386 17.4661 14.6842 18.2323 13.9004 17.6629L9.9247 14.7743C9.57421 14.5197 9.09962 14.5197 8.74913 14.7743L4.77339 17.6629C3.98968 18.2323 2.9352 17.4661 3.23455 16.5448L4.75314 11.8711C4.88702 11.459 4.74036 11.0077 4.38987 10.753L0.414135 7.86448C-0.369579 7.29508 0.0331967 6.05547 1.00192 6.05547H5.9162C6.34943 6.05547 6.73339 5.77651 6.86726 5.36448L8.38586 0.690724Z" fill="currentColor" />
-                                                </svg>
-                                                <span>4.9</span>
-                                            </div>
-                                        </div>
-                                        <p>Absolutely love the glow serum! I noticed a difference within a week — smoother texture and brighter tone. Plus, it smells amazing. Highly recomend!</p>
-                                        <div class="pf-review-author">
-                                            <h3>Charlotte Harris</h3>
-                                            <span>CEO & Founder</span>
-                                        </div>
-                                    </div>
+                            <h3 class="pf-news-title mb-30"><a href="{% url 'blog_grid' %}">Everything You Should Know About Choosing the Right Moisturizer for Skin</a></h3>
+                            <div class="pf-news-footer pt-30 align-items-center">
+                                <div class="pf-news-btn">
+                                    <a class="theme-btn style-two" href="{% url 'blog_grid' %}">Read More</a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="pf-review-item" data-bg-img="{% static 'pages/img/testimonial/review-bg-img-01.png' %}">
-                                        <div class="pf-review-content">
-                                            <img src="{% static 'pages/img/testimonial/reivew-02.png' %}" alt="">
-                                            <div class="pf-review-rating">
-                                                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.38586 0.690724C8.68521 -0.230587 9.98862 -0.230588 10.288 0.690722L11.8066 5.36448C11.9404 5.77651 12.3244 6.05547 12.7576 6.05547H17.6719C18.6406 6.05547 19.0434 7.29508 18.2597 7.86448L14.284 10.753C13.9335 11.0077 13.7868 11.459 13.9207 11.8711L15.4393 16.5448C15.7386 17.4661 14.6842 18.2323 13.9004 17.6629L9.9247 14.7743C9.57421 14.5197 9.09962 14.5197 8.74913 14.7743L4.77339 17.6629C3.98968 18.2323 2.9352 17.4661 3.23455 16.5448L4.75314 11.8711C4.88702 11.459 4.74036 11.0077 4.38987 10.753L0.414135 7.86448C-0.369579 7.29508 0.0331967 6.05547 1.00192 6.05547H5.9162C6.34943 6.05547 6.73339 5.77651 6.86726 5.36448L8.38586 0.690724Z" fill="currentColor" />
-                                                </svg>
-                                                <span>4.9</span>
-                                            </div>
-                                        </div>
-                                        <p>From packaging to performance, everything is top-notch. I’ve struggled with dry patches for years, and this line changed everything. Hydrated, balanced, and happy skin!</p>
-                                        <div class="pf-review-author">
-                                            <h3>Ema Thompson</h3>
-                                            <span>Founder</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="pf-review-item" data-bg-img="{% static 'pages/img/testimonial/review-bg-img-01.png' %}">
-                                        <div class="pf-review-content">
-                                            <img src="{% static 'pages/img/testimonial/reivew-03.png' %}" alt="">
-                                            <div class="pf-review-rating">
-                                                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.38586 0.690724C8.68521 -0.230587 9.98862 -0.230588 10.288 0.690722L11.8066 5.36448C11.9404 5.77651 12.3244 6.05547 12.7576 6.05547H17.6719C18.6406 6.05547 19.0434 7.29508 18.2597 7.86448L14.284 10.753C13.9335 11.0077 13.7868 11.459 13.9207 11.8711L15.4393 16.5448C15.7386 17.4661 14.6842 18.2323 13.9004 17.6629L9.9247 14.7743C9.57421 14.5197 9.09962 14.5197 8.74913 14.7743L4.77339 17.6629C3.98968 18.2323 2.9352 17.4661 3.23455 16.5448L4.75314 11.8711C4.88702 11.459 4.74036 11.0077 4.38987 10.753L0.414135 7.86448C-0.369579 7.29508 0.0331967 6.05547 1.00192 6.05547H5.9162C6.34943 6.05547 6.73339 5.77651 6.86726 5.36448L8.38586 0.690724Z" fill="currentColor" />
-                                                </svg>
-                                                <span>4.9</span>
-                                            </div>
-                                        </div>
-                                        <p>Really impressed with this glow serum! My skin started feeling softer in just a few days — more even texture and a natural radiance. And the scent is so refreshing.</p>
-                                        <div class="pf-review-author">
-                                            <h3>Charlotte Harris</h3>
-                                            <span>CEO & Founder</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="pf-review-item" data-bg-img="{% static 'pages/img/testimonial/review-bg-img-01.png' %}">
-                                        <div class="pf-review-content">
-                                            <img src="{% static 'pages/img/testimonial/testimonial-01.png' %}" alt="">
-                                            <div class="pf-review-rating">
-                                                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.38586 0.690724C8.68521 -0.230587 9.98862 -0.230588 10.288 0.690722L11.8066 5.36448C11.9404 5.77651 12.3244 6.05547 12.7576 6.05547H17.6719C18.6406 6.05547 19.0434 7.29508 18.2597 7.86448L14.284 10.753C13.9335 11.0077 13.7868 11.459 13.9207 11.8711L15.4393 16.5448C15.7386 17.4661 14.6842 18.2323 13.9004 17.6629L9.9247 14.7743C9.57421 14.5197 9.09962 14.5197 8.74913 14.7743L4.77339 17.6629C3.98968 18.2323 2.9352 17.4661 3.23455 16.5448L4.75314 11.8711C4.88702 11.459 4.74036 11.0077 4.38987 10.753L0.414135 7.86448C-0.369579 7.29508 0.0331967 6.05547 1.00192 6.05547H5.9162C6.34943 6.05547 6.73339 5.77651 6.86726 5.36448L8.38586 0.690724Z" fill="currentColor" />
-                                                </svg>
-                                                <span>4.9</span>
-                                            </div>
-                                        </div>
-                                        <p>Everything about this product line feels premium, from the packaging. I’ve dealt with dull, uneven skin for a long time, and this made a huge difference. My skin feels smooth!</p>
-                                        <div class="pf-review-author">
-                                            <h3>Ava Thompson</h3>
-                                            <span>CEO</span>
-                                        </div>
-                                    </div>
+                                <div class="pf-news-author">
+                                    <img src="{% static 'pages/img/blog/author-01.png' %}" alt="">
+                                    <a href="#">By Harris</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </div>
-                    
-                </section><section class="pf-booking-area bg-2nd-color pt-130 pb-130">
-                    <div class="container">
-                        <div class="row gap-x-110 justify-content-center">
-                            <div class="col-xl-6 col-lg-8">
-                                <div class="section-title-area mb-70 text-center text-xl-start wow pfFadeInLeft" data-wow-duration=".6s" data-wow-delay=".3s">
-                                    <span class="section-subtitle mb-20 color-2nd border-2nd-color">Booking Appointment</span>
-                                    <h2 class="section-title color-2nd">Schedule Your Appointment Today</h2>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="pf-news wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
+                        <div class="pf-news-thumb">
+                            <img src="{% static 'pages/img/blog/news-thumb-02.png' %}" alt="">
+                        </div>
+                        <div class="pf-news-content">
+                            <div class="pf-news-meta mb-15">
+                                <div class="pf-news-cat">
+                                    <span>[ Skin Renewal ]</span>
                                 </div>
-                                <div class="pf-booking-img wow pfFadeInLeft" data-wow-duration=".6s" data-wow-delay=".3s">
-                                    <img src="{% static 'pages/img/booking/booking-01.png' %}" alt="">
+                                <div class="pf-news-date">
+                                    <span>[ July 02, 2025 ]</span>
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-lg-8">
-                                <div class="pf-booking-wrapper wow pfFadeInRight" data-wow-duration=".6s" data-wow-delay=".3s">
-                                    <h3 class="pf-booking-title mb-50 text-center text-xl-start">Share Your Information</h3>
-                                   <form class="pf-booking-form" action="{% static 'pages/mail.php' %}" method="post" id="contact-form">
-                                        <div class="row">
-                                            <div class="col-xl-12">
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input type="text" class="form_control" placeholder="Enter your name*" name="name" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="email" class="form_control" placeholder="Enter your email*" name="email" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label>Phone</label>
-                                                    <input type="text" class="form_control" placeholder="Enter your phone*" name="phone" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label>Select Options</label>
-                                                    <select class="wide" name="services" required>
-                                                        <option value="" disabled selected>Select Options</option>
-                                                        <option value="01">01 People</option>
-                                                        <option value="02">02 People</option>
-                                                        <option value="03">03 People</option>
-                                                        <option value="04">04 People</option>
-                                                        <option value="05">05 People</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label>Select Schedule</label>
-                                                    <input type="date" class="form_control" name="schedule" id="datepicker" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <div class="form-group">
-                                                    <label>Message</label>
-                                                    <textarea name="message" class="form_control" placeholder="Writhe message.." rows="5" cols="5" required></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <div class="pf-booking-btn">
-                                                    <button type="submit" class="theme-btn style-one bg-2nd w-100">Send Message</button>
-                                                </div>
-                                                <p class="ajax-response"></p>
-                                            </div>
-                                        </div>
-                                    </form>
+                            <h3 class="pf-news-title mb-30"><a href="{% url 'blog_grid' %}">Common Skincare Mistakes That Could Be Damaging Your Skin Over Time</a></h3>
+                            <div class="pf-news-footer pt-30 align-items-center">
+                                <div class="pf-news-btn">
+                                    <a class="theme-btn style-two" href="{% url 'blog_grid' %}">Read More</a>
+                                </div>
+                                <div class="pf-news-author">
+                                    <img src="{% static 'pages/img/blog/author-02.png' %}" alt="">
+                                    <a href="#">By Harris</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section><section class="pf-news-area bg-2nd-color pb-130">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-5">
-                                <div class="section-title-area text-center mb-70 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
-                                    <span class="section-subtitle mb-20 color-2nd border-2nd-color">Our Blog </span>
-                                    <h2 class="section-title">Glow Smarter Beauty & Wellness Blog</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row gap-x-30 gap-y-30">
-                            <div class="col-xl-6 col-lg-6 col-md-6">
-                                <div class="pf-news wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                    <div class="pf-news-thumb">
-                                        <img src="{% static 'pages/img/blog/news-thumb-01.png' %}" alt="">
-                                    </div>
-                                    <div class="pf-news-content">
-                                        <div class="pf-news-meta mb-15">
-                                            <div class="pf-news-cat">
-                                                <span>[ Skin Renewal ]</span>
-                                            </div>
-                                            <div class="pf-news-date">
-                                                <span>[ July 02, 2025 ]</span>
-                                            </div>
-                                        </div>
-                                        <h3 class="pf-news-title mb-30"><a href="{% url 'blog_grid' %}">Everything You Should Know About Choosing the Right Moisturizer for Skin</a></h3>
-                                        <div class="pf-news-footer pt-30 align-items-center">
-                                            <div class="pf-news-btn">
-                                                <a class="theme-btn style-two" href="{% url 'blog_grid' %}">Read More</a>
-                                            </div>
-                                            <div class="pf-news-author">
-                                                <img src="{% static 'pages/img/blog/author-01.png' %}" alt="">
-                                                <a href="#">By Harris</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6">
-                                <div class="pf-news wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
-                                    <div class="pf-news-thumb">
-                                        <img src="{% static 'pages/img/blog/news-thumb-02.png' %}" alt="">
-                                    </div>
-                                    <div class="pf-news-content">
-                                        <div class="pf-news-meta mb-15">
-                                            <div class="pf-news-cat">
-                                                <span>[ Skin Renewal ]</span>
-                                            </div>
-                                            <div class="pf-news-date">
-                                                <span>[ July 02, 2025 ]</span>
-                                            </div>
-                                        </div>
-                                        <h3 class="pf-news-title mb-30"><a href="{% url 'blog_grid' %}">Common Skincare Mistakes That Could Be Damaging Your Skin Over Time</a></h3>
-                                        <div class="pf-news-footer pt-30 align-items-center">
-                                            <div class="pf-news-btn">
-                                                <a class="theme-btn style-two" href="{% url 'blog_grid' %}">Read More</a>
-                                            </div>
-                                            <div class="pf-news-author">
-                                                <img src="{% static 'pages/img/blog/author-02.png' %}" alt="">
-                                                <a href="#">By Harris</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                </section></main>
+                </div>
+                
+            </div>
+            
+        </div>
+    </section>
+
+</main>
 {% endblock content %}

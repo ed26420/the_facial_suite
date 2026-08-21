@@ -3,7 +3,8 @@ from django.forms import Textarea
 from django.db import models
 from .models import (
     ServiceCategory, Treatment, Product, CartItem, 
-    TeamMember, BlogPost, Page, SiteImage, Comment, IndexPageContent
+    TeamMember, BlogPost, Page, SiteImage, Comment, IndexPageContent, Testimonial, StaffReview,
+    FAQ, GalleryImage, HomePageContent, PartnerLogo, BeautyGallery, UserProfile, TeamInquiry
 )
 
 
@@ -14,6 +15,7 @@ class SiteImageInline(admin.TabularInline):
 
 @admin.register(ServiceCategory)
 class ServiceCategoryAdmin(admin.ModelAdmin):
+    save_as = True
     prepopulated_fields = {"slug": ("name",)}
     list_display = ('name', 'slug')
 
@@ -47,7 +49,7 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(CartItem)
 class CartItemAdmin(admin.ModelAdmin):
     save_as = True
-    list_display = ('product', 'quantity', 'user', 'session_id')
+    list_display = ('id','product', 'quantity', 'user')
     list_filter = ('user',)
 
 @admin.register(TeamMember)
@@ -59,16 +61,12 @@ class TeamMemberAdmin(admin.ModelAdmin):
 class PageAdmin(admin.ModelAdmin):
     inlines = [SiteImageInline]
     fieldsets = (
-        (None, {'fields': ('title', 'slug', 'story_text')}),
+        (None, {'fields': ('title', 'slug', 'story_text', 'story_text_two')}),
         ('Contact Info (For Contact Page)', {
             'fields': ('email_field', 'phone_field', 'address'),
             'classes': ('collapse',),
-        }),
-        ('FAQ Data (About & Contact Pages)', {
-            'fields': ('faq_data',),
-            'description': "Format: Question|Answer,Question|Answer. Use | to separate question from answer, and , to separate items.",
-        }),
-    )
+        }),    
+        )
     formfield_overrides = {
         models.TextField: {'widget': Textarea(attrs={'rows': 6, 'cols': 40})},
     }
@@ -113,3 +111,39 @@ class CommentAdmin(admin.ModelAdmin):
 @admin.register(IndexPageContent)
 class IndexPageAdmin(admin.ModelAdmin):
     list_display = ('__str__',)
+
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    save_as = True
+
+@admin.register(StaffReview)
+class StaffReviewAdmin(admin.ModelAdmin):
+    save_as = True
+
+@admin.register(FAQ)
+class FAQAdmin(admin.ModelAdmin):
+    save_as = True
+
+@admin.register(GalleryImage)
+class GalleryImageAdmin(admin.ModelAdmin):
+    save_as = True
+
+@admin.register(HomePageContent)
+class HomePageContentAdmin(admin.ModelAdmin):
+    save_as = True
+
+@admin.register(PartnerLogo)
+class PartnerLogoAdmin(admin.ModelAdmin):
+    save_as = True
+
+@admin.register(BeautyGallery)
+class BeautyGalleryAdmin(admin.ModelAdmin):
+    save_as = True
+
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+    save_as = True
+
+@admin.register(TeamInquiry)
+class TeamInquiryAdmin(admin.ModelAdmin):
+    save_as = True

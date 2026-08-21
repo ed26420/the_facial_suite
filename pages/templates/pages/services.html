@@ -2,286 +2,249 @@
 {% load static %} 
 {% block content %}
 
-            <main>
-                <section class="pf-page-banner-area text-center bg-theme-color">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <h2 class="page-title mb-20">Our Services</h2>
-                                <ul class="breadcrumb-link">
-                                    <li><a href="#">Home</a></li>
-                                    <li>-</li>
-                                    <li class="active">Our Services</li>
-                                </ul>
+<main>
+    <section class="pf-page-banner-area text-center bg-theme-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <h2 class="page-title mb-20">Our Services</h2>
+                    <ul class="breadcrumb-link">
+                        <li><a href="#">Home</a></li>
+                        <li>-</li>
+                        <li class="active">Our Services</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="pf-img-banner-area">
+        <div class="pf-img-banner-space p-175 bg-theme-color"></div>
+        <div class="container">
+            <div class="row">
+                {% for treatment in treatments %}
+                    {% if forloop.first %}
+                    <div class="col-xl-12">
+                        <div class="pf-img-banner-wrapper wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                            <img class="br-20 mt-minus-350" src="{{ treatment.hero_banner_image.url }}" alt="">
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <section class="pf-service-section pt-130 pb-130">
+        <div class="container">
+            <div class="row align-items-center mb-70">
+                <div class="col-xl-4">
+                    <div class="section-title-area text-center text-xl-start mb-4 mb-xl-0 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <h2 class="section-title"><span>What</span> We Offer for Your <span>Skin</span></h2>
+                    </div>
+                </div>
+                <div class="col-xl-8">
+                    <div class="pf-services-tabs wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                        <nav>
+                            <div class="nav justify-content-center justify-content-xl-end" id="nav-tab" role="tablist">
+                                <button class="tab-btn theme-btn style-two active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab"  aria-selected="true">All Services</button>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                    <div class="row gap-y-30 pf-services-list-wrapper">
+                        {% for treatment in treatments %}
+                        <div class="col-xl-12 mb-30">
+                            <div class="pf-services-tab-box d-flex">
+                                <div class="pf-services-tab-content">
+                                    <div class="pf-services-tab-heading">
+                                        <div class="pf-services-tab-cat mb-20">
+                                            {% for tag in treatment.get_tags_list %}
+                                            <a class="tab-cat-btn" href="#">{{ tag }}</a>
+                                            {% endfor %}
+                                        </div>
+                                        <h3 class="pf-services-tab-title mb-10"><a href="{% url 'services_details' treatment.treatment_code %}">{{ treatment.name }}</a></h3>
+                                        <p>{{ treatment.services_page_description }}</p>
+                                    </div>
+                                    <div class="pf-services-tab-btn">
+                                        <a class="theme-btn style-two" href="{% url 'services_details' treatment.treatment_code %}">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="pf-services-tab-thumb">
+                                    <img src="{{ treatment.main_thumbnail.url }}" alt="{{ treatment.name }}">
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="pf-booking-area bg-2nd-color pt-130 pb-130">
+        <div class="container">
+            <div class="row gap-x-110">
+                <div class="col-xl-6">
+                    <div class="section-title-area mb-70 text-center text-xl-start wow pfFadeInLeft" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <span class="section-subtitle mb-20 ">Booking Appointment</span>
+                        <h2 class="section-title ">Schedule Your Appointment Today</h2>
+                    </div>
+                    <div class="pf-booking-img wow pfFadeInLeft" data-wow-duration=".6s" data-wow-delay=".3s">
+                        <img src="{% static 'pages/img/booking/booking-01.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="pf-booking-wrapper wow pfFadeInRight" data-wow-duration=".6s" data-wow-delay=".3s">
+                        <h3 class="pf-booking-title mb-50 text-center text-xl-start">Share Your Information</h3>
+                        <form class="pf-booking-form" action="pages/mail.php" method="post" id="contact-form">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form_control" placeholder="Enter your name*" name="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form_control" placeholder="Enter your email*" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label>Phone</label>
+                                        <input type="text" class="form_control" placeholder="Enter your phone*" name="phone" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label>Select Options</label>
+                                        <select class="wide" name="services" required>
+                                            <option value="01">01 People</option>
+                                            <option value="02">02 People</option>
+                                            <option value="03">03 People</option>
+                                            <option value="04">04 People</option>
+                                            <option value="05">05 People</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label>Select Schedule</label>
+                                        <input type="date" class="form_control" name="schedule" id="datepicker" required>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <label>Message</label>
+                                        <textarea name="message" class="form_control" placeholder="Writhe message.." rows="5" cols="5" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="pf-booking-btn ">
+                                        <button type="submit" class="theme-btn style-one hover-bg w-100">Send Message</button>
+                                    </div>
+                                    <p class="ajax-response"></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="pf-client-feedback-area pb-130 pt-130">
+        <div class="container">
+            <div class="row justify-content-center mb-70">
+                <div class="col-xxl-5">
+                    <div class="section-title-area text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <span class="section-subtitle mb-20">Testimonials</span>
+                        <h2 class="section-title"><span>Glow-Up</span> Reviews from Happy <span>Clients</span></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper testimonials-slider-four-active wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="pf-client-feedback__box">
+                            <div class="pf-client-feedback__content">
+                                <div class="pf-client-feedback__author">
+                                    <div class="pf-client-feedback__media">
+                                        <img class="br-100 " src="{% static 'pages/img/testimonial/testimonial-01.png' %}" alt="Emma Thompson - CEO & Founder">
+                                    </div>
+                                    <div class="pf-client-feedback__meta">
+                                        <div class="pf-client-feedback__name">
+                                            <h3>Emma Thompson</h3>
+                                        </div>
+                                        <div class="pf-client-feedback__position">
+                                            <span>CEO & Founder</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pf-client-feedback__rating">
+                                    <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.38488 0.690724C8.68423 -0.230587 9.98764 -0.230588 10.287 0.690722L11.8056 5.36448C11.9395 5.77651 12.3234 6.05547 12.7566 6.05547H17.6709C18.6397 6.05547 19.0424 7.29508 18.2587 7.86448L14.283 10.753C13.9325 11.0077 13.7858 11.459 13.9197 11.8711L15.4383 16.5448C15.7377 17.4661 14.6832 18.2323 13.8995 17.6629L9.92372 14.7743C9.57324 14.5197 9.09864 14.5197 8.74815 14.7743L4.77241 17.6629C3.9887 18.2323 2.93422 17.4661 3.23357 16.5448L4.75217 11.8711C4.88604 11.459 4.73938 11.0077 4.3889 10.753L0.413159 7.86448C-0.370555 7.29508 0.0322201 6.05547 1.00094 6.05547H5.91523C6.34845 6.05547 6.73241 5.77651 6.86628 5.36448L8.38488 0.690724Z" fill="currentColor" />
+                                    </svg>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <div class="pf-client-feedback__description">
+                                <p>My skin feels incredibly soft and hydrated since using this serum. It absorbs quickly, doesn’t feel greasy, and gives me a healthy glow. I absolutely love it!</p>
                             </div>
                         </div>
                     </div>
-                </section>
-                <div class="pf-img-banner-area">
-                <div class="pf-img-banner-space p-175 bg-theme-color"></div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="pf-img-banner-wrapper wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                    <img class="br-20 mt-minus-350" src="{% static 'pages/img/img-banner/banner-02.png' %}" alt="">
+                    <div class="swiper-slide">
+                        <div class="pf-client-feedback__box">
+                            <div class="pf-client-feedback__content">
+                                <div class="pf-client-feedback__author">
+                                    <div class="pf-client-feedback__media">
+                                        <img class="br-100 " src="{% static 'pages/img/testimonial/testimonial-02.png' %}" alt="Emma Thompson - CEO & Founder">
+                                    </div>
+                                    <div class="pf-client-feedback__meta">
+                                        <div class="pf-client-feedback__name">
+                                            <h3>Ava Richardson</h3>
+                                        </div>
+                                        <div class="pf-client-feedback__position">
+                                            <span>CEO</span>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="pf-client-feedback__rating">
+                                    <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.38488 0.690724C8.68423 -0.230587 9.98764 -0.230588 10.287 0.690722L11.8056 5.36448C11.9395 5.77651 12.3234 6.05547 12.7566 6.05547H17.6709C18.6397 6.05547 19.0424 7.29508 18.2587 7.86448L14.283 10.753C13.9325 11.0077 13.7858 11.459 13.9197 11.8711L15.4383 16.5448C15.7377 17.4661 14.6832 18.2323 13.8995 17.6629L9.92372 14.7743C9.57324 14.5197 9.09864 14.5197 8.74815 14.7743L4.77241 17.6629C3.9887 18.2323 2.93422 17.4661 3.23357 16.5448L4.75217 11.8711C4.88604 11.459 4.73938 11.0077 4.3889 10.753L0.413159 7.86448C-0.370555 7.29508 0.0322201 6.05547 1.00094 6.05547H5.91523C6.34845 6.05547 6.73241 5.77651 6.86628 5.36448L8.38488 0.690724Z" fill="currentColor" />
+                                    </svg>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                            <div class="pf-client-feedback__description">
+                                <p>This sunscreen is a lifesaver. Lightweight, non-greasy, and no white cast at all. I wear it every day, and my skin stays protected and smooth. i Love it so much!</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <section class="pf-service-section pt-130 pb-130">
-                    <div class="container">
-                        <div class="row align-items-center mb-70">
-                            <div class="col-xl-4">
-                                <div class="section-title-area text-center text-xl-start mb-4 mb-xl-0 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
-                                    <h2 class="section-title"><span>What</span> We Offer for Your <span>Skin</span></h2>
-                                </div>
-                            </div>
-                            <div class="col-xl-8">
-                                <div class="pf-services-tabs wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                                    <nav>
-                                        <div class="nav justify-content-center justify-content-xl-end" id="nav-tab" role="tablist">
-                                            <button class="tab-btn theme-btn style-two active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab"  aria-selected="true">All Services</button>
-                                            <button class="tab-btn theme-btn style-two" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#tab-two" type="button" role="tab"  aria-selected="false">Skin Wellness</button>
-                                            <button class="tab-btn theme-btn style-two" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab"  aria-selected="false">Surgical Dermatology</button>
-                                        </div>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                                <div class="row gap-y-30 pf-services-list-wrapper">
-                                    {% for treatment in treatments %}
-                                    <div class="col-xl-12 mb-30">
-                                        <div class="pf-services-tab-box d-flex">
-                                            <div class="pf-services-tab-content">
-                                                <div class="pf-services-tab-heading">
-                                                    <div class="pf-services-tab-cat mb-20">
-                                                        {% for tag in treatment.get_tags_list %}
-                                                        <a class="tab-cat-btn" href="#">{{ tag }}</a>
-                                                        {% endfor %}
-                                                    </div>
-                                                    <h3 class="pf-services-tab-title mb-10"><a href="{% url 'services_details' treatment.treatment_code %}">{{ treatment.name }}</a></h3>
-                                                    <p>{{ treatment.services_page_description }}</p>
-                                                </div>
-                                                <div class="pf-services-tab-btn">
-                                                    <a class="theme-btn style-two" href="{% url 'services_details' treatment.treatment_code %}">Read More</a>
-                                                </div>
-                                            </div>
-                                            <div class="pf-services-tab-thumb">
-                                                <img src="{{ treatment.main_thumbnail.url }}" alt="{{ treatment.name }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                            
-                            <div class="tab-pane fade" id="tab-two" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                                <div class="row gap-y-30 pf-services-list-wrapper">
-                                    {% for treatment in treatments %}
-                                    <div class="col-xl-12 mb-30">
-                                        <div class="pf-services-tab-box d-flex">
-                                            <div class="pf-services-tab-content">
-                                                <div class="pf-services-tab-heading">
-                                                    <div class="pf-services-tab-cat mb-20">
-                                                        {% for tag in treatment.get_tags_list %}
-                                                        <a class="tab-cat-btn" href="#">{{ tag }}</a>
-                                                        {% endfor %}
-                                                    </div>
-                                                    <h3 class="pf-services-tab-title mb-10"><a href="{% url 'services_details' treatment.treatment_code %}">{{ treatment.name }}</a></h3>
-                                                    <p>{{ treatment.services_page_description }}</p>
-                                                </div>
-                                                <div class="pf-services-tab-btn">
-                                                    <a class="theme-btn style-two" href="{% url 'services_details' treatment.treatment_code %}">Read More</a>
-                                                </div>
-                                            </div>
-                                            <div class="pf-services-tab-thumb">
-                                                <img src="{{ treatment.main_thumbnail.url }}" alt="{{ treatment.name }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                            
-                            <div class="tab-pane fade" id="tab-three" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">            
-                                <div class="row gap-y-30 pf-services-list-wrapper">
-                                    {% for treatment in treatments %}
-                                    <div class="col-xl-12 mb-30">
-                                        <div class="pf-services-tab-box d-flex">
-                                            <div class="pf-services-tab-content">
-                                                <div class="pf-services-tab-heading">
-                                                    <div class="pf-services-tab-cat mb-20">
-                                                        {% for tag in treatment.get_tags_list %}
-                                                        <a class="tab-cat-btn" href="#">{{ tag }}</a>
-                                                        {% endfor %}
-                                                    </div>
-                                                    <h3 class="pf-services-tab-title mb-10"><a href="{% url 'services_details' treatment.treatment_code %}">{{ treatment.name }}</a></h3>
-                                                    <p>{{ treatment.services_page_description }}</p>
-                                                </div>
-                                                <div class="pf-services-tab-btn">
-                                                    <a class="theme-btn style-two" href="{% url 'services_details' treatment.treatment_code %}">Read More</a>
-                                                </div>
-                                            </div>
-                                            <div class="pf-services-tab-thumb">
-                                                <img src="{{ treatment.main_thumbnail.url }}" alt="{{ treatment.name }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <section class="pf-booking-area bg-2nd-color pt-130 pb-130">
-                    <div class="container">
-                        <div class="row gap-x-110">
-                            <div class="col-xl-6">
-                                <div class="section-title-area mb-70 text-center text-xl-start wow pfFadeInLeft" data-wow-duration=".6s" data-wow-delay=".2s">
-                                    <span class="section-subtitle mb-20 ">Booking Appointment</span>
-                                    <h2 class="section-title ">Schedule Your Appointment Today</h2>
-                                </div>
-                                <div class="pf-booking-img wow pfFadeInLeft" data-wow-duration=".6s" data-wow-delay=".3s">
-                                    <img src="{% static 'pages/img/booking/booking-01.png' %}" alt="">
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="pf-booking-wrapper wow pfFadeInRight" data-wow-duration=".6s" data-wow-delay=".3s">
-                                    <h3 class="pf-booking-title mb-50 text-center text-xl-start">Share Your Information</h3>
-                                    <form class="pf-booking-form" action="pages/mail.php" method="post" id="contact-form">
-                                        <div class="row">
-                                            <div class="col-xl-12">
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input type="text" class="form_control" placeholder="Enter your name*" name="name" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="email" class="form_control" placeholder="Enter your email*" name="email" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label>Phone</label>
-                                                    <input type="text" class="form_control" placeholder="Enter your phone*" name="phone" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label>Select Options</label>
-                                                    <select class="wide" name="services" required>
-                                                        <option value="01">01 People</option>
-                                                        <option value="02">02 People</option>
-                                                        <option value="03">03 People</option>
-                                                        <option value="04">04 People</option>
-                                                        <option value="05">05 People</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label>Select Schedule</label>
-                                                    <input type="date" class="form_control" name="schedule" id="datepicker" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <div class="form-group">
-                                                    <label>Message</label>
-                                                    <textarea name="message" class="form_control" placeholder="Writhe message.." rows="5" cols="5" required></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <div class="pf-booking-btn ">
-                                                    <button type="submit" class="theme-btn style-one hover-bg w-100">Send Message</button>
-                                                </div>
-                                                <p class="ajax-response"></p>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <section class="pf-client-feedback-area pb-130 pt-130">
-                    <div class="container">
-                        <div class="row justify-content-center mb-70">
-                            <div class="col-xxl-5">
-                                <div class="section-title-area text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
-                                    <span class="section-subtitle mb-20">Testimonials</span>
-                                    <h2 class="section-title"><span>Glow-Up</span> Reviews from Happy <span>Clients</span></h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper testimonials-slider-four-active wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="pf-client-feedback__box">
-                                        <div class="pf-client-feedback__content">
-                                            <div class="pf-client-feedback__author">
-                                                <div class="pf-client-feedback__media">
-                                                    <img class="br-100 " src="{% static 'pages/img/testimonial/testimonial-01.png' %}" alt="Emma Thompson - CEO & Founder">
-                                                </div>
-                                                <div class="pf-client-feedback__meta">
-                                                    <div class="pf-client-feedback__name">
-                                                        <h3>Emma Thompson</h3>
-                                                    </div>
-                                                    <div class="pf-client-feedback__position">
-                                                        <span>CEO & Founder</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="pf-client-feedback__rating">
-                                                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.38488 0.690724C8.68423 -0.230587 9.98764 -0.230588 10.287 0.690722L11.8056 5.36448C11.9395 5.77651 12.3234 6.05547 12.7566 6.05547H17.6709C18.6397 6.05547 19.0424 7.29508 18.2587 7.86448L14.283 10.753C13.9325 11.0077 13.7858 11.459 13.9197 11.8711L15.4383 16.5448C15.7377 17.4661 14.6832 18.2323 13.8995 17.6629L9.92372 14.7743C9.57324 14.5197 9.09864 14.5197 8.74815 14.7743L4.77241 17.6629C3.9887 18.2323 2.93422 17.4661 3.23357 16.5448L4.75217 11.8711C4.88604 11.459 4.73938 11.0077 4.3889 10.753L0.413159 7.86448C-0.370555 7.29508 0.0322201 6.05547 1.00094 6.05547H5.91523C6.34845 6.05547 6.73241 5.77651 6.86628 5.36448L8.38488 0.690724Z" fill="currentColor" />
-                                                </svg>
-                                                <span>4.9</span>
-                                            </div>
-                                        </div>
-                                        <div class="pf-client-feedback__description">
-                                            <p>My skin feels incredibly soft and hydrated since using this serum. It absorbs quickly, doesn’t feel greasy, and gives me a healthy glow. I absolutely love it!</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="pf-client-feedback__box">
-                                        <div class="pf-client-feedback__content">
-                                            <div class="pf-client-feedback__author">
-                                                <div class="pf-client-feedback__media">
-                                                    <img class="br-100 " src="{% static 'pages/img/testimonial/testimonial-02.png' %}" alt="Emma Thompson - CEO & Founder">
-                                                </div>
-                                                <div class="pf-client-feedback__meta">
-                                                    <div class="pf-client-feedback__name">
-                                                        <h3>Ava Richardson</h3>
-                                                    </div>
-                                                    <div class="pf-client-feedback__position">
-                                                        <span>CEO</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="pf-client-feedback__rating">
-                                                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.38488 0.690724C8.68423 -0.230587 9.98764 -0.230588 10.287 0.690722L11.8056 5.36448C11.9395 5.77651 12.3234 6.05547 12.7566 6.05547H17.6709C18.6397 6.05547 19.0424 7.29508 18.2587 7.86448L14.283 10.753C13.9325 11.0077 13.7858 11.459 13.9197 11.8711L15.4383 16.5448C15.7377 17.4661 14.6832 18.2323 13.8995 17.6629L9.92372 14.7743C9.57324 14.5197 9.09864 14.5197 8.74815 14.7743L4.77241 17.6629C3.9887 18.2323 2.93422 17.4661 3.23357 16.5448L4.75217 11.8711C4.88604 11.459 4.73938 11.0077 4.3889 10.753L0.413159 7.86448C-0.370555 7.29508 0.0322201 6.05547 1.00094 6.05547H5.91523C6.34845 6.05547 6.73241 5.77651 6.86628 5.36448L8.38488 0.690724Z" fill="currentColor" />
-                                                </svg>
-                                                <span>4.8</span>
-                                            </div>
-                                        </div>
-                                        <div class="pf-client-feedback__description">
-                                            <p>This sunscreen is a lifesaver. Lightweight, non-greasy, and no white cast at all. I wear it every day, and my skin stays protected and smooth. i Love it so much!</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-{% endblock content %}
+            </div>
+        </div>
+    </section>

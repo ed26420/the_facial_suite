@@ -39,21 +39,21 @@
                         <h2>About the Service</h2>
                         <p class="mb-30">{{ treatment.services_page_description }}</p>
                         
-                        <img class="br-10" src="{% static 'pages/img/services-details/services-details-img-01.png' %}" alt="">
+                        <img class="br-10" src="{{ treatment.mid_page_image.url }}" alt="{{ treatment.name }}">
                         
                         <div class="pf-services-details-benefits mt-80 mb-80">
                             <h2>How to Use for Maximum Results</h2>
-                            <p class="mb-30">Start with a clean face, apply evenly, avoid eyes, let it absorb fully, then rinse and moisturize. Use weekly to maintain hydration, softness, and radiant skin.</p>
+                            <p class="mb-30">{{treatment.usage_instructions}}</p>
                             <div class="row gap-x-60 gap-y-30">
                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                     <div class="pf-services-details-benefits-box">
                                         <div class="icon">
                                             <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.03953 23.8081C8.1246 23.7602 8.19539 23.6905 8.24465 23.6062C8.29391 23.5218 8.31987 23.4259 8.31987 23.3283C8.31987 23.2306 8.29391 23.1347 8.24465 23.0504C8.19539 22.9661 8.1246 22.8964 8.03953 22.8484L6.54875 22.0332L5.73353 20.5424C5.68211 20.4618 5.61119 20.3954 5.52732 20.3494C5.44345 20.3034 5.34934 20.2793 5.25369 20.2793C5.15804 20.2793 5.06393 20.3034 4.98006 20.3494C4.89619 20.3954 4.82527 20.4618 4.77385 20.5424L3.95863 22.0332L2.46785 22.8484C2.38278 22.8964 2.31199 22.9661 2.26272 23.0504C2.21346 23.1347 2.1875 23.2306 2.1875 23.3283C2.1875 23.4259 2.21346 23.5218 2.26272 23.6062C2.31199 23.6905 2.38278 23.7602 2.46785 23.8081L3.95863 24.6233L4.77385 26.1141C4.82097 26.2002 4.89038 26.272 4.9748 26.3221C5.05922 26.3721 5.15555 26.3985 5.25369 26.3985C5.35182 26.3985 5.44815 26.3721 5.53258 26.3221C5.617 26.272 5.68641 26.2002 5.73353 26.1141L6.54875 24.6233L8.03953 23.8081ZM5.66596 23.9579L5.25368 24.712L4.84139 23.9579C4.75179 23.7364 4.05553 23.4533 3.86996 23.3283L4.62404 22.916C4.84552 22.8264 5.12869 22.1301 5.2537 21.9446L5.66596 22.6986C5.75556 22.9201 6.45182 23.2033 6.6374 23.3283C6.44673 23.4547 5.75858 23.7344 5.66596 23.9579Z" fill="currentColor" />
+                                                <path d="M8.03953 23.8081C8.1246 23.7602 8.19539 23.6905 8.24465 23.6062C8.29391 23.5218 8.31987 23.4259 8.31987 23.3283C8.31987 23.2306 8.29391 23.1347 8.24465 23.0504C8.19539 22.9661 8.1246 22.8964 8.03953 22.8484L6.54875 22.0332L5.73353 20.5424C5.68211 20.4618 5.61119 20.3954 5.52732 20.3494C5.44345 20.3034 5.34934 20.2793 5.25369 20.2793C5.15804 20.2793 5.06393 20.3034 4.98006 20.3494C4.89619 20.3954 4.82527 20.4618 4.77385 20.5424L3.95863 22.0332L2.46785 22.8484C2.38278 22.8964 2.31199 22.9661 2.26272 23.0504C2.21346 23.1347 2.1875 23.2306 2.1875 23.3283C2.1875 23.4259 2.21346 23.5218 2.26272 23.6062C2.31199 23.6905 2.38278 23.7602 2.46785 23.8081L3.95863 24.6233L4.77385 26.1141C4.82097 26.2002 4.89038 26.272 4.9748 26.3221C5.05922 26.3721 5.15555 26.3985 5.25369 26.3985C5.35182 26.3985 5.44815 26.3721 5.53258 26.3221C5.617 26.272 5.68641 26.2002 5.73353 26.1141L6.54875 24.6233L8.03953 23.8081ZM5.66596 23.9579L5.25368 24.712L4.84139 23.9579C4.75179 23.7364 4.05553 23.4533 3.86996 23.3283L4.62404 22.916C4.84552 22.8264 5.12869 22.1301 5.2537 21.9446L5.66596 22.6986C5.75556 22.9201 6.45182 23.2033 6.6374 23.3283C6.44673 23.4547 5.75858 23.7344 5.66596 23.9579Z" fill="currentColor"/>
                                             </svg>
                                         </div>
-                                        <h3>Deep Moisture Restoration</h3>
-                                        <p>The treatment infuses the skin with essential hydration, helping to repair the skin’s natural moisture barrier and eliminate dryness or flakiness.</p>
+                                        <h3>{{ benefits_list.0.title }}</h3>
+                                        <p>{{ benefits_list.0.description }}</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6">
@@ -77,8 +77,8 @@
                                                 <path d="M28.7436 9.53516L27.2165 11.2662L25.6895 9.53516" stroke="currentColor" stroke-width="1.36719" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                         </div>
-                                        <h3>Improved Skin Texture & Elasticity</h3>
-                                        <p>With regular use, hydrating facials smooth rough skin, minimize fine lines, and improve elasticity, resulting in a soft, supple complexion.</p>
+                                        <h3>{{ benefits_list.1.title }}</h3>
+                                        <p>{{ benefits_list.1.description }}</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6">
@@ -88,8 +88,8 @@
                                                 <path d="M11.5447 19.2445C10.697 19.2445 9.91502 18.8562 9.40642 18.1781C9.22595 17.9375 9.2697 17.593 9.51033 17.4125C9.75095 17.232 10.0955 17.2758 10.276 17.5164C10.5822 17.9211 11.0416 18.1508 11.5447 18.1508C12.0478 18.1508 12.5072 17.9211 12.8135 17.5164C12.9939 17.2758 13.3385 17.2266 13.5791 17.4125C13.8197 17.593 13.8689 17.9375 13.683 18.1781C13.1689 18.8562 12.3869 19.2445 11.5447 19.2445ZM19.376 17.5164C19.0697 17.9211 18.6103 18.1508 18.1072 18.1508C17.6041 18.1508 17.1447 17.9211 16.8385 17.5164C16.658 17.2758 16.3135 17.2266 16.0728 17.4125C15.8322 17.593 15.783 17.9375 15.9689 18.1781C16.483 18.8562 17.265 19.2445 18.1072 19.2445C18.9494 19.2445 19.7369 18.8562 20.2455 18.1781C20.426 17.9375 20.3822 17.593 20.1416 17.4125C19.901 17.232 19.5564 17.2758 19.376 17.5164ZM16.04 23.1656C15.7666 23.4172 15.3127 23.5648 14.8314 23.5648C14.3502 23.5648 13.8963 23.4172 13.6228 23.1656C13.3986 22.9633 13.0541 22.9797 12.8517 23.2039C12.6494 23.4281 12.6658 23.7727 12.89 23.975C13.3658 24.407 14.0767 24.6531 14.8314 24.6531C15.5861 24.6531 16.297 24.407 16.7728 23.975C16.997 23.7727 17.0135 23.4281 16.8111 23.2039C16.6088 22.9797 16.2642 22.9633 16.04 23.1656ZM29.0939 27.3438C29.0939 27.568 28.9517 27.7703 28.7385 27.8469C27.0103 28.4922 26.2392 30.357 26.2283 30.3734C26.1463 30.5812 25.9439 30.7125 25.7197 30.7125C25.4955 30.7125 25.2986 30.5758 25.2111 30.3734C24.4564 28.4977 22.7228 27.8578 22.7064 27.8523C22.4986 27.7758 22.351 27.5789 22.3455 27.3602C22.3345 27.1359 22.4658 26.9281 22.6681 26.8406C24.6424 25.9656 25.1783 24.4016 25.2002 24.3359C25.2713 24.1117 25.4791 23.9641 25.7142 23.9586C25.933 23.9367 26.1572 24.1008 26.2338 24.3195C26.8463 26.0422 28.7275 26.8188 28.7439 26.8242C28.9517 26.9062 29.0885 27.1141 29.0885 27.3383L29.0939 27.3438ZM27.3877 27.3219C26.8627 26.9719 26.2119 26.4414 25.7197 25.6977C25.3806 26.2008 24.8502 26.8133 24.0517 27.3328C24.5767 27.6773 25.222 28.2188 25.7361 29.0117C26.0861 28.4812 26.6275 27.825 27.3877 27.3219ZM19.9666 27.6773V31.1773C19.9666 31.4781 19.7205 31.7242 19.4197 31.7242C19.1189 31.7242 18.8728 31.4781 18.8728 31.1773V28.3117C17.6369 28.9187 16.2588 29.2633 14.826 29.2633C14.7713 29.2633 14.7166 29.2633 14.6564 29.2633C13.1908 29.2359 11.7853 28.8367 10.533 28.1477V31.1773C10.533 31.4781 10.2869 31.7242 9.98611 31.7242C9.68533 31.7242 9.43923 31.4781 9.43923 31.1773V27.4422C8.15408 26.4742 7.10408 25.1672 6.43142 23.625C5.37048 24.6695 4.88376 25.8562 4.8783 25.8727C4.79626 26.0805 4.59392 26.2172 4.3697 26.2172C4.14548 26.2172 3.94314 26.0805 3.86111 25.8727C2.81658 23.275 0.382984 22.3672 0.361109 22.3617C0.153296 22.2852 0.00564015 22.0883 0.000171396 21.8641C-0.00529735 21.6398 0.120484 21.4375 0.322827 21.3445C1.85955 20.6609 2.76736 19.682 3.27595 18.9273C2.94236 17.8391 2.81658 17.0133 2.81111 16.975C1.81033 11.6758 5.31033 7.90781 5.45798 7.74922C6.02673 7.04922 6.68298 6.45859 7.37751 5.95547C7.98455 2.54297 10.9869 0 14.4705 0H15.1814C18.676 0 21.6838 2.55391 22.2799 5.97734C22.9799 6.48594 23.647 7.07109 24.2213 7.77656C24.3416 7.90234 27.8416 11.6703 26.8408 16.9914C26.8135 17.1609 26.108 21.7109 23.4994 23.6687C23.4228 23.7289 23.3353 23.7563 23.2424 23.7672C22.5314 25.375 21.383 26.7203 19.9611 27.6719L19.9666 27.6773ZM18.8181 5.34844C18.933 5.59453 19.015 5.83516 19.0588 6.0375C19.4306 8.55859 18.0361 9.73438 17.4236 10.1227C17.2322 10.243 17.0135 10.3305 16.7838 10.4016C23.297 12.8953 23.3572 17.1391 23.3408 17.6477L23.6416 22.0336C25.2603 20.0812 25.7635 16.8547 25.7635 16.8164C26.6658 12.0367 23.4338 8.54219 23.401 8.50937C22.1322 6.95625 20.4041 5.97734 18.8127 5.35391L18.8181 5.34844ZM8.73923 5.10234C11.7033 3.48906 14.826 3.21563 15.0119 3.20469C15.9908 3.13906 16.7619 3.36328 17.358 3.71875C18.4244 4.00313 19.6877 4.45156 20.9236 5.12422C20.0541 2.76172 17.7791 1.10469 15.1814 1.10469H14.4705C11.8838 1.10469 9.61423 2.75625 8.73923 5.10781V5.10234ZM3.88845 16.7945C3.88845 16.7945 3.93767 17.1117 4.04705 17.5711C4.13455 17.5055 4.24392 17.4672 4.35877 17.4672C4.58845 17.4617 4.80173 17.6094 4.88377 17.8281C5.17361 18.6375 5.65486 19.2883 6.16892 19.8078L6.31658 17.6422C6.2947 17.0516 6.3658 11.5008 16.3135 9.39531C16.5103 9.35156 16.6853 9.28594 16.8385 9.1875C17.5002 8.77188 18.233 7.91875 17.9814 6.22891C17.9705 6.18516 17.4674 4.12891 15.0885 4.2875C15.0392 4.2875 9.26423 4.80156 6.2783 8.47109C6.21814 8.53672 2.99158 12.0312 3.88845 16.7891V16.7945ZM6.96736 21.8203C6.17986 21.3391 5.10251 20.5078 4.35877 19.2664C3.89939 20.0156 3.08455 21.0219 1.7447 21.8312C2.52127 22.3016 3.59314 23.1273 4.38064 24.4617C4.86736 23.6687 5.70408 22.575 6.96736 21.8148V21.8203ZM22.5752 22.4656L22.247 17.6859C22.247 17.6859 22.247 17.6367 22.247 17.6094C22.258 17.4289 22.3947 13.0758 14.826 10.8938C7.26814 13.0703 7.41033 17.418 7.4158 17.6148V17.6859L7.20798 20.6664C7.8533 21.1094 8.37283 21.3227 8.38377 21.3281C8.59158 21.4102 8.7283 21.618 8.7283 21.8422C8.7283 22.0664 8.58611 22.2687 8.37283 22.3508C7.98455 22.4984 7.63455 22.6898 7.31736 22.9031C8.54236 26.0094 11.4463 28.1148 14.6783 28.175H14.826C18.3642 28.175 21.5197 25.8508 22.5752 22.4711V22.4656Z" fill="currentColor" />
                                             </svg>
                                         </div>
-                                        <h3>Enhanced Radiance and Glow</h3>
-                                        <p>By replenishing moisture and stimulating circulation, the skin appears brighter, fresher, and more radiant after each session.</p>
+                                        <h3>{{ benefits_list.2.title }}</h3>
+                                        <p>{{ benefits_list.2.description }}</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6">
@@ -108,61 +108,39 @@
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M13.7315 12.306C14.5236 13.1367 15.6409 13.6546 16.8782 13.6546C19.2778 13.6546 21.2259 11.7063 21.2259 9.30669C21.2259 6.90724 19.2778 4.95898 16.8782 4.95898H5.15809C4.76898 4.95898 4.45312 5.27484 4.45312 5.66395C4.45312 6.05289 4.76898 6.36874 5.15809 6.36874H16.8782C18.4996 6.36874 19.8162 7.68529 19.8162 9.30669C19.8162 10.9283 18.4996 12.2448 16.8782 12.2448C16.0421 12.2448 15.2871 11.8946 14.7518 11.3331C14.4833 11.0516 14.0369 11.0409 13.7554 11.3094C13.4737 11.5779 13.463 12.0245 13.7315 12.306Z" fill="currentColor" />
                                             </svg>
                                         </div>
-                                        <h3>Calmed and Balanced Skin</h3>
-                                        <p>The treatment soothes inflammation and sensitivity while balancing oil production, making it ideal for stressed or weather-affected skin.</p>
+                                        <h3>{{ benefits_list.3.title }}</h3>
+                                        <p>{{ benefits_list.3.description }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <h2>{{ treatment.name }} Benefits</h2>
-                        <p class="mb-40">Our dynamic facial structures target core skin layout restoration. Regular care deeply replenishes essential metrics, balancing texture surface blocks seamlessly.</p>
+                        <p class="mb-40">{{ treatment.benefits_intro_text }}</p>
                         
                         <div class="pf-services-details-benefits-list mb-80">
                             <div class="row">
                                 <div class="col-xl-7">
                                     <ul class="list-unstyled">
+                                        {% for bullet in bullet_list %}
                                         <li class="d-flex align-items-start mb-3">
                                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="me-3 text-success mt-1">
                                                 <polyline points="20 6 9 17 4 12"></polyline>
                                             </svg>
-                                            <span>Deeply moisturizes and restores skin hydration levels</span>
-                                        </li>
-                                        <li class="d-flex align-items-start mb-3">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="me-3 text-success mt-1">
-                                                <polyline points="20 6 9 17 4 12"></polyline>
-                                            </svg>
-                                            <span>Smooths rough texture for soft, supple skin</span>
-                                        </li>
-                                        <li class="d-flex align-items-start mb-3">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="me-3 text-success mt-1">
-                                                <polyline points="20 6 9 17 4 12"></polyline>
-                                            </svg>
-                                            <span>Reduces fine lines and boosts elasticity</span>
-                                        </li>
-                                        <li class="d-flex align-items-start mb-3">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="me-3 text-success mt-1">
-                                                <polyline points="20 6 9 17 4 12"></polyline>
-                                            </svg>
-                                            <span>Brightens dull skin for a radiant glow</span>
-                                        </li>
-                                        <li class="d-flex align-items-start mb-3">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="me-3 text-success mt-1">
-                                                <polyline points="20 6 9 17 4 12"></polyline>
-                                            </svg>
-                                            <span>Calms sensitive skin and soothes irritation</span>
-                                        </li>
+                                            <span>{{ bullet }}</span>
+                                        </li>  
+                                    {% endfor %}
                                     </ul>
                                 </div>
                                 <div class="col-xl-5 text-start text-xl-end">
-                                    <img class="br-10 mt-5 mt-xl-0" src="{% static 'pages/img/services-details/services-details-img-02.png' %}" alt="">
+                                    <img class="br-10 mt-5 mt-xl-0" src="{{ treatment.details_second_image_bg.url }}" alt="{{ treatment.name }}">
                                 </div>
                             </div>
                         </div>
 
                         <h2>The Importance of Using Premium Skincare Products</h2>
-                        <p class="mb-30">Using premium skincare products is essential for maintaining healthy, radiant skin. High-quality formulations contain clinically tested, skin-friendly ingredients that are more effective and less likely to cause irritation or damage. Unlike cheaper alternatives, premium products often avoid harsh chemicals, synthetic fragrances, and fillers that can clog pores or trigger reactions.</p>
-                        <p>Investing in trusted, professional-grade skincare not only enhances your daily routine but also supports the skin’s natural barrier, ensuring lasting beauty and optimal skin health over time.</p>
+                        <p class="mb-30">{{ treatment.details_about_paragraph_1 }}</p>
+                        <p>{{ treatment.details_about_paragraph_2 }}</p>
                     </div>
                 </div>
 

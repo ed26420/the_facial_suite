@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="pf-img-banner-wrapper wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                        <img class="br-20 mt-minus-350" src="{{ image_dict.Banner }}" alt="{{ page.title }}">
+                        <img class="br-20 mt-minus-350" src="{{ image_dict.about_banner_01 }}" alt="{{ page.title }}">
                     </div>
                 </div>
             </div>
@@ -45,13 +45,13 @@
                     </div>
                 </div>
                 <div class="col-xl-6">
-                    <p class="text-center text-xl-start wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">We believe self-care is more than routine — it's a ritual of love and confidence.</p>
+                    <p class="text-center text-xl-start wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">{{ page.story_text_two }}</p>
                 </div>
             </div>
             <div class="row row-x-gap">
                 <div class="col-xl-6 col-lg-6 col-md-6">
                     <div class="pf-about-box d-flex align-items-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
-                        <img src="{{ image_dict.AboutBox01 }}" alt="Client Satisfaction">
+                        <img src="{{ image_dict.about_box_01 }}" alt="Client Satisfaction">
                         <div class="pf-about-content">
                             <h2 class="pf-about-box-title">97%</h2>
                             <p class="pf-about-box-desc">Our Client Satisfaction</p>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6">
                     <div class="pf-about-box d-flex align-items-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                        <img src="{{ image_dict.AboutBox02 }}" alt="Completed Project">
+                        <img src="{{ image_dict.about_box_02 }}" alt="Completed Project">
                         <div class="pf-about-content">
                             <h2 class="pf-about-box-title">23K</h2>
                             <p class="pf-about-box-desc">Completed Project</p>
@@ -82,46 +82,100 @@
                 </div>
             </div>
             <div class="row row-gap-10">
-                {% for img in page.images.all %}
-                    {% if "TeamMember" in img.name %}
+                {% for member in team_members %}
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="pf-our-team-item wow pfFadeInUp">
-                            <img src="{{ img.image.url }}" alt="{{ img.name }}">
+                            <img src="{{ member.photo.url }}" alt="{{ member.name }}">
                             <div class="pf-our-team-content">
                                 <div class="pf-our-team-author">
-                                    <h3 class="pf-our-team-author-title"><a href="{% url 'team_details' %}">{{ img.name|cut:"TeamMember" }}</a></h3>
-                                    <span>Skin Glow Artist</span>
+                                    <h3 class="pf-our-team-author-title"><a href="{% url 'team_details' member_code=member.member_code %}">{{ member.name }}</a></h3>
+                                    <span>{{ member.role }}</span>
                                 </div>
-                                <div class="pf-our-team-icon"><a href="{% url 'team_details' %}"><i class="fal fa-plus"></i></a></div>
+                                <div class="pf-our-team-icon"><a href="#"><i class="fal fa-plus"></i></a></div>
                             </div>
                         </div>
                     </div>
-                    {% endif %}
                 {% endfor %}
             </div>
         </div>
     </section>
 
+    <!-- Fully Dynamic Testimonials Slider Section -->
     <section class="pf-testimonial-area overflow-hidden pt-130 pb-130">
         <div class="container">
             <div class="row justify-content-center mb-20">
                 <div class="col-xxl-5">
                     <div class="section-title-area text-center">
                         <span class="section-subtitle mb-20">Testimonials</span>
-                        <h2 class="section-title mb-40"><span>Trusted</span> by Thousands of Happy <span>Faces</span></h2>
+                        <h2 class="section-title mb-40"><span>Trusted</span> by Hundreds of Happy <span>Faces</span></h2>
                     </div>
                 </div>
             </div>
-            <div class="pf-testimonial">
+            
+            <div class="pf-testimonial wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
                 <div class="row gap-x-40">
+                    
+                    <!-- 1. Left Thumbnail Column -->
                     <div class="col-xl-3 col-lg-4 col-md-5">
-                        <div class="pf-testimonial-thumb"><img src="{{ image_dict.TestimonialThumb }}" alt="Testimonial"></div>
-                    </div>
-                    <div class="col-xl-6 col-lg-8 col-md-7">
-                        <div class="pf-testimonial-content">
-                            <p>"I started seeing a glow within a week! My skin feels hydrated, plump, and healthy. I love how light yet effective the formulas are-perfect for my busy lifestyle. Its like having a mini facial everyday and my skin has never looked better"</p>
+                        <div class="pf-testimonial-thumb">
+                            {% for testimonial in testimonials %}
+                                {% if forloop.first and testimonial.background_image %}
+                                    <img id="active-testimonial-img" src="{{ testimonial.background_image.url }}" alt="{{ testimonial.client_name }}">
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
+                    
+                    <!-- 2. Center Swiper Content Column -->
+                    <div class="col-xl-6 col-lg-8 col-md-7">
+                        <div class="pf-testimonial-content">
+                            <div class="swiper testimonials-slider-three-active">
+                                <div class="swiper-wrapper">
+                                    {% for testimonial in testimonials %}
+                                    <div class="swiper-slide" data-rate="{{ testimonial.rating|floatformat:0 }}" data-img="{% if testimonial.background_image %}{{ testimonial.background_image.url }}{% endif %}">
+                                        <div class="pf-testimonial-description">
+                                            <p>"{{ testimonial.review_text }}"</p>
+                                        </div>
+                                        <div class="pf-testimonial-bio">
+                                            <div class="pf-testimonial-name">
+                                                <h3 class="mb-5">{{ testimonial.client_name }}</h3>
+                                            </div>
+                                            <div class="pf-testimonial-position">
+                                                <span>{{ testimonial.client_position }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Right Control & Navigation Column -->
+                    <div class="col-xl-3">
+                        <div class="pf-testimonial-aside">
+                            <div class="pf-testimonial-control">
+                                <div class="pf-testimonial-navigation w-100">
+                                    <div class="pf-testimonial-arrow justify-content-start justify-content-xl-end">
+                                        <span class="pf-testimonial-three-prev"><i class="fal fa-chevron-left"></i></span>
+                                        <span class="pf-testimonial-three-next"><i class="fal fa-chevron-right"></i></span>
+                                    </div>
+                                </div>
+                                <div class="pf-testimonial-rate">
+                                    <h3>
+                                        <span id="active-testimonial-rate" class="pf-testimonial-rate-value">
+                                            {% for testimonial in testimonials %}
+                                                {% if forloop.first %}{{ testimonial.rating|floatformat:0 }}{% endif %}
+                                            {% endfor %}
+                                        </span>
+                                        <span>%</span>
+                                    </h3>
+                                    <p>Match Rate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -158,10 +212,52 @@
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
-                    <div class="pf-faq-img text-end"><img class="br-20" src="{{ image_dict.FaqImage }}" alt="FAQ"></div>
+                    <div class="pf-faq-img text-end">
+                        <img class="br-20" src="{% if faq_obj and faq_obj.image %}{{ faq_obj.image.url }}{% endif %}" alt="FAQ">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 </main>
+
+<!-- Testimonial Slider JS Sync Script -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        const sliderEl = document.querySelector('.testimonials-slider-three-active');
+        if (!sliderEl) return;
+
+        function updateDisplay() {
+            const activeSlide = sliderEl.querySelector('.swiper-slide-active');
+            if (!activeSlide) return;
+
+            const imgSrc = activeSlide.getAttribute('data-img');
+            const rateVal = activeSlide.getAttribute('data-rate');
+
+            const imgElement = document.getElementById('active-testimonial-img');
+            const rateElement = document.getElementById('active-testimonial-rate');
+
+            if (imgElement && imgSrc) {
+                imgElement.src = imgSrc;
+            }
+            if (rateElement && rateVal) {
+                rateElement.textContent = rateVal;
+            }
+        }
+
+        updateDisplay();
+
+        document.querySelectorAll('.pf-testimonial-three-next, .pf-testimonial-three-prev').forEach(btn => {
+            btn.addEventListener('click', function () {
+                setTimeout(updateDisplay, 50); 
+            });
+        });
+
+        const observer = new MutationObserver(updateDisplay);
+        observer.observe(sliderEl, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+
+    }, 300);
+});
+</script>
 {% endblock content %}

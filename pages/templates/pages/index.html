@@ -3,6 +3,7 @@
 
 {% block content %}
 <main>
+    <!-- Hero titles and Hero image section -->
     <section class="pf-hero-area v2 pt-254">
         <div class="pf-hero-wrappper text-center pt-130 pb-30" data-bg-img="{{ content.hero_bg_image.url }}">
             <div class="pf-hero-overlay"></div>
@@ -21,7 +22,11 @@
             <div class="pf-logo-slider-area home-one p-relative"></div>
         </div>
     </section>
+    <!-- Hero titles and Hero image section End Here -->
 
+
+
+    <!-- Our Category Section -->
     <section class="pf-featured-area pt-130">
         <div class="container">
             <div class="row">
@@ -51,106 +56,461 @@
             </div>
         </div>
     </section>
+    <!-- Our Category Section End Here-->
 
-    <!-- About Section Start -->
-    <section class="pf-about-area pt-130 pb-130">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-10">
-                <div class="about-text-container text-center">
-                    <span class="section-subtitle mb-20">{{ content.about_subtitle }}</span>
-                    
-                    <h2 class="section-title mb-40">
-                        {{ about_description_html|safe }}
-                    </h2>
-                    
-                    <div class="pf-about-btns">
-                        <a class="theme-btn style-one" href="{% url 'about' %}">More About Us</a>
-                        <a class="theme-btn style-two" href="{% url 'contact' %}">Visit Our Clinic</a>
+
+
+    <!-- About Us -->
+    <section class="pf-about-area pt-130 pb-80">
+        <div class="container">
+            <div class="row justify-content-center pb-130">
+                <div class="col-xl-10">
+                    <div class="section-title-area text-center">
+                        <span class="section-subtitle mb-35 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">{{ content.about_subtitle }}</span>
+                        <h2 class="section-about-description mb-40 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                            {{ about_description_html|safe }}
+                        </h2>
+                        <div class="section-btn pf-about-two-btn wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
+                            <a class="theme-btn style-one" href="{% url 'about' %}">More About Us</a>
+                            <a class="theme-btn style-two" href="{% url 'contact' %}">Visit Our Clinic</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </section>
+    <!-- About Us End Here-->
 
 
-<!-- About Area Start -->
-<section class="pf-about-area pt-130 pb-80">
-<div class="container">
-    <div class="row justify-content-center pb-130">
-        <div class="col-xl-11">
-            <div class="section-title-area text-center">
-                <span class="section-subtitle mb-35 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">About Us</span>
-                <h2 class="section-about-description mb-40 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">We craft clean <span class="abou-section-sm-img wow pf-img-custom-anim-left" data-wow-duration=".6s" data-wow-delay=".4s"><img src="{% static 'pages/img/About/about-sm-img-01.png' %}" alt=""></span> gentle skincare using nature & science. Our cruelty-free products <span class="abou-section-sm-img wow pf-img-custom-anim-left1-5" data-wow-duration=".6s" data-wow-delay=".6s"><img src="{% static 'pages/img/About/about-sm-img-02.png' %}" alt=""></span> nourish all skin types, helping you <span class="abou-section-sm-img wow pf-img-custom-anim-left1" data-wow-duration=".6s" data-wow-delay=".7s"><img src="{% static 'pages/img/About/about-sm-img-03.png' %}" alt=""></span> achieve healthy, radiant skin with confidence every day.</h2>
-                <div class="section-btn pf-about-two-btn wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
-                    <a class="theme-btn style-one " href="about.html">More About Us</a>
-                    <a class="theme-btn style-two" href="{% url 'contact' %}">Visit Our Clinic</a>
+
+    <!-- Our Beauty Centre-->
+    <section class="pf-services-area pt-130">
+        <div class="container">
+            <div class="row align-items-center mb-70">
+                <div class="col-xl-6">
+                    <div class="section-title-area text-xl-start text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <span class="section-subtitle mb-20 color-2nd border-2nd-color">Our Suite</span>
+                        <h2 class="section-title color-2nd">Designed for relaxation and maximum comform</h2>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="section-title-area text-xl-start text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                        <p>{{content.suite_description}}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row row-x-gap">
-        <div class="col-xl-6 col-lg-6 col-md-6">
-            <div class="pf-about-box d-flex align-items-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
-                <img src="{{ content.stats_img_01.url }}" alt="Satisfaction" class="stats-card-img">
-                <div class="pf-about-content">
-                    <h2 class="pf-about-box-title"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="97">{{ content.about_box_01_stat }}</span>%</h2>
-                    <p class="pf-about-box-desc">{{ content.about_box_01_text }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6 col-lg-6 col-md-6">
-            <div class="pf-about-box d-flex align-items-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                    <img src="{{ content.stats_img_02.url }}" alt="Projects" class="stats-card-img">
-                <div class="pf-about-content">
-                    <h2 class="pf-about-box-title"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="23">{{ content.about_box_02_stat }}</span>K</h2>
-                    <p class="pf-about-box-desc">{{ content.about_box_02_text }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section><!-- About Area end -->
-   
-<!-- Services Area Start -->
-<section class="pfservices-area bg-theme-color pt-130 pb-80 p-relative">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xxl-5 col-xl-6 col-lg-7 col-md-8">
-                <div class="section-title-area text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
-                    <span class="section-subtitle mb-20">Our Services</span>
-                    <h2 class="section-title mb-40">Your Journey to <span>Radiant</span> <span>Skin</span> Starts Here</h2>
-                </div>
-            </div>
-        </div>
-        <div class="pf-services-main">
-            <div class="horizontal-scroll-wrapper">
-                <div class="row flex-nowrap horizontal-scroll">
-                    {% for treatment in treatment_list %}
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="pfservices p-10 br-10">
-                            <div class="pfservices__img">
-                                {% if treatment.main_thumbnail %}
-                                <img class="br-10 w-100" src="{{ treatment.main_thumbnail.url }}" alt="{{ treatment.name }}">
-                                {% endif %}
-                            </div>
-                            <div class="pfservices__content p-20">
-                                <h3 class="pfservices__title">
-                                    <a href="#">{{ treatment.name }}</a>
-                                </h3>
-                                <p>{{ treatment.description|truncatewords:15 }}</p>
-                                <a class="style-three" href="#">Read More</a>
+            <div class="row gap-x-140 pb-130 services-pin">
+                <div class="col-xl-5 col-lg-5 col-md-12">
+                    <div class="services-pin-space">
+                        <div class="pf-services-pin">
+                            <div class="pf-services-box mb-50">
+                                <h3 class="pf-services-title home-one mb-15">All Services</h3>
+                                <p class="mb-60">Replenishes deep hydration, soothes irritation relieves dryness, and helps restore the skin’s natural.</p>
+                                <div class="pf-services-btn">
+                                    <a class="theme-btn style-two color-2nd" href="{% url 'services' %}">View All</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-12">
+                    <div class="pf-services-right">
+                        {%for image in beauty_images%}
+                        <div class="pf-services-item">
+                            <div class="pf-services-img"><img src="{{image.main_image.url}}" alt=""></div>
+                            <div class="pf-services-right-content">
+                                <h3 class="pf-services-right-title mb-15"><a href="{% url 'services' %}">{{treatment.name}}</a></h3>
+                                <p class="mb-40">{{image.photoname}}</p>
+                                <div class="pf-services-btn">
+                                    <a class="theme-btn style-two color-2nd" href="{% url 'services' %}">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- Services Area End -->
+    </section>
+    <!-- Our Beauty Centre End Here-->
 
+
+
+    <!-- Services Area Start -->
+    <section class="pfservices-area bg-theme-color pt-130 pb-80 p-relative">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xxl-5 col-xl-6 col-lg-7 col-md-8">
+                    <div class="section-title-area text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <span class="section-subtitle mb-20">Our Services</span>
+                        <h2 class="section-title mb-40">Your Journey to <span>Radiant</span> <span>Skin</span> Starts Here</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="pf-services-main">
+                <div class="horizontal-scroll-wrapper">
+                    <div class="row flex-nowrap horizontal-scroll">
+                        {% for treatment in treatment_list %}
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="pfservices p-10 br-10">
+                                <div class="pfservices__img">
+                                    {% if treatment.main_thumbnail %}
+                                    <img class="br-10 w-100" src="{{ treatment.main_thumbnail.url }}" alt="{{ treatment.name }}">
+                                    {% endif %}
+                                </div>
+                                <div class="pfservices__content p-20">
+                                    <h3 class="pfservices__title">
+                                        <a href="{% url 'services_details' code=treatment.treatment_code %}">{{ treatment.name }}</a>
+                                    </h3>
+                                    <p>{{ treatment.services_page_description|truncatewords:15 }}</p>
+                                    <a class="style-three" href="{% url 'services_details' code=treatment.treatment_code %}">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Area End -->
+
+
+
+    <!-- Our Products Section -->
+    <section class="pf-products-area pt-130 pb-130">
+        <div class="container">
+            <div class="row justify-content-center mb-20">
+                <div class="col-xl-7">
+                    <div class="section-title-area text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <span class="section-subtitle mb-20">Our Product</span>
+                        <h2 class="section-title mb-40"><span>Glow</span> Starts with the Right <span>Products</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-x-10 gap-y-30 justify-content-center">
+                {% for product in product_list %}
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="pf-product wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay="{% cycle '.2s' '.4s' '.6s' %}">
+                        <div class="pf-product__img">
+                            {% if product.main_image %}
+                            <img src="{{ product.main_image.url }}" alt="{{ product.name }}">
+                            {% endif %}
+                        </div>
+                        <div class="pf-product__box">
+                            <div class="pf-product-content">
+                                <div class="pf-product__title">
+                                    <h3><a href="{% url 'shop_details' product_code=product.product_code %}">{{ product.name }}</a></h3>
+                                </div>
+                                <div class="pf-product__rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>{{ product.rating|default:"4.9" }}</span>
+                                </div>
+                            </div>
+                            <div class="pf-product__price">
+                                <h4>${{ product.price }}</h4>
+                            </div>
+                            <div class="pf-product__attributes">
+                                {% for size in product.size_list %}
+                                    <a href="#">{{ size }}</a>
+                                {% endfor %}
+                            </div>
+                            <div class="pf-product__btn text-center">
+                                <a href="{% url 'shop_details' product_code=product.product_code %}">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.16634 6.45703C4.05128 6.45703 3.95801 6.55031 3.95801 6.66536V17.4987C3.95801 17.6138 4.05128 17.707 4.16634 17.707H15.833C15.9481 17.707 16.0413 17.6138 16.0413 17.4987V6.66536C16.0413 6.55031 15.9481 6.45703 15.833 6.45703H4.16634ZM2.70801 6.66536C2.70801 5.85995 3.36092 5.20703 4.16634 5.20703H15.833C16.6384 5.20703 17.2913 5.85995 17.2913 6.66536V17.4987C17.2913 18.3041 16.6384 18.957 15.833 18.957H4.16634C3.36092 18.957 2.70801 18.3041 2.70801 17.4987V6.66536Z" fill="currentColor" />
+                                        <path d="M9.99967 2.29102C8.73401 2.29102 7.70801 3.31703 7.70801 4.58268V7.49935C7.70801 7.84452 7.42818 8.12435 7.08301 8.12435C6.73783 8.12435 6.45801 7.84452 6.45801 7.49935V4.58268C6.45801 2.62667 8.04367 1.04102 9.99967 1.04102C11.9557 1.04102 13.5413 2.62667 13.5413 4.58268V7.49935C13.5413 7.84452 13.2615 8.12435 12.9163 8.12435C12.5712 8.12435 12.2913 7.84452 12.2913 7.49935V4.58268C12.2913 3.31703 11.2653 2.29102 9.99967 2.29102Z" fill="currentColor" />
+                                    </svg>Add to Cart
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Our Products Section Ends Here-->
+ 
+
+    
+    <!-- Faq Area Start -->
+    <section class="pf-faq-area bg-theme-color pt-130 pb-130">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="section-title-area text-center text-lg-start pr-60 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <span class="section-subtitle mb-20">FAQ’s</span>
+                        <h2 class="section-title mb-40"><span>Got</span> Questions? We’ve Got <span>Answers</span></h2>
+                    </div>
+                    <div class="pf-faq wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                        <div class="pf-accordion" id="accordionExample">
+                            <div class="pf-accordion-item active">
+                                <h2 class="pf-accordion-header"><button class="pf-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{faq_list.q1}}</button></h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample"><div class="pf-accordion-body">{{faq_list.a1}}</div></div>
+                            </div>
+                            <div class="pf-accordion-item">
+                                <h2 class="pf-accordion-header"><button class="pf-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">{{faq_list.q2}}</button></h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample"><div class="pf-accordion-body">{{faq_list.a2}}</div></div>
+                            </div>
+                            <div class="pf-accordion-item">
+                                <h2 class="pf-accordion-header"><button class="pf-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">{{faq_list.q3}}</button></h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample"><div class="pf-accordion-body">{{faq_list.a3}}</div></div>
+                            </div>
+                            <div class="pf-accordion-item">
+                                <h2 class="pf-accordion-header"><button class="pf-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">{{faq_list.q4}}</button></h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample"><div class="pf-accordion-body">{{faq_list.a4}}</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="pf-faq-img text-end wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s"><img class="br-20" src="{{faq_list.image.url }}" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </section><!-- Faq Area End -->
+
+
+
+    <!-- Gallery Area Start -->
+    <section class="pf-gallery-area pt-130 pb-130">
+        <div class="container">
+            <div class="row">
+
+                <!-- SLOT 1: Image -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <a class="popup-img" href="{{ gallery_list.0.instagram_url }}" target="_blank">
+                            <img src="{{ gallery_list.0.image.url }}" alt="{{ gallery_list.0.alt_text }}">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SLOT 2: Text Block 1 (Style: image_33dc3b.png) -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="pf-gallery-content d-flex justify-content-center align-items-center h-100 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
+                        <div class="section-title-area text-center">
+                            <a class="theme-btn style-two style-four mb-20" href="{{ social.instagram_url }}">Follow Us</a>
+                            <h2 class="section-title mb-40"><span>Let’s Glow on Instagram</span></h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLOT 3: Image -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                        <a class="popup-img" href="{{ gallery_list.1.instagram_url }}" target="_blank">
+                            <img src="{{ gallery_list.1.image.url }}" alt="{{ gallery_list.1.alt_text }}">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SLOT 4: Image -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".5s">
+                        <a class="popup-img" href="{{ gallery_list.2.instagram_url }}" target="_blank">
+                            <img src="{{ gallery_list.2.image.url }}" alt="{{ gallery_list.2.alt_text }}">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SLOT 5: Image -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
+                        <a class="popup-img" href="{{ gallery_list.3.instagram_url }}" target="_blank">
+                            <img src="{{ gallery_list.3.image.url }}" alt="{{ gallery_list.3.alt_text }}">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SLOT 6: Image -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".7s">
+                        <a class="popup-img" href="{{ gallery_list.4.instagram_url }}" target="_blank">
+                            <img src="{{ gallery_list.4.image.url }}" alt="{{ gallery_list.4.alt_text }}">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SLOT 7: Image -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".8s">
+                        <a class="popup-img" href="{{ gallery_list.5.instagram_url }}" target="_blank">
+                            <img src="{{ gallery_list.5.image.url }}" alt="{{ gallery_list.5.alt_text }}">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SLOT 8: Text Block 2 -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="pf-gallery-content d-flex justify-content-center align-items-center h-100 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".9s">
+                        <div class="section-title-area text-center">
+                            <p class="mb-40">Follow us on Instagram for skincare<br> tips & glowing inspiration.</p>
+                            <a class="theme-btn style-two" href="{{ social.instagram_url }}">Visit Instagram</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLOT 9: Image -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="pf-gallery wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay="1s">
+                        <a class="popup-img" href="{{ gallery_list.6.instagram_url }}" target="_blank">
+                            <img src="{{ gallery_list.6.image.url }}" alt="{{ gallery_list.6.alt_text }}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Gallery Area End -->
+    
+
+
+    <!-- Blog Section -->
+    <section class="pf-blog-area">
+        <div class="container">
+            <div class="row align-items-center mb-10 sm-mb">
+                <div class="col-xxl-5 col-xl-6 col-lg-6 col-md-8">
+                    <div class="section-title-area text-center text-md-start wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <span class="section-subtitle mb-20">Our Blog Post</span>
+                        <h2 class="section-title mb-40">Your Journey to <span>Radiant </span> <span> Skin</span> Starts Here</h2>
+                    </div>
+                </div>
+                <div class="col-xxl-7 col-xl-6 col-lg-6 col-md-4">
+                    <div class="section-btn text-center text-md-end wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                        <a class="pf-blog-see-all" href="{% url 'blog_grid' %}">See All</a>
+                    </div>
+                </div>
+            </div>
+
+            {% for post in posts %}
+            <div class="pf-blog-post wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".{{ forloop.counter|add:'1' }}s">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-2">
+                        <div class="pf-blog-data">
+                            <span class="data">Published</span>
+                            <span>{{ post.date|date:"F d, Y" }}</span>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4">
+                        <div class="pf-blog-thumb">
+                            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="pf-blog-content ml-25">
+                            <div class="pf-blog-title-area">
+                                <h3 class="pf-blog-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                            </div>
+                            <div class="pf-blog-author">
+                                <h4>Author</h4>
+                                <span>{{ post.author_name }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- Blog Section Ends Here-->
+
+   
 </main>
 {% endblock content %}
+
+<!-- Testimonials Section-->
+    <section class="pf-testimonial-area overflow-hidden pb-130">
+        <div class="container">
+            <div class="row justify-content-center mb-20">
+                <div class="col-xxl-5 col-xl-6 col-lg-7 col-md-8">
+                    <div class="section-title-area text-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <span class="section-subtitle mb-20">Testimonials</span>
+                        <h2 class="section-title mb-40"><span>Glow-Up</span> Reviews from Happy <span>Clients</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="swiper testimonials-slider-active wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+            <div class="swiper-wrapper pf-logo-slider-transtion">
+                {% for testimonial in testimonial_list %}
+                <div class="swiper-slide">
+                    <div class="pf-testimonial__box">
+                        <div class="pf-testimonial__content pb-30">
+                            <div class="pf-testimonial__author">
+                                <div class="pf-testimonial__img mr-15">
+                                    {% if testimonial.small_image %}
+                                        <img class="br-100" src="{{ testimonial.small_image.url }}" alt="{{ testimonial.client_name }}">
+                                    {% endif %}
+                                </div>
+                                <div class="pf-testimonial__bio">
+                                    <div class="pf-testimonial__name">
+                                        <h3 class="mb-5">{{ testimonial.client_name }}</h3>
+                                    </div>
+                                    <div class="pf-testimonial__position">
+                                        <span>{{ testimonial.client_position }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pf-testimonial__rating">
+                                <i class="fas fa-star"></i>
+                                <span>{{ testimonial.rating }}</span>
+                            </div>
+                        </div>
+                        <div class="pf-testimonial__description pt-30">
+                            <p>“{{ testimonial.review_text }}”</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section End Here-->
+
+     <!-- About Us and the Satisfaction Section -->
+    <section class="pf-about-area pt-130 pb-80">
+        <div class="container">
+
+            <!-- About Us -->
+            <div class="row justify-content-center pb-130">
+                <div class="col-xl-10">
+                    <div class="section-title-area text-center">
+                        <span class="section-subtitle mb-35 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">{{ content.about_subtitle }}</span>
+                        <h2 class="section-about-description mb-40 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                            {{ about_description_html|safe }}
+                        </h2>
+                        <div class="section-btn pf-about-two-btn wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".6s">
+                            <a class="theme-btn style-one" href="{% url 'about' %}">More About Us</a>
+                            <a class="theme-btn style-two" href="{% url 'contact' %}">Visit Our Clinic</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Satisfaction Section -->
+            <div class="row row-x-gap">
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="pf-about-box d-flex align-items-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <img src="{{ content.stats_img_01.url }}" alt="Satisfaction" class="stats-card-img">
+                        <div class="pf-about-content">
+                            <h2 class="pf-about-box-title"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="97">{{ content.about_box_01_stat }}</span>%</h2>
+                            <p class="pf-about-box-desc">{{ content.about_box_01_text }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="pf-about-box d-flex align-items-center wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
+                    <img src="{{ content.stats_img_02.url }}" alt="Projects" class="stats-card-img">
+                        <div class="pf-about-content">
+                            <h2 class="pf-about-box-title"><span class="purecounter" data-purecounter-start="0" data-purecounter-end="23">{{ content.about_box_02_stat }}</span>K</h2>
+                            <p class="pf-about-box-desc">{{ content.about_box_02_text }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Us and the Satisfaction Section End Here-->

@@ -1,86 +1,99 @@
 {% extends 'pages/base.html' %}
 {% load static %} 
+
 {% block content %}
 <main>
     <section class="pf-page-banner-area text-center bg-theme-color">
         <div class="container">
-            <h2 class="page-title mb-20">Create an Account</h2>
-            <ul class="breadcrumb-link">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li>-</li>
-                <li class="active">Register</li>
-            </ul>
-        </div>
-    </section>
-
-    <div class="pf-img-banner-area">
-        <div class="pf-img-banner-space p-175 bg-theme-color"></div>
-        <div class="container">
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="pf-img-banner-wrapper wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".4s">
-                        <img class="br-20 mt-minus-350" src="{% static 'assets/img/img-banner/banner-03.png' %}" alt="Banner">
-                    </div>
+                    <h2 class="page-title mb-20">Create Account</h2>
+                    <ul class="breadcrumb-link">
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li>-</li>
+                        <li class="active">Register</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div><section class="pf-booking-area pt-130 pb-130">
+    </section>
+
+    <section class="pf-registration-page-area pt-120 pb-120">
         <div class="container">
-            <div class="row gap-x-110 align-items-center">
-                <div class="col-xl-6">
-                    <div class="section-title-area mb-70">
-                        <span class="section-subtitle mb-20">Join Us</span>
-                        <h2 class="section-title">Start Your Skincare Journey Today</h2>
-                    </div>
-                    <div class="pf-booking-img">
-                        <img src="{% static 'assets/img/booking/booking-01.png' %}" alt="Register">
-                    </div>
-                </div>
-
-                <div class="col-xl-6">
-                    <div class="pf-booking-wrapper contact-page">
-                        <h3 class="pf-booking-title mb-50">Create Your Account</h3>
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-10">
+                    <div class="pf-checkout-form wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <h3 class="pf-checkout-title mb-30">User Registration Details</h3>
                         
-                        <form method="POST" class="pf-booking-form">
-                            {% csrf_token %}
-                            
-                            {% if form.errors %}
-                                <div class="alert alert-danger">
-                                    {% for field in form %}{{ field.errors }}{% endfor %}
-                                </div>
-                            {% endif %}
+                        {% if form.errors or profile_form.errors %}
+                            <div class="alert alert-danger mb-20">
+                                Please correct the errors below and try again.
+                                {{ form.non_field_errors }}
+                                {{ profile_form.non_field_errors }}
+                            </div>
+                        {% endif %}
 
+                        <form method="POST" action="{% url 'register' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
                             <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        {{ form.username }}
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
+                                        <label>First Name</label>
+                                        {{ form.first_name }}
                                     </div>
                                 </div>
-                                <div class="col-xl-12">
-                                    <div class="form-group">
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
+                                        <label>Last Name</label>
+                                        {{ form.last_name }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
+                                        <label>Phone Number</label>
+                                        {{ profile_form.phone_number }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
+                                        <label>Date of Birth</label>
+                                        {{ profile_form.date_of_birth }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
                                         <label>Email Address</label>
                                         {{ form.email }}
                                     </div>
                                 </div>
-                                <div class="col-xl-6">
-                                    <div class="form-group">
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
                                         <label>Password</label>
                                         {{ form.password }}
                                     </div>
                                 </div>
-                                <div class="col-xl-6">
-                                    <div class="form-group">
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
                                         <label>Confirm Password</label>
                                         {{ form.confirm_password }}
                                     </div>
                                 </div>
-                                
-                                <div class="col-xl-12 mt-20">
-                                    <div class="pf-booking-btn">
-                                        <button type="submit" class="theme-btn style-one w-100 hover-bg">Register Now</button>
+                                <div class="col-lg-12">
+                                    <div class="form-group mb-20">
+                                        <label>Residential Address</label>
+                                        {{ profile_form.residential_address }}
                                     </div>
-                                    <p class="mt-20 text-center">Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group mb-20">
+                                        <label>Profile Picture/Optional</label>
+                                        {{ profile_form.profile_picture }}
+                                    </div>
+                                </div>
+                                <div class="checkout-btn col-lg-12 mt-20">
+                                    <button type="submit" class="theme-btn style-one w-100" style="border: none; cursor: pointer;">
+                                        <span>Register Account</span>
+                                    </button>
                                 </div>
                             </div>
                         </form>

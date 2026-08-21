@@ -1,0 +1,68 @@
+{% extends 'pages/base.html' %}
+{% load static %} 
+
+{% block content %}
+<main>
+    <section class="pf-page-banner-area text-center bg-theme-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <h2 class="page-title mb-20">Login Account</h2>
+                    <ul class="breadcrumb-link">
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li>-</li>
+                        <li class="active">Login</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pf-registration-page-area pt-120 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-8">
+                    <div class="pf-checkout-form wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <h3 class="pf-checkout-title mb-30">Welcome Back</h3>
+                        
+                        {% if form.errors %}
+                            <div class="alert alert-danger mb-20">
+                                Your email/username or password was incorrect. Please try again.
+                            </div>
+                        {% endif %}
+
+                        <form method="POST" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group mb-20">
+                                        <label>Email Address / Username</label>
+                                        {{ form.username }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group mb-20">
+                                        <label>Password</label>
+                                        {{ form.password }}
+                                    </div>
+                                </div>
+                                <div class="checkout-btn col-lg-12 mt-20">
+                                    <button type="submit" class="theme-btn style-one w-100" style="border: none; cursor: pointer;">
+                                        <span>Login to Account</span>
+                                    </button>
+                                </div>
+                                 <div class="col-lg-12 text-left mt-3">
+                                    <p class="mb-0">Don't have an account? <a href="{% url 'password_reset' %}" style="color: #007bff; font-weight: 600;">Forgot Password?</a></p>
+                                </div>
+                                <div class="col-lg-12 text-left mt-3">
+                                    <p class="mb-0">Don't have an account? <a href="{% url 'register' %}" style="color: #007bff; font-weight: 600;">Register here</a></p>
+                                </div> 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

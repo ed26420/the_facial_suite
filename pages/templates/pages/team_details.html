@@ -53,9 +53,13 @@
                             <h3 class="mb-30">Award & Achievement</h3>
                             {% for award in awards %}
                             <div class="pf-team-details-award-box mb-20">
-                                <div class="pf-team-details-award-content d-flex justify-content-between">
-                                    <h3>{{ award.0 }}</h3>
-                                    <span>{{ award.1 }}</span>
+                                <div class="pf-team-details-award-content">
+                                    <div class="pf-team-details-award-title">
+                                        <h3>{{ award.0 }}</h3>
+                                    </div>
+                                    <div class="pf-team-details-award-btn">
+                                        <span>{{ award.1 }}</span>
+                                    </div>
                                 </div>
                                 <p>{{ award.2 }}</p>
                             </div>
@@ -100,11 +104,13 @@
                             <form method="POST">
                                 {% csrf_token %}
                                 <div class="row">
-                                    <div class="col-xl-6"><div class="form-group"><input type="text" class="form_control" name="first_name" placeholder="First Name" required></div></div>
-                                    <div class="col-xl-6"><div class="form-group"><input type="text" class="form_control" name="last_name" placeholder="Last Name"></div></div>
-                                    <div class="col-xl-12"><div class="form-group"><input type="text" class="form_control" name="subject" placeholder="Subject"></div></div>
-                                    <div class="col-xl-12"><div class="form-group"><textarea name="message" class="form_control" placeholder="Write message.." rows="5"></textarea></div></div>
-                                    <div class="col-xl-12"><button type="submit" class="theme-btn style-one w-100">Send Message</button></div>
+                                    <div class="col-xl-6"><div class="form-group">{{ form.first_name }}</div></div>
+                                    <div class="col-xl-6"><div class="form-group">{{ form.last_name }}</div></div>
+                                    <div class="col-xl-6"><div class="form-group">{{ form.email }}</div></div>
+                                    <div class="col-xl-6"><div class="form-group">{{ form.phone }}</div></div>
+                                    <div class="col-xl-12"><div class="form-group">{{ form.subject }}</div></div>
+                                    <div class="col-xl-12"><div class="form-group">{{ form.message }}</div></div>
+                                    <div class="col-xl-12"><button type="submit" class="theme-btn style-one w-100">Send Message via WhatsApp</button></div>
                                 </div>
                             </form>
                         </div>
