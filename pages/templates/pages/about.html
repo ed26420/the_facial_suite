@@ -71,6 +71,20 @@
         </div>
     </section>
 
+    <div class="pf-logo-slider-area inner-page p-relative pb-150 pt-70 bg-2nd-color">
+        <div class="pf-logo-slider">
+            <div class="swiper pf-logo-slider-active">
+                <div class="swiper-wrapper pf-logo-slider-transtion align-items-center">
+                    {% for image in partnerLogo %}
+                    <div class="swiper-slide">
+                        <img src="{{ image.image.url }}" alt="{{ image.name }}">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>    
+
     <section class="pf-our-team-area bg-theme-color pt-130 pb-130">
         <div class="container">
             <div class="row justify-content-center">

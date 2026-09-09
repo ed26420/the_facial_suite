@@ -6,8 +6,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="Skin Care">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TFS - The facial suite HTML Temp</title>
-    <link rel="shortcut icon" href="{% static 'pages/img/favicon.png' %}" type="image/png">
+    <title>{{base.web_title}}</title>
+    <link rel="shortcut icon" href="{{base.shortcut_icon.url}}" type="image/png">
     <link rel="stylesheet" href="{% static 'pages/css/magnific-popup.css' %}">
     <link rel="stylesheet" href="{% static 'pages/css/fontawesome-pro.css' %}">
     <link rel="stylesheet" href="{% static 'pages/css/bootstrap.min.css' %}">
@@ -19,11 +19,12 @@
 <body>
     <div class="preloader">
         <div class="loader"></div>
-    </div><div class="pf-offcanvas-overlay"></div>
+    </div>
+    <div class="pf-offcanvas-overlay"></div>
     <div class="pf-offcanvas">
         <div class="pf-offcanvas-header mb-30">
             <div class="pf-offcanvas-logo">
-                <a href="{% url 'home' %}"><img src="{% static 'pages/img/logo/Logo-02.png' %}" alt=""></a>
+                <a href="{% url 'index' %}"><img src="{{ base.canvas_logo.url }}" alt=""></a>
             </div>
             <div class="pf-offcanvas-close">
                 <button class="pf-offcanvas-close-button"><i class="fal fa-times"></i></button>
@@ -33,20 +34,20 @@
             <nav></nav>
         </div>
         <div class="pf-offcanvas-content mb-30">
-            <h3 class="pf-offcanvas-title"> Hello There!</h3>
-            <p>Lorem ipsum dolor sit amet, consect etur adipiscing elit. </p>
+            <h3 class="pf-offcanvas-title">{{base.colapsed_title_1}}</h3>
+            <p>{{base.colapsed_paragraph}}</p>
         </div>
         <div class="pf-offcanvas-gallery mb-40">
-            <a class="popup-img" href="{% static 'pages/img/gallery/gallery-01.png' %}"><img src="{% static 'pages/img/gallery/gallery-01.png' %}" alt="tour"></a>
-            <a class="popup-img" href="{% static 'pages/img/gallery/gallery-02.png' %}"><img src="{% static 'pages/img/gallery/gallery-02.png' %}" alt="tour"></a>
-            <a class="popup-img" href="{% static 'pages/img/gallery/gallery-03.png' %}"><img src="{% static 'pages/img/gallery/gallery-03.png' %}" alt="tour"></a>
-            <a class="popup-img" href="{% static 'pages/img/gallery/gallery-04.png' %}"><img src="{% static 'pages/img/gallery/gallery-04.png' %}" alt="tour"></a>
+            <a class="popup-img" href="{% url 'about' %}"><img src="{{ base.colapsed_image_1.url }}" alt="tour"></a>
+            <a class="popup-img" href="{% url 'about' %}"><img src="{{ base.colapsed_image_2.url }}" alt="tour"></a>
+            <a class="popup-img" href="{% url 'about' %}"><img src="{{ base.colapsed_image_3.url }}" alt="tour"></a>
+            <a class="popup-img" href="{% url 'about' %}"><img src="{{ base.colapsed_image_4.url }}" alt="tour"></a>
         </div>
         <div class="pf-offcanvas-info mb-40">
-            <h3 class="pf-offcanvas-title">Information</h3>
-            <span><a href="tel:1234567890">(123) 456-7890</a></span>
-            <span><a href="mailto:hello@example.com">hello@example.com</a></span>
-            <span><a href="#">Avenue de Roma 158b, Lisboa</a></span>
+            <h3 class="pf-offcanvas-title">{{base.colapsed_title_2}}</h3>
+            <span><a href="tel:1234567890">{{page.phone_field}}</a></span>
+            <span><a href="mailto:hello@example.com">{{page.email_field}}</a></span>
+            <span><a href="{% url 'about' %}">{{page.address}}</a></span>
         </div>
         <div class="pf-offcanvas-social">
             <h3 class="pf-offcanvas-title mb-20"> Follow Us</h3>
@@ -55,13 +56,14 @@
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
-    </div><header id="pf-header-sticky" class="pf-header-area">
+    </div>
+    <header id="pf-header-sticky" class="pf-header-area">
         <div class="container">
             <div class="pf-header-row v1 d-flex justify-content-between align-items-center">
                 <div class="pf-header-col">
                     <div class="pf-header-logo">
-                        <a href="{% url 'home' %}">
-                            <img src="{% static 'pages/img/logo/Logo-02.png' %}" alt="">
+                        <a href="{% url 'index' %}">
+                            <img src="{{ base.navbar_logo.url }}" alt="">
                         </a>
                     </div>
                 </div>
@@ -71,8 +73,8 @@
                             <ul>
                                 <li class="menu-item has-children"><a href="#">Home</a>
                                     <ul class="sub-menu">
-                                        <li><a href="{% url 'home' %}">Home 01</a></li>
-                                        <li><a href="{% url 'index' %}">Home 02</a></li>
+                                        <li><a href="{% url 'index' %}">Home 01</a></li>
+                                        <li><a href="{% url 'home' %}">Home 02</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item has-children"><a href="{% url 'services' %}">Treatments</a>
@@ -108,7 +110,7 @@
                                 <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M8.8503 13.6903C9.52303 13.6903 10.0691 14.2364 10.0691 14.9091C10.0691 15.5818 9.52303 16.1279 8.8503 16.1279C8.17758 16.1279 7.63152 15.5818 7.63152 14.9091C7.63152 14.2364 8.17758 13.6903 8.8503 13.6903ZM14.1515 13.6903C14.8242 13.6903 15.3703 14.2364 15.3703 14.9091C15.3703 15.5818 14.8242 16.1279 14.1515 16.1279C13.4788 16.1279 12.9327 15.5818 12.9327 14.9091C12.9327 14.2364 13.4788 13.6903 14.1515 13.6903ZM0.757576 1.51515H2.47939C2.81455 1.51515 3.10909 1.73879 3.19879 2.06242C3.19879 2.06242 3.19939 2.06242 3.19939 2.06303C3.77939 4.15091 5.03273 8.66242 5.61515 10.7582C5.88849 11.743 6.78546 12.4242 7.80667 12.4242H15.1655C16.2097 12.4242 17.12 11.7133 17.3727 10.7C17.8855 8.65091 18.9036 4.57758 18.9036 4.57758C18.96 4.35151 18.9091 4.11152 18.7655 3.92788C18.6218 3.74364 18.4018 3.63636 18.1685 3.63636H7.63152C7.21333 3.63636 6.87394 3.97576 6.87394 4.39394C6.87394 4.81212 7.21333 5.15152 7.63152 5.15152H17.1982L15.9024 10.3339C15.8182 10.6721 15.5139 10.9091 15.1655 10.9091H7.80667C7.46546 10.9091 7.16606 10.6812 7.07455 10.3527C6.49212 8.25697 5.23879 3.74485 4.65879 1.65697C4.38788 0.678182 3.49576 0 2.47939 0H0.757576C0.339394 0 0 0.339394 0 0.757576C0 1.17576 0.339394 1.51515 0.757576 1.51515Z" fill="currentColor" />
                                 </svg>
-                                <span class="text">Cart</span> <span class="header-quantity">1</span>
+                                <span class="text">Cart</span> <span class="header-quantity">{{cart_quantity}}</span>
                             </a>
                         </div>
                         <div class="pf-header-button d-md-block d-none">
@@ -127,7 +129,11 @@
             {% endblock content %}
 
             <footer class="pf-footer-area pf-footer-two">
-                <div class="pf-footer-top-area" data-bg-img="{% static 'pages/img/Footer/footer-bg.png' %}">
+                {% if base.navbar_logo %}
+                <div class="pf-footer-top-area" data-bg-img="{{ base.footer_logo_1.url }}">
+                {% else %}
+                <div class="pf-footer-top-area" data-bg-img="{% static 'pages/img/base_template/index_page_footer.png' %}">
+                {% endif %}
                     <div class="container">
                         <div class="pf-footer-cta-two pt-50 pb-50">
                             <div class="row align-items-center ">
@@ -150,17 +156,17 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                                 <div class="pf-footer-widget pf-footer-col-1 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
                                     <div class="pf-footer-logo">
-                                        <img src="{% static 'pages/img/logo/logo-white.png' %}" alt="">
+                                        <img src="{{ base.footer_logo_2.url }}" alt="">
                                     </div>
                                     <div class="pf-foooter-description">
-                                        <p>123 Glow Street, Suite 456<br> Radiance City, CA 90210</p>
+                                        <p>{{page.address}}</p>
                                     </div>
                                     <div class="pf-footer-contact">
                                         <div class="pf-footer-phone">
-                                            <strong>Phone: </strong><a href="tel:1234567890">(123) 456-7890</a>
+                                            <strong>Phone: </strong><a href="tel:1234567890">{{page.phone_field}}</a>
                                         </div>
                                         <div class="pf-footer-email">
-                                            <strong>Email: </strong><a href="mailto:contact@glownest.com">contact@glownest.com</a>
+                                            <strong>Email: </strong><a href="mailto:contact@glownest.com">{{page.email_field}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -169,7 +175,7 @@
                                 <div class="pf-footer-widget pf-footer-col-2 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
                                     <h3 class="pf-footer-title">Menu</h3>
                                     <ul>
-                                        <li><a href="{% url 'home' %}">Home</a></li>
+                                        <li><a href="{% url 'index' %}">Home</a></li>
                                         <li><a href="{% url 'about' %}">About Us</a></li>
                                         <li><a href="{% url 'services' %}">Service</a></li>
                                         <li><a href="{% url 'shop' %}">Shop</a></li>
@@ -182,8 +188,8 @@
                                     <ul>
                                         <li><a href="{% url 'blog_grid' %}">Blog</a></li>
                                         <li><a href="{% url 'contact' %}">Contact Us</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
-                                        <li><a href="#">Terms & Conditions</a></li>
+                                        <li><a href="{% url 'about' %}">Privacy Policy</a></li>
+                                        <li><a href="{% url 'about' %}">Terms & Conditions</a></li>
                                     </ul>
                                 </div>
                             </div>

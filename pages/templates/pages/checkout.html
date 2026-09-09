@@ -1,6 +1,5 @@
 {% extends 'pages/base.html' %}
-{% load static %} 
-
+{% load static %}
 {% block content %}
 <main>
     <section class="pf-page-banner-area text-center bg-theme-color">
@@ -9,25 +8,31 @@
                 <div class="col-xl-12">
                     <h2 class="page-title mb-20">Checkout</h2>
                     <ul class="breadcrumb-link">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="{% url 'index' %}">Home</a></li>
                         <li>-</li>
                         <li class="active">Checkout</li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section><section class="pf-checkout-page-area pt-120 pb-120">
+    </section>
+
+    <section class="pf-checkout-page-area pt-120 pb-120">
         <div class="container">
             <form id="payment-form" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="payment_intent_id" id="payment_intent_id">
                 <div class="row gap-x-110">
+                    
+                    <!-- Left Column: Billing Details & Card Fields -->
                     <div class="col-xl-8 col-lg-8">
                         <div class="pf-checkout-form wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
                             <h3 class="pf-checkout-title mb-30">Payment Details</h3>
+                            
                             {% if error_message %}
-                                <div class="alert alert-danger mb-20">{{ error_message }}</div>
+                            <div class="alert alert-danger mb-20">{{ error_message }}</div>
                             {% endif %}
+
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
@@ -41,32 +46,38 @@
                                         <input type="text" class="form_control" placeholder="Enter last name" name="last_name" required>
                                     </div>
                                 </div>
+                                
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Card Number</label>
-                                        <div id="card-number-element" class="form_control p-3" style="background: #fff; height: 50px; display: flex; align-items: center;"></div>
+                                        <div id="card-number-element" class="form_control p-3" style="background:#fff; height:50px; display:flex; align-items:center;"></div>
                                     </div>
                                 </div>
+                                
                                 <div class="col-lg-6">
                                     <div class="form_group">
                                         <label>CVV</label>
-                                        <div id="card-cvv-element" class="form_control p-3" style="background: #fff; height: 50px; display: flex; align-items: center;"></div>
+                                        <div id="card-cvv-element" class="form_control p-3" style="background:#fff; height:50px; display:flex; align-items:center;"></div>
                                     </div>
                                 </div>
+                                
                                 <div class="col-lg-6">
                                     <div class="form_group">
                                         <label>Expiry</label>
-                                        <div id="card-expiry-element" class="form_control p-3" style="background: #fff; height: 50px; display: flex; align-items: center;"></div>
+                                        <div id="card-expiry-element" class="form_control p-3" style="background:#fff; height:50px; display:flex; align-items:center;"></div>
                                     </div>
                                 </div>
+
                                 <div class="checkout-btn col-lg-12 mt-20">
                                     <button type="submit" id="submit-btn" class="theme-btn style-one w-100">
-                                        <span id="button-text">Checkout & Pay ${{ cart_total }}</span>
+                                        <span id="button-text">Checkout & Pay AED {{ cart_total }}</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Right Column: Order Summary & Wallets -->
                     <div class="col-xl-4 col-lg-4">
                         <div class="pf-checkout-sidebar wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
                             <div class="pf-cart-sidebar-area mb-30">
@@ -74,86 +85,159 @@
                                     <h4 class="pf-cart-sidebar-title mb-30">Order Summary</h4>
                                     <ul>
                                         {% for item in cart_items %}
-                                            <li class="d-flex justify-content-between mb-2">
-                                                <div class="item-title">Qty: {{ item.quantity }}</div>
-                                                <div class="subtotal">${{ item.get_total_price }}</div>
-                                            </li>
+                                        <li class="d-flex justify-content-between mb-2">
+                                            <div class="item-title">Qty: {{ item.quantity }}</div>
+                                            <div class="subtotal">AED {{ item.get_total_price }}</div>
+                                        </li>
                                         {% endfor %}
                                         <li>
-                                            <div class="item-title">Shopping</div>
+                                            <div class="item-title">Shipping</div>
                                             <div class="subtotal">Free</div>
                                         </li>
                                         <li>
                                             <div class="item-title">Discount</div>
-                                            <div class="subtotal">$00.00</div>
+                                            <div class="subtotal">AED 0.00</div>
                                         </li>
                                         <li>
                                             <div class="item-title-total">Total</div>
-                                            <div class="subtotal-total">${{ cart_total }}</div>
+                                            <div class="subtotal-total">AED {{ cart_total }}</div>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="checkout-btn">
-                                <button type="button" class="theme-btn style-one w-100" onclick="document.getElementById('payment-form').requestSubmit();">
-                                    Apple Pay/Google Pay
-                                </button>
-                            </div>
+                        </div>
+
+                        <!-- Express Checkout / Wallet Button -->
+                        <div class="checkout-btn mb-3">
+                            <div id="payment-request-button" style="width:100%;"></div>
+                        </div>
+                        <div id="wallet-unavailable-message" class="text-center mt-3" style="display:none;">
+                            <small class="text-muted">Google Pay / Apple Pay is not available on this device or browser.</small>
                         </div>
                     </div>
+
                 </div>
             </form>
         </div>
     </section>
-    </main>
+</main>
 
+<!-- Stripe Script Setup -->
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-    const stripe = Stripe("{{ STRIPE_PUBLISHABLE_KEY }}");
-    const clientSecret = "{{ client_secret }}";
-
-    const elements = stripe.elements();
-
-    // 1. Individual Card Elements matching your separate fields
-    const cardNumberElement = elements.create("cardNumber");
-    cardNumberElement.mount("#card-number-element");
-    const cardExpiryElement = elements.create("cardExpiry");
-    cardExpiryElement.mount("#card-expiry-element");
-    const cardCvcElement = elements.create("cardCvc");
-    cardCvcElement.mount("#card-cvv-element");
-
-
-    // 2. Handle traditional Card form submission using confirmCardPayment
-    const form = document.getElementById("payment-form");
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const submitBtn = document.getElementById("submit-btn");
-        submitBtn.disabled = true;
-        document.getElementById("button-text").innerText = "Processing Payment...";
-
+    document.addEventListener("DOMContentLoaded", function () {
+        const stripe = Stripe("{{ STRIPE_PUBLISHABLE_KEY }}");
+        const clientSecret = "{{ client_secret }}";
         
-        // Grab customer first & last name for billing details
-        const firstName = document.querySelector('input[name="first_name"]').value;
-        const lastName = document.querySelector('input[name="last_name"]').value;
+        const elements = stripe.elements();
+        
+        // Mount Split Card Elements safely
+        const cardNumberElement = elements.create("cardNumber");
+        cardNumberElement.mount("#card-number-element");
+        
+        const cardExpiryElement = elements.create("cardExpiry");
+        cardExpiryElement.mount("#card-expiry-element");
+        
+        const cardCvcElement = elements.create("cardCvc");
+        cardCvcElement.mount("#card-cvv-element");
 
-        const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-                card: cardNumberElement,
-                billing_details: {
-                    name: `${firstName} ${lastName}`
-                }
+        // Configure Wallet / Express Checkout (Apple Pay / Google Pay)
+        const paymentRequest = stripe.paymentRequest({
+            country: "AE",
+            currency: "aed",
+            total: {
+                label: "The Facial Room",
+                amount: {{ amount_in_cents }}
+            },
+            requestPayerName: true,
+            requestPayerEmail: true
+        });
+
+        const paymentRequestButton = elements.create("paymentRequestButton", {
+            paymentRequest: paymentRequest
+        });
+
+        paymentRequest.canMakePayment().then(function(result) {
+            if (result) {
+                paymentRequestButton.mount("#payment-request-button");
+            } else {
+                document.getElementById("wallet-unavailable-message").style.display = "block";
             }
         });
 
-        if (error) {
-            alert(error.message);
-            submitBtn.disabled = false;
-            document.getElementById("button-text").innerText = "Checkout & Pay ${{ cart_total }}";
-        } else if (paymentIntent && paymentIntent.status === "succeeded") {
-            // Pass the successful PaymentIntent ID to Django
-            document.getElementById("payment_intent_id").value = paymentIntent.id;
-            form.submit();
-        }
+        // Handle Wallet Payment Events
+        paymentRequest.on("paymentmethod", async (event) => {
+            try {
+                const result = await stripe.confirmCardPayment(
+                    clientSecret,
+                    { payment_method: event.paymentMethod.id },
+                    { handleActions: false }
+                );
+
+                if (result.error) {
+                    event.complete("fail");
+                    alert(result.error.message);
+                    return;
+                }
+
+                event.complete("success");
+                let paymentIntent = result.paymentIntent;
+
+                if (paymentIntent && paymentIntent.status === "requires_action") {
+                    const confirmResult = await stripe.confirmCardPayment(clientSecret);
+                    if (confirmResult.error) {
+                        alert(confirmResult.error.message);
+                        return;
+                    }
+                    paymentIntent = confirmResult.paymentIntent;
+                }
+
+                if (paymentIntent && paymentIntent.status === "succeeded") {
+                    document.getElementById("payment_intent_id").value = paymentIntent.id;
+                    document.getElementById("payment-form").submit();
+                }
+            } catch (error) {
+                event.complete("fail");
+                console.error("Stripe wallet error:", error);
+                alert("There was a problem processing your payment.");
+            }
+        });
+
+        // Handle Standard Card Form Submission
+        const form = document.getElementById("payment-form");
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById("submit-btn");
+            const buttonText = document.getElementById("button-text");
+            
+            submitBtn.disabled = true;
+            buttonText.innerText = "Processing Payment...";
+
+            const firstName = document.querySelector('input[name="first_name"]').value;
+            const lastName = document.querySelector('input[name="last_name"]').value;
+
+            const result = await stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: cardNumberElement,
+                    billing_details: {
+                        name: `${firstName} ${lastName}`
+                    }
+                }
+            });
+
+            if (result.error) {
+                alert(result.error.message);
+                submitBtn.disabled = false;
+                buttonText.innerText = "Checkout & Pay AED {{ cart_total }}";
+                return;
+            }
+
+            if (result.paymentIntent && result.paymentIntent.status === "succeeded") {
+                document.getElementById("payment_intent_id").value = result.paymentIntent.id;
+                form.submit();
+            }
+        });
     });
 </script>
 {% endblock content %}

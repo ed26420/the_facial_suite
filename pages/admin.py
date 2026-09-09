@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.forms import Textarea
 from django.db import models
 from .models import (
-    ServiceCategory, Treatment, Product, CartItem, 
+    ServiceCategory, Treatment, Product, CartItem, BasePageContent,
     TeamMember, BlogPost, Page, SiteImage, Comment, IndexPageContent, Testimonial, StaffReview,
     FAQ, GalleryImage, HomePageContent, PartnerLogo, BeautyGallery, UserProfile, TeamInquiry
 )
@@ -134,6 +134,9 @@ class HomePageContentAdmin(admin.ModelAdmin):
 
 @admin.register(PartnerLogo)
 class PartnerLogoAdmin(admin.ModelAdmin):
+    list_display = ('template_type', 'order', 'name', 'image')
+    list_filter = ('template_type',)
+    ordering = ('template_type', 'order')
     save_as = True
 
 @admin.register(BeautyGallery)
@@ -146,4 +149,8 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 @admin.register(TeamInquiry)
 class TeamInquiryAdmin(admin.ModelAdmin):
+    save_as = True
+
+@admin.register(BasePageContent)
+class BasePageContentAdmin(admin.ModelAdmin):
     save_as = True

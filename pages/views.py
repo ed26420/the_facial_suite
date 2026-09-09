@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Treatment, ServiceCategory, Product, TeamMember, CartItem, Page, PartnerLogo, BeautyGallery 
 from .models import BlogPost, Comment, SiteImage, IndexPageContent,ServiceCategory, Testimonial, FAQ, GalleryImage, HomePageContent,UserProfile
 from django.db.models import Count
+from django.conf import settings
 from .forms import (
     UserRegistrationForm, 
     CustomAuthenticationForm,
@@ -16,7 +17,7 @@ from django.contrib.auth import login
 import stripe
 import os
 import urllib.parse
-
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 
@@ -41,7 +42,8 @@ def index_page_view(request):
     faq_data = FAQ.objects.first()
     gallery = GalleryImage.objects.all().order_by('order')
     posts = BlogPost.objects.all()[:3]
-    
+    partnerLogo = PartnerLogo.objects.filter(template_type='index_page')[:10]
+   
     return render(request, 'pages/index.html', {
         'content': content,
         'featured_list': featured_categories,
@@ -53,6 +55,7 @@ def index_page_view(request):
         'faq_list': faq_data,
         'gallery_list': gallery,
         'posts': posts,
+        'partnerLogo': partnerLogo
         
     })
 
@@ -247,40 +250,58 @@ def checkout_page_view(request):
     if not request.user.is_authenticated:
         return redirect('login') 
 
+    # Ensure Stripe API key is set
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+
     cart_items = CartItem.objects.filter(user=request.user)
+    
+    # Redirect if the cart is empty
+    if not cart_items.exists():
+        return redirect('cart_page')
+
     cart_total = sum(item.get_total_price() for item in cart_items)
     amount_in_cents = int(cart_total * 100)
     error_message = None
 
     if request.method == 'POST':
         payment_intent_id = request.POST.get('payment_intent_id')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        
         if payment_intent_id:
             try:
                 intent = stripe.PaymentIntent.retrieve(payment_intent_id)
                 if intent.status == 'succeeded':
+                    # TODO: If you want to save an Order model using first_name, last_name, etc., do it here!
+                    
+                    # Clear the user's cart items
                     cart_items.delete()
                     return redirect('order_success')
             except Exception as e:
                 print(f"Stripe Error: {e}")
+                
         error_message = 'Payment failed or was declined. Please try again.'        
 
     client_secret = None
     if amount_in_cents > 0:
-        intent = stripe.PaymentIntent.create(
-            amount=amount_in_cents,
-            currency='usd',
-            automatic_payment_methods={'enabled': True},
-        )
-        client_secret = intent.client_secret
+        try:
+            intent = stripe.PaymentIntent.create(
+                amount=amount_in_cents,
+                currency='aed',
+                payment_method_types=['card'],
+            )
+            client_secret = intent.client_secret
+        except stripe.error.StripeError as e:
+            error_message = str(e)
        
     return render(request, 'pages/checkout.html', {
-            'cart_items': cart_items,
-            'cart_total': cart_total,
-            'error_message': error_message,
-            'STRIPE_PUBLISHABLE_KEY': os.environ.get('STRIPE_PUBLISHABLE_KEY'),
-            'client_secret': client_secret,
-        })
-
+        'cart_items': cart_items,
+        'cart_total': cart_total,
+        'amount_in_cents': amount_in_cents,
+        'error_message': error_message,
+        'STRIPE_PUBLISHABLE_KEY': getattr(settings, 'STRIPE_PUBLISHABLE_KEY', None),
+        'client_secret': client_secret,
+    })
 
 #Function to handle the order success page after successful payment
 def order_success_view(request):
@@ -307,6 +328,7 @@ def dynamic_page_view(request, slug):
     page = get_object_or_404(Page, slug=slug)
     team_members = TeamMember.objects.all()
     testimonials = Testimonial.objects.all()
+    partnerLogo = PartnerLogo.objects.filter(template_type='aboutus_page')[:10]
     image_dict = {img.name: img.image.url for img in page.images.all()}
     faq_obj = FAQ.objects.first()
     faq_list = []
@@ -325,6 +347,7 @@ def dynamic_page_view(request, slug):
         'faq_obj' : faq_obj,
         'team_members': team_members,
         'testimonials': testimonials,
+        'partnerLogo': partnerLogo,
     }
     
     if slug == 'contact':

@@ -5,6 +5,21 @@ from django.utils.text import slugify
 from django.urls import reverse
 
 
+class BasePageContent(models.Model):
+    web_title = models.CharField(max_length=200)
+    shortcut_icon = models.ImageField(upload_to='index_images/base_images/', default='index_images//default.png', blank=True)
+    canvas_logo = models.ImageField(upload_to='index_images/base_images/', default='index_images//default.png', blank=True)
+    colapsed_title_1 = models.CharField(max_length=200)
+    colapsed_paragraph = models.CharField(max_length=200)
+    colapsed_image_1 = models.ImageField(upload_to='index_images/base_images/', null=True, blank=True)
+    colapsed_image_2 = models.ImageField(upload_to='index_images/base_images/', null=True, blank=True)
+    colapsed_image_3 = models.ImageField(upload_to='index_images/base_images/', null=True, blank=True)
+    colapsed_image_4 = models.ImageField(upload_to='index_images/base_images/', null=True, blank=True)
+    colapsed_title_2 = models.CharField(max_length=200)
+    navbar_logo = models.ImageField(upload_to='index_images/base_images/', default='index_images//default.png', blank=True)
+    footer_logo_1 = models.ImageField(upload_to='index_images/base_images/', default='index_images//default.png', blank=True)
+    footer_logo_2 = models.ImageField(upload_to='index_images/base_images/', default='index_images//default.png', blank=True)
+
 
 
 
@@ -13,7 +28,7 @@ class IndexPageContent(models.Model):
     # Hero Section
     hero_title = models.CharField(max_length=200)
     hero_subtitle = models.TextField()
-    hero_bg_image = models.ImageField(upload_to='index_images/')
+    hero_bg_image = models.ImageField(upload_to='index_images/main_banner/')
 
     # Suite Section
     suite_description = models.TextField(max_length=255, blank=True, null=True)
@@ -21,9 +36,9 @@ class IndexPageContent(models.Model):
     # About Section (FAQ logic will be extracted from the description)
     about_subtitle = models.CharField(max_length=100, default="About Us")
     about_description = models.TextField(help_text="Include FAQ items here using format: Question|Answer,Question|Answer")
-    about_sm_img_01 = models.ImageField(upload_to='index_images/')
-    about_sm_img_02 = models.ImageField(upload_to='index_images/')
-    about_sm_img_03 = models.ImageField(upload_to='index_images/')
+    about_sm_img_01 = models.ImageField(upload_to='index_images/aboutus_images/')
+    about_sm_img_02 = models.ImageField(upload_to='index_images/aboutus_images/')
+    about_sm_img_03 = models.ImageField(upload_to='index_images/aboutus_images/')
     
     # Stats
     about_box_01_stat = models.CharField(max_length=10) 
@@ -31,8 +46,8 @@ class IndexPageContent(models.Model):
     about_box_02_stat = models.CharField(max_length=10)
     about_box_02_text = models.CharField(max_length=100)
 
-    stats_img_01 = models.ImageField(upload_to='stats/', blank=True, null=True)
-    stats_img_02 = models.ImageField(upload_to='stats/', blank=True, null=True)
+    stats_img_01 = models.ImageField(upload_to='index_images/stats_images/', blank=True, null=True)
+    stats_img_02 = models.ImageField(upload_to='index_images/stats_images/', blank=True, null=True)
 
     def __str__(self):
         return "Complete Index Page Configuration"
@@ -48,7 +63,7 @@ class IndexPageContent(models.Model):
 #Model user profile
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    profile_picture = models.ImageField(upload_to='profiles/', default='profiles/default.png', blank=True)
+    profile_picture = models.ImageField(upload_to='index_images/base_images/', default='index_images//default.png', blank=True)
     phone_number = models.CharField(max_length=15, blank=True)
     date_of_birth = models.DateField(null=True, blank=True)
     residential_address = models.TextField(blank=True)
@@ -64,7 +79,7 @@ class ServiceCategory(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='category_images/', blank=True, null=True)
+    image = models.ImageField(upload_to='services_images/categories_main/', blank=True, null=True)
 
     def __str__(self):
         return self.name 
@@ -77,17 +92,17 @@ class Treatment(models.Model):
     name = models.CharField(max_length=150)
     services_page_description = models.TextField(blank=True, null=True)
     subtitle_tags = models.CharField(max_length=200, default="Facial, Glow")
-    main_thumbnail = models.ImageField(upload_to='services/cards/')
+    main_thumbnail = models.ImageField(upload_to='services_images/allservices_section/')
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
-    hero_banner_image = models.ImageField(upload_to='services/banners/')
-    mid_page_image = models.ImageField(upload_to='services/details/')
+    hero_banner_image = models.ImageField(upload_to='services_images/facialdetails_main/')
+    mid_page_image = models.ImageField(upload_to='services_images/facialdetails_min/')
     usage_instructions = models.TextField(blank=True, null=True)
     grid_benefits_data = models.TextField(blank=True, null=True)
     benefits_intro_text = models.TextField(blank=True, null=True)
     bullet_benefits = models.TextField(blank=True, null=True)
     details_about_paragraph_1 = models.TextField(blank=True, null=True)
     details_about_paragraph_2 = models.TextField(blank=True, null=True)
-    details_second_image_bg = models.ImageField(upload_to='services/details_bg/', blank=True, null=True)
+    details_second_image_bg = models.ImageField(upload_to='services_images/facialdetails_small/', blank=True, null=True)
 
     def __str__(self):
         return f"{self.treatment_code or 'NO CODE'} - {self.name}"
@@ -109,11 +124,11 @@ class Product(models.Model):
     sizes = models.CharField(max_length=150, default="100ml")
     additional_info_text = models.TextField(blank=True, null=True)
     bullet_benefits = models.TextField(blank=True, null=True)
-    main_image = models.ImageField(upload_to='shop/products/')
-    gallery_image_2 = models.ImageField(upload_to='shop/gallery/', blank=True, null=True)
-    gallery_image_3 = models.ImageField(upload_to='shop/gallery/', blank=True, null=True)
-    gallery_image_4 = models.ImageField(upload_to='shop/gallery/', blank=True, null=True)
-    gallery_image_5 = models.ImageField(upload_to='shop/gallery/', blank=True, null=True)
+    main_image = models.ImageField(upload_to='products_images/allproducts_section/')
+    gallery_image_2 = models.ImageField(upload_to='products_images/cart_section/', blank=True, null=True)
+    gallery_image_3 = models.ImageField(upload_to='products_images/cart_section/', blank=True, null=True)
+    gallery_image_4 = models.ImageField(upload_to='products_images/cart_section/', blank=True, null=True)
+    gallery_image_5 = models.ImageField(upload_to='products_images/cart_section/', blank=True, null=True)
 
     def __str__(self):
         return f"{self.product_code} - {self.name}"
@@ -138,7 +153,7 @@ class CartItem(models.Model):
 
 #Model for products extra images
 class BeautyGallery(models.Model):
-    main_image = models.ImageField(upload_to='gallery/')
+    main_image = models.ImageField(upload_to='gallery_images/salon_pictures/')
     photoname = models.CharField(max_length=100, default="Gallery Image")
     photodescription = models.CharField(max_length=100, default="Gallery Image")
     order = models.PositiveIntegerField(default=0)
@@ -158,7 +173,7 @@ class TeamMember(models.Model):
     experience = models.CharField(max_length=50)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to='team/')
+    photo = models.ImageField(upload_to='gallery_images/member_picture/')
     awards = models.TextField(help_text="Format: Title|Year|Description||Title|Year|Description")
     skills = models.TextField(help_text="Format: Skill Name:Percentage|Skill Name:Percentage")
     electives = models.TextField(help_text="Enter electives separated by |")
@@ -216,17 +231,17 @@ class TeamInquiry(models.Model):
 class BlogPost(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    image = models.ImageField(upload_to='blog/', help_text="Main thumbnail")
+    image = models.ImageField(upload_to='blogs_images/main_image/', help_text="Main thumbnail")
     video_url = models.URLField(blank=True, null=True)
     category = models.CharField(max_length=100)
     date = models.DateField(auto_now_add=True)
     author_name = models.CharField(max_length=100)
-    author_image = models.ImageField(upload_to='blog/authors/', default='defaults/author.png')
+    author_image = models.ImageField(upload_to='blogs_images/author_image/', default='defaults/author.png')
     tags = models.CharField(max_length=100)
     summary = models.TextField() 
     content = RichTextField() 
-    post_image_1 = models.ImageField(upload_to='blog/details/', blank=True, null=True)
-    post_image_2 = models.ImageField(upload_to='blog/details/', blank=True, null=True)
+    post_image_1 = models.ImageField(upload_to='blogs_images/post_one/', blank=True, null=True)
+    post_image_2 = models.ImageField(upload_to='blogs_images/post_two/', blank=True, null=True)
     
     def get_absolute_url(self):
         return reverse('blog_detail', kwargs={'slug': self.slug})
@@ -266,21 +281,25 @@ class Page(models.Model):
     def __str__(self):
         return self.title
 
+def site_image_upload_path(instance, filename):
+    page_slug = instance.page.slug if instance.page else 'general'
+    return f'index_images/{page_slug}/{filename}'
 
 #Model for images associated with dynamic pages
 class SiteImage(models.Model):
     page = models.ForeignKey(Page, related_name='images', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='site_assets/')
+    image = models.ImageField(upload_to=site_image_upload_path)
 
-
+def __str__(self):
+        return f"{self.name} for {self.page.title}"
 
 
 
 #Model for FAQ Section    
 class FAQ(models.Model):
     title = models.CharField(max_length=100, default="Frequently Asked Questions")
-    image = models.ImageField(upload_to='faq/')
+    image = models.ImageField(upload_to='gallery_images/faq_images/')
     q1 = models.CharField(max_length=255)
     a1 = models.TextField()
     q2 = models.CharField(max_length=255)
@@ -297,7 +316,7 @@ class FAQ(models.Model):
 
 #Model for Gallery Images
 class GalleryImage(models.Model):
-    image = models.ImageField(upload_to='gallery/')
+    image = models.ImageField(upload_to='gallery_images/socialmedia_images/')
     alt_text = models.CharField(max_length=100, default="Gallery Image")
     instagram_url = models.URLField(help_text="Link to Instagram post", blank=True, null=True)
     facebook_url = models.URLField(help_text="Link to Facebook post", blank=True, null=True)
@@ -314,22 +333,22 @@ class HomePageContent(models.Model):
     
     banner_title = models.CharField(max_length=200, default="Let Your Skin Breathe")
     banner_description = models.TextField(default="Let your skin breathe naturally with our gentle, nourishing formulas designed to cleanse, hydrate, and restore")
-    banner_text_img = models.ImageField(upload_to='home/banner/', help_text="The style image next to the title")
+    banner_text_img = models.ImageField(upload_to='index_images/home_images/', help_text="The style image next to the title")
 
-    banner_product_img = models.ImageField(upload_to='home/banner/', help_text="The product image in the bottom left")
-    main_banner_thumb = models.ImageField(upload_to='home/banner/', help_text="The main center thumbnail image")
-    video_bg_img = models.ImageField(upload_to='home/banner/', help_text="The video background image")
+    banner_product_img = models.ImageField(upload_to='index_images/home_images/', help_text="The product image in the bottom left")
+    main_banner_thumb = models.ImageField(upload_to='index_images/home_images/', help_text="The main center thumbnail image")
+    video_bg_img = models.ImageField(upload_to='index_images/home_images/', help_text="The video background image")
     
     video_url = models.URLField(help_text="Link to the promotional video")
     
-    client_img = models.ImageField(upload_to='home/banner/', help_text="The client testimonial images")
+    client_img = models.ImageField(upload_to='index_images/home_images/', help_text="The client testimonial images")
     satisfied_clients_count = models.PositiveIntegerField(default=67, help_text="Number in thousands (e.g., 67 for 67k+)")
 
     about_description_main = models.TextField(default="let")
     about_description_two = models.TextField(default="let")
-    about_image = models.ImageField(upload_to='home/about/')
+    about_image = models.ImageField(upload_to='index_images/home_images/')
 
-    chooseus_image = models.ImageField(upload_to='home/about/')
+    chooseus_image = models.ImageField(upload_to='index_images/home_images/')
     chooseus_text_one = models.TextField(default="Trained professionals delivering trusted skincare treatments.")
     chooseus_text_two = models.TextField(default="We never test on animals and use only ethically sourced safe ingredients")
     chooseus_text_three = models.TextField(default="Personalized treatments crafted to meet your unique skin type and concerns.")
@@ -346,16 +365,20 @@ class HomePageContent(models.Model):
 
 #model for Partner Logos
 class PartnerLogo(models.Model):
+    TEMPLATE_CHOICES = (
+        ('index_page', 'index page'),
+        ('aboutus_page', 'aboutus page'),
+    )
+    template_type = models.CharField(max_length=20, choices=TEMPLATE_CHOICES, default='index_page')
     name = models.CharField(max_length=100)
-    logo = models.ImageField(upload_to='partners/')
+    image = models.ImageField(upload_to='partner_images/')
     order = models.PositiveIntegerField(default=0, help_text="Order in the slider")
 
     class Meta:
         ordering = ['order']
 
     def __str__(self):
-        return self.name
-
+        return f"{self.get_template_type_display()} - Image #{self.order}"
 
 
 
@@ -366,8 +389,8 @@ class Testimonial(models.Model):
     client_position = models.CharField(max_length=100)
     rating = models.DecimalField(max_digits=3, decimal_places=2, default=5.0)
     review_text = models.TextField()
-    small_image = models.ImageField(upload_to='testimonials/small/', help_text="Used in slider cards")
-    background_image = models.ImageField(upload_to='testimonials/background/', blank=True, null=True)
+    small_image = models.ImageField(upload_to='client_images/testimonials_main/', help_text="Used in slider cards")
+    background_image = models.ImageField(upload_to='client_images/testimonial_bg/', blank=True, null=True)
     
     is_featured = models.BooleanField(default=False)
 
@@ -382,7 +405,7 @@ class Testimonial(models.Model):
 class StaffReview(models.Model):
     staff_name = models.CharField(max_length=100)
     client_position = models.CharField(max_length=100)
-    large_image = models.ImageField(upload_to='reviews/')
+    large_image = models.ImageField(upload_to='gallery_images/reviews_image/')
     review_text = models.TextField()
     match_rate = models.CharField(max_length=10, default="100%")
 

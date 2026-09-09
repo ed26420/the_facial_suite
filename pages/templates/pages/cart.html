@@ -27,13 +27,9 @@
                                 <tr>
                                     <td>
                                         <div class="pf-cart-product-thumb">
-                                            {% if item.product %}
-                                                <img src="{{ item.product.main_image.url }}" alt="{{ item.product.name }}">
-                                            {% else %}
-                                                <img src="{{ item.treatment.main_thumbnail.url }}" alt="{{ item.treatment.name }}">
-                                            {% endif %}
+                                            <img src="{{ item.product.main_image.url }}" alt="{{ item.product.name }}">
                                         </div>
-                                        <span>{% if item.product %}{{ item.product.name }}{% else %}{{ item.treatment.name }}{% endif %}</span>
+                                        <span>{{ item.product.name }}</span>
                                     </td>
                                     <td><div class="pf-cart-product-price"><span>${{ item.get_total_price }}</span></div></td>
                                     <td>
