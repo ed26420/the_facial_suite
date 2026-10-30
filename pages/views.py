@@ -25,16 +25,22 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 #View for the main index page
 def index_page_view(request):
     content = IndexPageContent.objects.first()
-    main_about_text = content.about_description if content else ""
+    
+    if content:
+        main_about_text = content.about_description or ""
+        about_text = content.about_description or ""
+        
+        img1 = f'<img src="{content.about_sm_img_01.url}" class="inline-img">' if content.about_sm_img_01 else ''
+        img2 = f'<img src="{content.about_sm_img_02.url}" class="inline-img">' if content.about_sm_img_02 else ''
+        img3 = f'<img src="{content.about_sm_img_03.url}" class="inline-img">' if content.about_sm_img_03 else ''
+        
+        about_text = about_text.replace("[IMG1]", img1)
+        about_text = about_text.replace("[IMG2]", img2)
+        about_text = about_text.replace("[IMG3]", img3)
+    else:
+        main_about_text = ""
+        about_text = ""
 
-    img1 = f'<img src="{content.about_sm_img_01.url}" class="inline-img">'
-    img2 = f'<img src="{content.about_sm_img_02.url}" class="inline-img">'
-    img3 = f'<img src="{content.about_sm_img_03.url}" class="inline-img">'
-    about_text = content.about_description
-    about_text = about_text.replace("[IMG1]", img1)
-    about_text = about_text.replace("[IMG2]", img2)
-    about_text = about_text.replace("[IMG3]", img3)
- 
     featured_categories = ServiceCategory.objects.all()[:3]
     beauty_images = BeautyGallery.objects.all().order_by('order')
     treatments = Treatment.objects.all()[:5]
@@ -48,7 +54,7 @@ def index_page_view(request):
         'content': content,
         'featured_list': featured_categories,
         'about_description_html': about_text,
-        'beauty_images':beauty_images,
+        'beauty_images': beauty_images,
         'treatment_list': treatments,
         'product_list': products,
         'main_about_text': main_about_text,
@@ -56,9 +62,7 @@ def index_page_view(request):
         'gallery_list': gallery,
         'posts': posts,
         'partnerLogo': partnerLogo
-        
     })
-
 
 
 
