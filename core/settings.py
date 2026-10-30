@@ -12,7 +12,18 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-fallback-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS tells Django which domain names it is allowed to serve
+ALLOWED_HOSTS = [
+    'thefacialsuite.com',      # Replace with your actual domain name
+    'www.thefacialsuite.com',
+    '.elasticbeanstalk.com',   # Keeps your default AWS URL working as a backup
+]
+
+# CSRF_TRUSTED_ORIGINS ensures secure POST requests (like login or booking forms) work with full https links
+CSRF_TRUSTED_ORIGINS = [
+    'https://thefacialsuite.com',
+    'https://www.thefacialsuite.com',
+]
 
 
 # Application definition
