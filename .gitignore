@@ -4,7 +4,7 @@ __pycache__/
 db.sqlite3
 .vscode/
 .env
-media
+media/
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

@@ -71,12 +71,6 @@
                     <div class="pf-main-menu d-none d-xl-block">
                         <nav class="pf-mobile-menu-active">
                             <ul>
-                                <li class="menu-item has-children"><a href="#">Home</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="{% url 'index' %}">Home 01</a></li>
-                                        <li><a href="{% url 'home' %}">Home 02</a></li>
-                                    </ul>
-                                </li>
                                 <li class="menu-item has-children"><a href="{% url 'services' %}">Treatments</a>
                                     <ul class="sub-menu">
                                         {% for category in menu_categories %}
@@ -98,7 +92,9 @@
                                 <li class="menu-item has-children"><a href="#">Pages</a>
                                     <ul class="sub-menu">
                                         <li><a href="{% url 'about' %}">About Us</a></li> 
-                                        <li><a href="{% url 'blog_grid' %}">Blogs Grid</a></li>                             
+                                        <li><a href="{% url 'blog_grid' %}">Blogs Grid</a></li> 
+                                         <li><a href="{% url 'index' %}">Home 01</a></li>
+                                        <li><a href="{% url 'home' %}">Home 02</a></li>                            
                                     </ul>
                                 </li>
                             </ul>

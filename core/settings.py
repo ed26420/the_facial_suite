@@ -14,6 +14,8 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # ALLOWED_HOSTS tells Django which domain names it is allowed to serve
 ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
     'thefacialsuite.com',      # Replace with your actual domain name
     'www.thefacialsuite.com',
     '.elasticbeanstalk.com',   # Keeps your default AWS URL working as a backup
@@ -119,7 +121,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
