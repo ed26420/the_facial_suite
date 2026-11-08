@@ -17,8 +17,13 @@ with open(env_path, 'r') as f:
 
 if env_vars:
     print(f"🚀 Pushing {len(env_vars)} environment variables to AWS Elastic Beanstalk...")
-    # Runs: eb setenv KEY1=val1 KEY2=val2 ...
-    subprocess.run(['eb', 'setenv'] + env_vars)
-    print("✅ Successfully updated AWS environment properties!")
+    
+    # Push them safely in a single batch command
+    result = subprocess.run(['eb', 'setenv'] + env_vars)
+    
+    if result.returncode == 0:
+        print("✅ Successfully updated AWS environment properties!")
+    else:
+        print("❌ Error pushing variables. Make sure your AWS credentials are configured (`aws configure`).")
 else:
     print("⚠️ No valid environment variables found in your .env file.")
