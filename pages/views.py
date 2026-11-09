@@ -20,9 +20,7 @@ import urllib.parse
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-
-
-#View for the main index page
+# View for the main index page
 def index_page_view(request):
     content = IndexPageContent.objects.first()
     
@@ -41,13 +39,16 @@ def index_page_view(request):
         main_about_text = ""
         about_text = ""
 
-    featured_categories = ServiceCategory.objects.all()[:3]
-    beauty_images = BeautyGallery.objects.all().order_by('order')
-    treatments = Treatment.objects.all()[:5]
-    products = Product.objects.all()[:3]
-    faq_data = FAQ.objects.first()
-    gallery = GalleryImage.objects.all().order_by('order')
+    featured_categories = list(ServiceCategory.objects.all())[:3]
+    beauty_images = list(BeautyGallery.objects.all().order_by('order'))
+    
+    # OPTIMIZED: Pre-fetch foreign key relations to stop N+1 queries in index.html
+    treatments = Treatment.objects.select_related('category').all()[:5]
+    products = Product.objects.select_related('category').all()[:3]
     posts = BlogPost.objects.all()[:3]
+    
+    faq_data = FAQ.objects.first()
+    gallery = list(GalleryImage.objects.all().order_by('order'))
     partnerLogo = PartnerLogo.objects.filter(template_type='index_page')[:10]
    
     return render(request, 'pages/index.html', {
@@ -63,7 +64,6 @@ def index_page_view(request):
         'posts': posts,
         'partnerLogo': partnerLogo
     })
-
 
 
 

@@ -1,0 +1,39 @@
+--- QUERY 1 ---
+SELECT "pages_indexpagecontent"."id", "pages_indexpagecontent"."hero_title", "pages_indexpagecontent"."hero_subtitle", "pages_indexpagecontent"."hero_bg_image", "pages_indexpagecontent"."suite_description", "pages_indexpagecontent"."about_subtitle", "pages_indexpagecontent"."about_description", "pages_indexpagecontent"."about_sm_img_01", "pages_indexpagecontent"."about_sm_img_02", "pages_indexpagecontent"."about_sm_img_03", "pages_indexpagecontent"."about_box_01_stat", "pages_indexpagecontent"."about_box_01_text", "pages_indexpagecontent"."about_box_02_stat", "pages_indexpagecontent"."about_box_02_text", "pages_indexpagecontent"."stats_img_01", "pages_indexpagecontent"."stats_img_02" FROM "pages_indexpagecontent" ORDER BY "pages_indexpagecontent"."id" ASC LIMIT 1
+
+--- QUERY 2 ---
+SELECT "pages_servicecategory"."id", "pages_servicecategory"."name", "pages_servicecategory"."slug", "pages_servicecategory"."description", "pages_servicecategory"."image" FROM "pages_servicecategory"
+
+--- QUERY 3 ---
+SELECT "pages_beautygallery"."id", "pages_beautygallery"."main_image", "pages_beautygallery"."photoname", "pages_beautygallery"."photodescription", "pages_beautygallery"."order" FROM "pages_beautygallery" ORDER BY "pages_beautygallery"."order" ASC
+
+--- QUERY 4 ---
+SELECT "pages_faq"."id", "pages_faq"."title", "pages_faq"."image", "pages_faq"."q1", "pages_faq"."a1", "pages_faq"."q2", "pages_faq"."a2", "pages_faq"."q3", "pages_faq"."a3", "pages_faq"."q4", "pages_faq"."a4" FROM "pages_faq" ORDER BY "pages_faq"."id" ASC LIMIT 1
+
+--- QUERY 5 ---
+SELECT "pages_galleryimage"."id", "pages_galleryimage"."image", "pages_galleryimage"."alt_text", "pages_galleryimage"."instagram_url", "pages_galleryimage"."facebook_url", "pages_galleryimage"."order" FROM "pages_galleryimage" ORDER BY "pages_galleryimage"."order" ASC
+
+--- QUERY 6 ---
+SELECT "pages_basepagecontent"."id", "pages_basepagecontent"."web_title", "pages_basepagecontent"."shortcut_icon", "pages_basepagecontent"."canvas_logo", "pages_basepagecontent"."colapsed_title_1", "pages_basepagecontent"."colapsed_paragraph", "pages_basepagecontent"."colapsed_image_1", "pages_basepagecontent"."colapsed_image_2", "pages_basepagecontent"."colapsed_image_3", "pages_basepagecontent"."colapsed_image_4", "pages_basepagecontent"."colapsed_title_2", "pages_basepagecontent"."navbar_logo", "pages_basepagecontent"."footer_logo_1", "pages_basepagecontent"."footer_logo_2" FROM "pages_basepagecontent" ORDER BY "pages_basepagecontent"."id" ASC LIMIT 1
+
+--- QUERY 7 ---
+SELECT "pages_page"."id", "pages_page"."slug", "pages_page"."title", "pages_page"."story_text", "pages_page"."story_text_two", "pages_page"."email_field", "pages_page"."phone_field", "pages_page"."address" FROM "pages_page" ORDER BY "pages_page"."id" ASC LIMIT 1
+
+--- QUERY 8 ---
+SELECT "pages_servicecategory"."id", "pages_servicecategory"."name", "pages_servicecategory"."slug", "pages_servicecategory"."description", "pages_servicecategory"."image" FROM "pages_servicecategory"
+
+--- QUERY 9 ---
+SELECT "pages_treatment"."id", "pages_treatment"."treatment_code", "pages_treatment"."category_id", "pages_treatment"."name", "pages_treatment"."services_page_description", "pages_treatment"."subtitle_tags", "pages_treatment"."main_thumbnail", "pages_treatment"."price", "pages_treatment"."hero_banner_image", "pages_treatment"."mid_page_image", "pages_treatment"."usage_instructions", "pages_treatment"."grid_benefits_data", "pages_treatment"."benefits_intro_text", "pages_treatment"."bullet_benefits", "pages_treatment"."details_about_paragraph_1", "pages_treatment"."details_about_paragraph_2", "pages_treatment"."details_second_image_bg" FROM "pages_treatment" WHERE "pages_treatment"."category_id" IN (3, 4, 5, 6, 7, 8)
+
+--- QUERY 10 ---
+SELECT "pages_partnerlogo"."id", "pages_partnerlogo"."template_type", "pages_partnerlogo"."name", "pages_partnerlogo"."image", "pages_partnerlogo"."order" FROM "pages_partnerlogo" WHERE "pages_partnerlogo"."template_type" = 'index_page' ORDER BY "pages_partnerlogo"."order" ASC LIMIT 10
+
+--- QUERY 11 ---
+SELECT "pages_treatment"."id", "pages_treatment"."treatment_code", "pages_treatment"."category_id", "pages_treatment"."name", "pages_treatment"."services_page_description", "pages_treatment"."subtitle_tags", "pages_treatment"."main_thumbnail", "pages_treatment"."price", "pages_treatment"."hero_banner_image", "pages_treatment"."mid_page_image", "pages_treatment"."usage_instructions", "pages_treatment"."grid_benefits_data", "pages_treatment"."benefits_intro_text", "pages_treatment"."bullet_benefits", "pages_treatment"."details_about_paragraph_1", "pages_treatment"."details_about_paragraph_2", "pages_treatment"."details_second_image_bg", "pages_servicecategory"."id", "pages_servicecategory"."name", "pages_servicecategory"."slug", "pages_servicecategory"."description", "pages_servicecategory"."image" FROM "pages_treatment" INNER JOIN "pages_servicecategory" ON ("pages_treatment"."category_id" = "pages_servicecategory"."id") LIMIT 5
+
+--- QUERY 12 ---
+SELECT "pages_product"."id", "pages_product"."category_id", "pages_product"."product_code", "pages_product"."name", "pages_product"."short_description", "pages_product"."full_description", "pages_product"."price", "pages_product"."discount_price", "pages_product"."rating", "pages_product"."sizes", "pages_product"."additional_info_text", "pages_product"."bullet_benefits", "pages_product"."main_image", "pages_product"."gallery_image_2", "pages_product"."gallery_image_3", "pages_product"."gallery_image_4", "pages_product"."gallery_image_5", "pages_servicecategory"."id", "pages_servicecategory"."name", "pages_servicecategory"."slug", "pages_servicecategory"."description", "pages_servicecategory"."image" FROM "pages_product" INNER JOIN "pages_servicecategory" ON ("pages_product"."category_id" = "pages_servicecategory"."id") LIMIT 3
+
+--- QUERY 13 ---
+SELECT "pages_blogpost"."id", "pages_blogpost"."title", "pages_blogpost"."slug", "pages_blogpost"."image", "pages_blogpost"."video_url", "pages_blogpost"."category", "pages_blogpost"."date", "pages_blogpost"."author_name", "pages_blogpost"."author_image", "pages_blogpost"."tags", "pages_blogpost"."summary", "pages_blogpost"."content", "pages_blogpost"."post_image_1", "pages_blogpost"."post_image_2" FROM "pages_blogpost" LIMIT 3
+
