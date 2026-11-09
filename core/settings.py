@@ -8,10 +8,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
 # 2. Security & Hosting Settings (Zero Fallbacks)
-SECRET_KEY = os.environ['SECRET_KEY']
-DEBUG = os.environ['DEBUG'] == 'True'
 
-ALLOWED_HOSTS = ['*']
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+SECRET_KEY = os.getenv('SECRET_KEY', 'default-unsafe-secret-key-for-boot')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
 CSRF_TRUSTED_ORIGINS = [
     'https://thefacialsuite.com',
@@ -126,8 +126,9 @@ else:
 
 
 # 8. Third-Party Services (Zero Fallbacks)
-STRIPE_PUBLISHABLE_KEY = os.environ['STRIPE_PUBLISHABLE_KEY']
-STRIPE_SECRET_KEY = os.environ['STRIPE_SECRET_KEY']
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY', '')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET', '')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_URL = os.environ['SITE_URL']
