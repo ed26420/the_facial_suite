@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Treatment, ServiceCategory, Product, TeamMember, CartItem, Page, PartnerLogo, BeautyGallery 
-from .models import BlogPost, Comment, SiteImage, IndexPageContent,ServiceCategory, Testimonial, FAQ, GalleryImage, HomePageContent,UserProfile
+from .models import BlogPost, Comment, SiteImage, IndexPageContent,ServiceCategory, Testimonial, FAQ, GalleryImage,UserProfile
 from django.db.models import Count
 from django.conf import settings
 from .forms import (
@@ -510,33 +510,8 @@ def blog_details_view(request, slug):
     })
 
 
-
-
-
 def error_page_view(request):
     return render(request, "pages/error.html")
-
-
-
-
-
-
-def home_page_view(request):
-    content = HomePageContent.objects.first()
-    partner = PartnerLogo.objects.all()
-    products = Product.objects.all()[:4]
-    treatments = Treatment.objects.all()
-    teammembers = TeamMember.objects.all()
-    testimonials = Testimonial.objects.all()
-    return render(request, 'pages/home.html', {
-        'content': content,
-        'products': products,
-        'partners':partner,
-        'treatments':treatments,
-        'teammembers':teammembers,
-        'testimonials':testimonials
-        })
-
 
 
 

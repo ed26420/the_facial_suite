@@ -22,7 +22,6 @@ class BasePageContent(models.Model):
 
 
 
-
 #Model for main index page  
 class IndexPageContent(models.Model):
     # Hero Section
@@ -327,42 +326,6 @@ class GalleryImage(models.Model):
 
 
 
-
-#model for Home Page Content
-class HomePageContent(models.Model):
-    
-    banner_title = models.CharField(max_length=200, default="Let Your Skin Breathe")
-    banner_description = models.TextField(default="Let your skin breathe naturally with our gentle, nourishing formulas designed to cleanse, hydrate, and restore")
-    banner_text_img = models.ImageField(upload_to='index_images/home_images/', help_text="The style image next to the title")
-
-    banner_product_img = models.ImageField(upload_to='index_images/home_images/', help_text="The product image in the bottom left")
-    main_banner_thumb = models.ImageField(upload_to='index_images/home_images/', help_text="The main center thumbnail image")
-    video_bg_img = models.ImageField(upload_to='index_images/home_images/', help_text="The video background image")
-    
-    video_url = models.URLField(help_text="Link to the promotional video")
-    
-    client_img = models.ImageField(upload_to='index_images/home_images/', help_text="The client testimonial images")
-    satisfied_clients_count = models.PositiveIntegerField(default=67, help_text="Number in thousands (e.g., 67 for 67k+)")
-
-    about_description_main = models.TextField(default="let")
-    about_description_two = models.TextField(default="let")
-    about_image = models.ImageField(upload_to='index_images/home_images/')
-
-    chooseus_image = models.ImageField(upload_to='index_images/home_images/')
-    chooseus_text_one = models.TextField(default="Trained professionals delivering trusted skincare treatments.")
-    chooseus_text_two = models.TextField(default="We never test on animals and use only ethically sourced safe ingredients")
-    chooseus_text_three = models.TextField(default="Personalized treatments crafted to meet your unique skin type and concerns.")
-    chooseus_text_four = models.TextField(default="Sustainable, cruelty-free practices that care for you and the planet.")
-    chooseus_text_five = models.TextField(default="Loved by skincare enthusiasts worldwide, with thousands of happy glowing customers.")
-
-    treatment_text_one = models.TextField(default="Discover personalized skincare treatments designed to meet your unique needs. From deep cleansing facials to targeted therapies, our expert care helps you achieve healthy, glowing, and beautiful.")
-    def __str__(self):
-        return "Home Page Content"
-
-
-
-
-
 #model for Partner Logos
 class PartnerLogo(models.Model):
     TEMPLATE_CHOICES = (
@@ -400,7 +363,6 @@ class Testimonial(models.Model):
 
 
 
-
 #Model for Staff Reviews
 class StaffReview(models.Model):
     staff_name = models.CharField(max_length=100)
@@ -411,5 +373,3 @@ class StaffReview(models.Model):
 
     def __str__(self):
         return self.staff_name
-
-

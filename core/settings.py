@@ -1,17 +1,34 @@
 import os
 from pathlib import Path
 import dj_database_url
+import requests
 from dotenv import load_dotenv
 
 # 1. Base Directory & Environment Variables
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(BASE_DIR / '.env')
+load_dotenv(BASE_DIR / '.env', override=True)
 
 # 2. Security & Hosting Settings (Zero Fallbacks)
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-SECRET_KEY = os.getenv('SECRET_KEY', 'default-unsafe-secret-key-for-boot')
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+SECRET_KEY = os.environ['SECRET_KEY']
+
+
+
+ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(',')
+try:
+    token_url = 'http://169.254.169.254/latest/api/token'
+    token_headers = {'X-aws-ec2-metadata-token-ttl-seconds': '3600'}
+    token = requests.put(token_url, headers=token_headers, timeout=1).text
+
+    ip_url = 'http://169.254.169.254/latest/meta-data/local-ipv4'
+    ip_headers = {'X-aws-ec2-metadata-token': token}
+    ec2_private_ip = requests.get(ip_url, headers=ip_headers, timeout=1).text
+    
+    if ec2_private_ip:
+        ALLOWED_HOSTS.append(ec2_private_ip)
+except requests.exceptions.RequestException:
+    pass
 
 CSRF_TRUSTED_ORIGINS = [
     'https://thefacialsuite.com',
@@ -68,7 +85,6 @@ WSGI_APPLICATION = "core.wsgi.application"
 # 4. Database Setup (Strictly AWS RDS - No SQLite Fallback)
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600
     )
 }
@@ -99,28 +115,19 @@ STORAGES = {
 }
 
 
-USE_S3 = os.getenv('USE_S3', 'False') == 'True'
-if USE_S3:
-    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', '')
-    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', '')
-    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME', '')
-    AWS_S3_REGION_NAME = os.getenv('AWS_REGION_NAME', 'eu-north-1')
-    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com' if AWS_STORAGE_BUCKET_NAME else ''
-    AWS_QUERYSTRING_AUTH = False
-    AWS_DEFAULT_ACL = None
 
-    STORAGES["default"] = {
-        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
-    }
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/' if AWS_S3_CUSTOM_DOMAIN else '/media/'
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+AWS_S3_REGION_NAME = os.getenv('AWS_REGION_NAME', 'eu-north-1')
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_QUERYSTRING_AUTH = False
+AWS_DEFAULT_ACL = None
 
-else:
-    STORAGES["default"] = {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    }
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+STORAGES["default"] = {
+    "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+}
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
 
 
 # 8. Third-Party Services (Zero Fallbacks)
@@ -128,5 +135,13 @@ STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET', '')
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-SITE_URL = os.getenv('SITE_URL', 'https://thefacialsuite.com')
+
+
+EMAIL_BACKEND = os.environ['EMAIL_BACKEND']
+EMAIL_HOST = os.environ['EMAIL_HOST']
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+
+SITE_URL = os.environ['SITE_URL']

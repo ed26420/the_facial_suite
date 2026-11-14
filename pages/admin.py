@@ -4,7 +4,7 @@ from django.db import models
 from .models import (
     ServiceCategory, Treatment, Product, CartItem, BasePageContent,
     TeamMember, BlogPost, Page, SiteImage, Comment, IndexPageContent, Testimonial, StaffReview,
-    FAQ, GalleryImage, HomePageContent, PartnerLogo, BeautyGallery, UserProfile, TeamInquiry
+    FAQ, GalleryImage, PartnerLogo, BeautyGallery, UserProfile, TeamInquiry
 )
 
 
@@ -126,10 +126,6 @@ class FAQAdmin(admin.ModelAdmin):
 
 @admin.register(GalleryImage)
 class GalleryImageAdmin(admin.ModelAdmin):
-    save_as = True
-
-@admin.register(HomePageContent)
-class HomePageContentAdmin(admin.ModelAdmin):
     save_as = True
 
 @admin.register(PartnerLogo)
