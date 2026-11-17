@@ -10,3 +10,4 @@ media/
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 push_env
+staticfiles/
