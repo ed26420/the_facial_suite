@@ -1,0 +1,178 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.6 About
+/*----------------------------------------*/
+
+.pf-about{
+    &-area{
+        & .row-x-gap{
+            --bs-gutter-x: 30px;
+            @media #{$xs}{
+                --bs-gutter-y: 30px;
+            }
+        }
+    }
+    &-box{
+        background-color: var(--pf-section-bg-color);
+        border-radius: 20px;
+        padding: 10px;
+        @media #{$lg,$md,$xs}{
+            flex-wrap: wrap;
+        }
+        
+        & img{
+            border-radius: 20px;
+            @media #{$lg,$md,$xs}{
+                width: 50%;
+            }
+        }
+        &-title{
+            font-size: 96px;
+            color: var(--pf-primary-color);
+            font-weight: 300;
+            line-height: 1.3;
+            @media #{$lg,}{
+                font-size: 75px;
+            }
+            @media #{$md,$xs}{
+                font-size: 50px;
+            }
+        }
+        &-desc{
+            font-weight: 500;
+            font-size: 18px;
+            @media #{$md}{
+                line-height: 1.3;
+            }
+        }
+    }
+    &-content{
+        flex-basis: 100%;
+        text-align: center;
+        @media #{$lg,$md,$xs}{
+            flex-basis: 50%;
+            padding: 0 10px;
+        }
+    }
+    &-us-area{
+        & .section-title{
+            @media #{$mx12}{
+                margin-bottom: 20px;
+                line-height: 120%;
+            }
+            
+        }
+    }
+    &-us-count{
+        display: flex;
+        justify-content: space-between;
+        @media #{$xs}{
+            flex-wrap: wrap;
+            text-align: center;
+            gap: 24px;
+        }
+        & .counter{
+            font-size: 64px;
+            font-weight: 600;
+           
+            margin-bottom: 10px;
+        }
+        & p{
+            font-size: 20px;
+            
+            line-height: 1;
+        }
+        &-box{
+            position: relative;
+            @media #{$xs}{
+                width: 100%;
+            }
+            &:not(:last-child){
+                &::after{
+                    content: "";
+                    width: 2px;
+                    height: 70px;
+                    background-color: rgba(26, 26, 26, 0.5);
+                    display: inline-block;
+                    top: 19%;
+                    right: -70%;
+                    position: absolute;
+                    @media #{$mx12}{
+                        display: none;
+                    }
+                }
+            }
+            
+        }
+    }
+    &-us-thumb{
+        @media #{$mx12}{
+            text-align: center;
+        }
+    }
+    &-two-btn{
+        & a{
+            @include pf-transition();
+        }
+        & .style-one{
+            margin-right: 7px;
+            &:hover{
+                background-color: var(--pf-hover-bg-color);
+                color: var(--pf-theme-white-color);
+            }
+        }
+        & .style-two{
+            &:hover{
+                background-color: var(--pf-primary-color);
+                color: var(--pf-theme-white-color);
+            }
+        }
+    }
+    &-rotated-circle{
+        position: relative;
+        width: 150px;
+        height: 150px;
+        @media #{$mx12}{
+            margin: auto;
+            margin-bottom: 25px;
+        }
+        .rotating {
+            width: 100%;
+            height: 100%;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+        to {
+            transform: rotate(360deg);
+        }
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            & i{
+                font-size: 40px;
+                transform: rotate(-45deg);
+            }
+        }
+        & #circlePath{
+            fill: none;
+            stroke: none;
+        }
+        text {
+            font-size: 30px;
+        }
+    }
+}
+
+
+.pf-story-area{
+    .row-x-gap{
+        @media #{$xs}{
+            --bs-gutter-y: 30px;
+        }
+    }
+}

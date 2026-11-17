@@ -1,0 +1,81 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.15 Choose
+/*----------------------------------------*/
+
+.pf-choose{
+    &-area{
+        .gap-x-30{
+            @media #{$xl}{
+                    --bs-gutter-x: 20px;
+            }
+        }
+    }
+    &-box{
+        text-align: center;
+        background-color: var(--pf-theme-light-color);
+        border-radius: 10px;
+        padding: 40px;
+        @include pf-transition(.3s);
+        @media #{$xl}{
+            margin-bottom: 20px !important;
+            padding: 35px;
+        }
+        & p{
+            font-size: 16px;
+            line-height: 24px;
+            color: var(--pf-theme-text-color);
+        }
+        &:hover{
+            background-color: var(--pf-2nd-primary-color);
+            
+            & svg{
+                color: var(--pf-theme-white-color);
+            }
+            & .pf-choose-title,p{
+                color: var(--pf-theme-white-color);
+            }
+            & .pf-choose-icon{
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+            
+        }
+
+    }
+    &-icon{
+        border: 1px solid var(--pf-theme-diper-color);
+        border-radius: 100%;
+        width: 70px;
+        height: 70px;
+        line-height: 66px;
+        display: inline-block;
+    }
+    &-title{
+        color: var(--pf-theme-text-color);
+        font-size: 24px;
+        font-weight: 600;
+    }
+    &-box{
+        &.middle-box{
+            padding: 10px;
+            padding-top: 40px;
+            @media #{$lg,$md,$xs}{
+                margin: 30px 0;
+            }
+            & .pf-choose-icon{
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+            & .pf-choose-title{
+                color: var(--pf-theme-white-color);
+            }
+            & p{
+                color: var(--pf-theme-white-color);
+            }
+            &:hover{
+                background-color: var(--pf-2nd-primary-color) !important;
+                border: none;
+            }
+        }
+    }
+}

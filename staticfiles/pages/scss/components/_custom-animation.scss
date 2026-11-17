@@ -1,0 +1,118 @@
+@use '../utils/' as *;
+
+/*----------------------------------------*/
+/*  2.5 Custom-animation
+/*----------------------------------------*/
+
+.pfFadeInDownMenu {
+    animation: pfFadeInDownMenu 1s ease-out forwards;
+}
+@keyframes pfFadeInDownMenu {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+
+.pfFadeInUp {
+    animation: pffadeInUp 2s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes pffadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pfFadeInLeft {
+    animation: pffadeInLeft 2s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes pffadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.pfFadeInRight {
+    animation: pffadeInRight 2s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes pffadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.pf-img-custom-anim-left {
+  animation: pf-img-anim-left 2s forwards cubic-bezier(0.645, 0.045, 0.355, 1);
+  opacity: 0;
+}
+
+@keyframes pf-img-anim-left {
+  0% {
+    transform: translateX(-5%);
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+.pf-img-custom-anim-left1-5 {
+  animation: pf-img-anim-left1-5 2.5s forwards cubic-bezier(0.645, 0.045, 0.355, 1);
+  opacity: 0;
+}
+
+@keyframes pf-img-anim-left1-5 {
+  0% {
+    transform: translateX(-5%);
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+.pf-img-custom-anim-left1 {
+  animation: pf-img-anim-left1 3s forwards cubic-bezier(0.645, 0.045, 0.355, 1);
+  opacity: 0;
+}
+
+@keyframes pf-img-anim-left1 {
+  0% {
+    transform: translateX(-5%);
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}

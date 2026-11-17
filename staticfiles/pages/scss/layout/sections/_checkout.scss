@@ -1,0 +1,79 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.21 Checkout
+/*----------------------------------------*/
+
+.pf-checkout{
+    &-title{
+        font-size: 24px;
+        font-weight: 600;
+    }
+    &-form{
+        .form-check-input{
+            padding: 0;
+            border: 1px solid var(--pf-theme-diper-color);
+            background-color: transparent;
+            &:checked{
+                background-color: #68513F;
+                border-color: #68513F;
+            }
+        }
+        & .form_control{
+            margin-bottom: 20px;
+        }
+        .nice-select{
+            margin-bottom: 20px;
+        }
+    }
+    &-sidebar{
+        & li{
+            &:last-child{
+                border: none;
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+    &-payment{
+        &-area{
+            background-color: var(--pf-section-bg-color);
+            padding: 30px;
+            border-radius: 10px;
+            & .checkout-btn{
+                & button{
+                    border: none;
+                    @include pf-transition();
+                    &:hover{
+                        background-color: var(--pf-hover-bg-color);
+                    }
+                }
+            }
+            & .form-check-input{
+                border: 1px solid var(--pf-theme-diper-color);
+                background-color: transparent;
+                padding: 0px;
+                    &:checked{
+                        background-color: #68513F;
+                        border-color: #68513F;
+                }
+            }
+            & li{
+                border-bottom: 1px solid var(--pf-theme-diper-color);
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+                & p{
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: rgba(26, 26, 26, 0.7);
+                }
+                &:last-child{
+                    display: block;
+                    min-height: 1.5rem;
+                    padding-left: 1.5em;
+                    margin-bottom: .125rem;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.22 Contact
+/*----------------------------------------*/
+
+.pf-contact{
+    &-cart{
+        background-color: var(--pf-section-bg-color);
+        border-radius: 10px;
+        padding: 30px;
+        &-title{
+            font-size: 500;
+        }
+        &-heading{
+            & span{
+                font-size: 16px;
+                color: rgba(26, 26, 26, 0.7);;
+            }
+        }
+        &-head{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        &-icon{
+            & i{
+                height: 60px;
+                width: 60px;
+                text-align: center;
+                line-height: 60px;
+                border: 1px solid #C2BFC1;
+                border-radius: 100%;
+                font-size: 23px;
+            }
+        }
+        &-list{
+            margin-left: 25px;
+            & li{
+                line-height: 35px;
+            }
+            & a{
+                font-weight: 500;
+                @include pf-transition();
+                &:hover{
+                    color: var(--pf-hover-bg-color);
+                }
+            }
+        }
+    }
+}

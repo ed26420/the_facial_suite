@@ -217,10 +217,8 @@ def shop_detail_view(request, product_code):
 
 
 #Function to handle selected product into cart  
+@login_required
 def add_to_cart(request, item_type, code):
-    if not request.user.is_authenticated:
-        return redirect('login')
-
     if item_type == 'product':
         item = get_object_or_404(Product, product_code=code)
         quantity = int(request.POST.get('quantity', 1))
@@ -236,11 +234,9 @@ def add_to_cart(request, item_type, code):
     return redirect('cart_page')
 
 
-#Function to view the entrire cart   
+#Function to view the entrire cart  
+@login_required 
 def cart_page_view(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
-    
     cart_items = CartItem.objects.filter(user=request.user)
     subtotal = sum(item.get_total_price() for item in cart_items)
     return render(request, "pages/cart.html", {
@@ -250,16 +246,10 @@ def cart_page_view(request):
 
 
 #Function to checkout the products and process the payment using stripe
+@login_required
 def checkout_page_view(request):
-    if not request.user.is_authenticated:
-        return redirect('login') 
-
-    # Ensure Stripe API key is set
     stripe.api_key = settings.STRIPE_SECRET_KEY
-
     cart_items = CartItem.objects.filter(user=request.user)
-    
-    # Redirect if the cart is empty
     if not cart_items.exists():
         return redirect('cart_page')
 

@@ -1,0 +1,23 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.24 404
+/*----------------------------------------*/
+
+.pf-404{
+    &-content{
+        & .theme-btn{
+            @include pf-transition();
+            &:hover{
+                color: var(--pf-theme-white-color);
+                background-color: var(--pf-hover-bg-color);
+            }
+        }
+    }
+    &-area{
+        padding-top: 240px;
+        @media #{$md,$xs}{
+            padding-top: 190px;
+        }
+    }
+}

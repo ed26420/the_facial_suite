@@ -1,0 +1,60 @@
+@use '../../utils/' as *;
+
+/*----------------------------------------*/
+/*  3.14 Gallery
+/*----------------------------------------*/
+
+.pf-gallery{
+    &-area{
+        & .row{
+            --bs-gutter-x: 10px;
+            --bs-gutter-y: 10px;
+        }
+    }
+    & img{
+        border-radius: 20px;
+    }
+    &-content{
+        & a{
+            @include pf-transition();
+            &:hover{
+                background-color: var(--pf-primary-color);
+                color: var(--pf-theme-white-color);
+            }
+        }
+        & .section-title{
+            @media #{$lg,$md,$xs}{
+                line-height: 1.2;
+            }
+        }
+        & p{
+            @media #{$md,$xs}{
+                margin-bottom: 20px;
+            }
+        }
+        @media #{$md,$xs}{
+            padding: 40px 0;
+        }
+    }
+    & a{
+        overflow: hidden;
+        border-radius: 20px;
+        @media #{$md,$xs}{
+            width: 100%;
+        }
+        & img{
+            transition: all 0.3s ease-in-out;
+            @media #{$md,$xs}{
+            width: 100%;
+        }
+        }
+        &:hover{
+            & img{
+                transform: scale(1.1);
+                
+            }
+        }
+    }
+    
+}
+

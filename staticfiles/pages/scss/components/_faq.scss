@@ -1,0 +1,72 @@
+@use '../utils/' as *;
+
+/*----------------------------------------*/
+/*  2.1 Faq
+/*----------------------------------------*/
+
+.pf-accordion{
+    &-item{
+        background-color: var(--pf-theme-dip-color);
+        border-radius: 15px;
+        margin-bottom: 15px;
+        position: relative;
+    }
+    &-header{
+        font-size: 20px;
+        
+        margin: 0;
+    }
+    &-button{
+        font-weight: 600;
+        padding: 20px;
+        width: 100%;
+        text-align: start;
+        @media #{$lg}{
+            padding-right: 45px;
+        }
+        &::after,::before {
+            content: "\f068";
+            font-family: "Font Awesome 5 Pro";
+            font-weight: 300;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 1px solid #68513F;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 13px;
+            color: #68513F;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+            &.collapsed{
+                &::after{
+                content: "\f067";
+                
+            }
+        }
+        
+    }
+    &-body{
+        padding: 0 20px;
+        padding-bottom: 20px;
+    }
+}
+.pf-faq{
+    &-img{
+        & img{
+            @media #{$md,$xs}{
+                margin-top: 20px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.faq-inner-page{
+    & .pf-accordion-item{
+        background-color: var(--pf-section-bg-color);
+    }
+}

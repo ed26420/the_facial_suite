@@ -1539,7 +1539,8 @@ img {
 }
 
 .bg-theme-color {
-  background-color: var(--pf-section-bg-color) !important;
+  background-color: var(--pf-theme-light-color)!important;
+  /*background-color: var(--pf-section-bg-color) !important;*/
 }
 
 .br-10 {
@@ -5245,13 +5246,13 @@ blockquote .content p {
 /*  3.18 Breadcrumb
 /*----------------------------------------*/
 .pf-page-banner-area {
-  padding-top: 230px;
-  padding-bottom: 130px;
+  padding-top: 75px;
+  padding-bottom: 30px;
 }
 @media (max-width: 767px) {
   .pf-page-banner-area {
-    padding-top: 166px;
-    padding-bottom: 74px;
+    padding-top: 60px;
+    padding-bottom: 40px;
   }
 }
 .pf-page-banner-area .page-title {
