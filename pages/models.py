@@ -176,7 +176,7 @@ class TeamMember(models.Model):
     awards = models.TextField(help_text="Format: Title|Year|Description||Title|Year|Description")
     skills = models.TextField(help_text="Format: Skill Name:Percentage|Skill Name:Percentage")
     electives = models.TextField(help_text="Enter electives separated by |")
-    electives_description = models.TextField(default="Specialized electives focus on advanced topics.")
+    electives_description = models.TextField(default="Specialized electives focus on advanced topics.", null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -185,9 +185,16 @@ class TeamMember(models.Model):
         data = []
         if self.awards:
             for block in self.awards.split('||'):
-                parts = block.split('|')
-                if len(parts) >= 3:
-                    data.append(parts)
+                block = block.strip()
+                if not block:
+                    continue
+                parts = [p.strip() for p in block.split('|')]
+                if len(parts) >= 2:
+                    data.append({
+                        'title': parts[0],
+                        'year': parts[1],
+                        'description': parts[2] if len(parts) >= 3 else ''
+                    })
         return data
 
     def get_skills_list(self):
@@ -197,7 +204,14 @@ class TeamMember(models.Model):
             for item in items:
                 if ':' in item:
                     name, percent = item.split(':', 1)
-                    skills_data.append({'name': name.strip(), 'percent': percent.strip()})
+                    clean_percent = percent.strip()
+                    if not clean_percent.endswith('%'):
+                        clean_percent = f"{clean_percent}%"
+                    skills_data.append({
+                        'name': name.strip(),
+                        'percent': clean_percent,
+                        'style_string': f"width: {clean_percent};"
+                    })
         return skills_data
 
     def get_electives_list(self):

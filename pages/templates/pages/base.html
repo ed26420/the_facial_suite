@@ -209,6 +209,21 @@
 
     <div class="back-to-top"><i class="far fa-angle-up"></i></div>
 
+    <div class="floating-actions-stack">
+        <!-- WhatsApp Button (Always visible on top) -->
+       <a href="https://wa.me/{{ receptionist_whatsapp|default:page.phone_field|cut:'+'|cut:' ' }}" target="_blank" rel="noopener noreferrer" class="floating-btn floating-whatsapp-btn" title="Chat on WhatsApp">
+           <i class="fab fa-whatsapp"></i>
+       </a>
+
+        <!-- Floating Login Button (Hidden when logged in) -->
+        {% if not user.is_authenticated %}
+            <a href="{% url 'login' %}" class="floating-btn floating-login-btn" title="Log In">
+                <i class="far fa-user"></i>
+            </a>
+        {% endif %}
+    </div>
+
+
     <script src="{% static 'pages/js/jquery.min.js' %}"></script>
     <script src="{% static 'pages/js/bootstrap.bundle.js' %}"></script>
     <script src="{% static 'pages/js/ajax-form.js' %}"></script>

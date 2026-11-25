@@ -1,5 +1,6 @@
 import subprocess
 from pathlib import Path
+import sys
 
 # Path to your local .env file
 env_path = Path('.env')
@@ -18,8 +19,12 @@ with open(env_path, 'r') as f:
 if env_vars:
     print(f"🚀 Pushing {len(env_vars)} environment variables to AWS Elastic Beanstalk...")
     
-    # Push them safely in a single batch command
-    result = subprocess.run(['eb', 'setenv'] + env_vars)
+
+    result = subprocess.run(
+        [sys.executable, '-c', 'from ebcli.core import ebcore; ebcore.main()', 'setenv'] + env_vars
+    )
+    
+    
     
     if result.returncode == 0:
         print("✅ Successfully updated AWS environment properties!")

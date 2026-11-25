@@ -4,18 +4,6 @@
 {% block content %}
 <main>
     <section class="pf-page-banner-area text-center bg-theme-color">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <h2 class="page-title mb-20">{{ member.name }} Details</h2>
-                    <ul class="breadcrumb-link">
-                        <li><a href="{% url 'home' %}">Home</a></li>
-                        <li>-</li>
-                        <li class="active">Team Details</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </section>
 
     <section class="pf-team-details-area pt-130 pb-100">
@@ -33,7 +21,7 @@
                         <div class="pf-team-details-contact pl-50">
                             <h2 class="mb-10">{{ member.name }}</h2>
                             <h3 class="mb-15">{{ member.role }}</h3>
-                            <p class="mb-15">{{ member.bio }}</p>
+                            <div class="pf-team-bio mb-25">{{ member.bio|linebreaks }}</div>
                             <div class="pf-team-details-contact-list">
                                 <ul class="mb-15">
                                     <li><i class="fas fa-envelope"></i><span>Email: </span><a href="mailto:{{ member.email }}">{{ member.email }}</a></li>
@@ -50,18 +38,20 @@
                 <div class="row gap-x-140 gap-y-30">
                     <div class="col-xl-6">
                         <div class="pf-team-details-award wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
-                            <h3 class="mb-30">Award & Achievement</h3>
+                            <h3 class="mb-30">Certifications and Licenses</h3>
                             {% for award in awards %}
                             <div class="pf-team-details-award-box mb-20">
                                 <div class="pf-team-details-award-content">
                                     <div class="pf-team-details-award-title">
-                                        <h3>{{ award.0 }}</h3>
+                                        <h3>{{ award.title }}</h3>
                                     </div>
                                     <div class="pf-team-details-award-btn">
-                                        <span>{{ award.1 }}</span>
+                                        <span>{{ award.year }}</span>
                                     </div>
                                 </div>
-                                <p>{{ award.2 }}</p>
+                                {% if award.description %}
+                                    <p>{{ award.description }}</p>
+                                {% endif %}
                             </div>
                             {% endfor %}
                         </div>
@@ -73,10 +63,9 @@
                             <div class="pf-team-details-skills-bar mb-20">
                                 <div class="pf-team-details-skills-bar-title d-flex justify-content-between">
                                     <h3>{{ skill.name }}</h3>
-                                    <span>{{ skill.percent }}</span>
                                 </div>
                                 <div class="progress" role="progressbar" aria-valuenow="{{ skill.percent|cut:'%' }}" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar" style="width: '{{ skill.percent }}'"></div>
+                                    <div class="progress-bar" style="{{ skill.style_string }}"></div>
                                 </div>
                             </div>
                             {% endfor %}

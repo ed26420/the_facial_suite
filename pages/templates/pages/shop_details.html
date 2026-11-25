@@ -53,9 +53,9 @@
                                     <div class="quantity-input">
                                         <span class="quantity-title">Quantity</span>
                                         <div class="input-quantity">
-                                            <button class="quantity-down"><i class="fal fa-plus"></i></button>
-                                            <input class="quantity" type="text" value="1" name="quantity">
-                                            <button class="quantity-up"><i class="fal fa-minus"></i></button>
+                                            <button type="button" class="quantity-down"><i class="fal fa-minus"></i></button>
+                                            <input class="quantity" type="text" value="1" name="quantity" readonly>
+                                            <button type="button" class="quantity-up"><i class="fal fa-plus"></i></button>
                                         </div>
                                     </div>
                                     <div class="quantity-variation">
@@ -70,8 +70,8 @@
                                     </div>
                                 </div>
                                 <div class="product-add-to-cart">
-                                    <button type="submit" class="theme-btn style-one" href="checkout.html">Buy Now</button>
-                                    <button type="submit" class="theme-btn style-two" href="cart.html">Add To Cart</button>
+                                    <button type="submit" name="action" value="buy_now" class="theme-btn style-one">Buy Now</button>
+                                    <button type="submit" name="action" value="add_to_cart" class="theme-btn style-two">Add To Cart</button>
                                 </div>
                             </form>
                         </div>
@@ -192,6 +192,5 @@
     </div>
 </section><!-- Product Area End -->
 
-
-   
+<script src="{% static 'pages/js/shop-details.js' %}"></script>
 {% endblock content %}

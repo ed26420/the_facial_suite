@@ -206,7 +206,14 @@ def shop_detail_view(request, product_code):
         bullet_list = [line.strip() for line in product.bullet_benefits.split('\n') if line.strip()]
     
     if request.method == 'POST':
-        return add_to_cart(request, 'product', product.product_code)
+        response = add_to_cart(request, 'product', product.product_code)
+        if getattr(response, 'url', None) and 'login' in response.url:
+            return response
+            
+        if request.POST.get('action') == 'buy_now':
+            return redirect('checkout')
+            
+        return redirect('shop')
 
     return render(request, 'pages/shop_details.html', {
         'product': product, 
@@ -257,24 +264,35 @@ def checkout_page_view(request):
     amount_in_cents = int(cart_total * 100)
     error_message = None
 
+    # Pre-fill from logged-in user's profile (fallback to POST data if form re-renders)
+    first_name = request.POST.get('first_name', request.user.first_name or '')
+    last_name = request.POST.get('last_name', request.user.last_name or '')
+
     if request.method == 'POST':
         payment_intent_id = request.POST.get('payment_intent_id')
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        
+
         if payment_intent_id:
             try:
                 intent = stripe.PaymentIntent.retrieve(payment_intent_id)
                 if intent.status == 'succeeded':
-                    # TODO: If you want to save an Order model using first_name, last_name, etc., do it here!
-                    
+                    # Save name to user profile if not already stored
+                    updated_fields = []
+                    if first_name and request.user.first_name != first_name:
+                        request.user.first_name = first_name
+                        updated_fields.append('first_name')
+                    if last_name and request.user.last_name != last_name:
+                        request.user.last_name = last_name
+                        updated_fields.append('last_name')
+                    if updated_fields:
+                        request.user.save(update_fields=updated_fields)
+
                     # Clear the user's cart items
                     cart_items.delete()
                     return redirect('order_success')
             except Exception as e:
                 print(f"Stripe Error: {e}")
-                
-        error_message = 'Payment failed or was declined. Please try again.'        
+
+        error_message = 'Payment failed or was declined. Please try again.'
 
     client_secret = None
     if amount_in_cents > 0:
@@ -287,11 +305,13 @@ def checkout_page_view(request):
             client_secret = intent.client_secret
         except stripe.error.StripeError as e:
             error_message = str(e)
-       
+
     return render(request, 'pages/checkout.html', {
         'cart_items': cart_items,
         'cart_total': cart_total,
         'amount_in_cents': amount_in_cents,
+        'first_name': first_name,
+        'last_name': last_name,
         'error_message': error_message,
         'STRIPE_PUBLISHABLE_KEY': getattr(settings, 'STRIPE_PUBLISHABLE_KEY', None),
         'client_secret': client_secret,
@@ -299,7 +319,7 @@ def checkout_page_view(request):
 
 #Function to handle the order success page after successful payment
 def order_success_view(request):
-    return render(request, "pages/error.html")
+    return render(request, "pages/success.html")
 
 
 
@@ -406,10 +426,9 @@ def dynamic_page_view(request, slug):
 #Function to handle the team details page and display the selected team member's details
 def team_details_view(request, member_code):
     member = get_object_or_404(TeamMember, member_code=member_code)
-    awards = [tuple(a.split('|')) for a in member.awards.split(';') if a] if member.awards else []
-    skills = []
-    electives = [e.strip() for e in member.electives.split(',')] if member.electives else []
-    
+    awards = member.get_awards_list()
+    skills = member.get_skills_list()
+    electives = member.get_electives_list()
     if request.method == 'POST':
         form = TeamInquiryForm(request.POST)
         if form.is_valid():

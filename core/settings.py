@@ -60,6 +60,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'pages.middleware.MaintenanceModeMiddleware',
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -147,3 +148,7 @@ EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 SITE_URL = os.environ['SITE_URL']
 
 LOGIN_URL = 'login'
+
+import os
+
+MAINTENANCE_MODE = os.getenv('MAINTENANCE_MODE', 'False').lower() == 'true'

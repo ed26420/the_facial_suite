@@ -1,0 +1,94 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Disable clicks on all header and footer links while keeping logo/styling intact */
+    header a,
+    nav a,
+    footer a,
+    .pf-header-area a,
+    .pf-footer-area a,
+    .pf-offcanvas a,
+    .pf-header-toggle,
+    .pf-header-cart,
+    .pf-header-button {
+        pointer-events: none !important;
+        cursor: default !important;
+    }
+
+    /* Slightly dim nav and footer links so visitors see they are inactive */
+    .pf-main-menu a,
+    .pf-footer-area a {
+        opacity: 0.6;
+    }
+
+    /* Keep WhatsApp, phone, and email links clickable so clients can still reach you */
+    a[href^="mailto:"],
+    a[href^="tel:"],
+    .floating-whatsapp-btn {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        opacity: 1 !important;
+    }
+
+    /* Responsive spacing and typography for the Coming Soon block */
+    .maintenance-message-box {
+        padding: 70px 20px 30px;
+        max-width: 760px;
+        margin: 0 auto;
+    }
+
+    .maintenance-title {
+        font-size: clamp(28px, 4.5vw, 52px);
+        line-height: 1.25 !important;
+        margin-bottom: 24px;
+    }
+
+    .maintenance-subtitle-text {
+        font-size: clamp(16px, 2vw, 20px);
+        line-height: 1.7;
+        max-width: 560px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 767px) {
+        .maintenance-message-box {
+            padding: 45px 15px 10px;
+        }
+        .maintenance-title {
+            margin-bottom: 18px;
+        }
+    }
+</style>
+
+<main>
+    <section class="pf-page-banner-area text-center bg-theme-color">
+    </section>
+
+    <div class="pf-img-banner-area pb-130">
+        <div class="pf-img-banner-space p-175 bg-theme-color"></div>
+        <div class="container">
+            {% if image_dict.about_banner_01 %}
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="pf-img-banner-wrapper wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <img class="br-20 mt-minus-350" src="{{ image_dict.about_banner_01 }}" alt="The Facial Suite">
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <div class="maintenance-message-box wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".3s">
+                        <span class="section-subtitle mb-25">Under Maintenance</span>
+                        <h2 class="section-title maintenance-title">The Facial Suite Website Coming Soon</h2>
+                        <p class="maintenance-subtitle-text">We are currently refreshing our online experience. Please check back shortly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

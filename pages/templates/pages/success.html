@@ -1,0 +1,30 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block content %}
+<main>
+    <section class="pf-page-banner-area text-center bg-theme-color">
+    </section>
+
+    <section class="pf-cart-page-area pt-120 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-8 text-center">
+                    <div class="pf-cart-sidebar-area p-5 wow pfFadeInUp" data-wow-duration=".6s" data-wow-delay=".2s">
+                        <div class="mb-25">
+                            <i class="fas fa-check-circle" style="font-size: 64px; color: #2e7d32;"></i>
+                        </div>
+                        <h2 class="mb-20">Thank You for Your Order!</h2>
+                        <p class="mb-30">
+                            Your payment has been received and your order is being processed.
+                            A confirmation email has been sent with your order details.
+                        </p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="{% url 'index' %}" class="theme-btn style-one">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

@@ -1845,6 +1845,55 @@ img {
   background-color: var(--pf-hover-bg-color);
 }
 
+
+.floating-actions-stack {
+  position: fixed;
+  bottom: 95px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 99;
+}
+
+.floating-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--pf-primary-color);
+  font-size: 16px;
+  border: 1px solid;
+  cursor: pointer;
+  color: var(--pf-theme-white-color);
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.floating-btn:hover {
+  background-color: var(--pf-hover-bg-color);
+  color: var(--pf-theme-white-color);
+}
+
+.floating-whatsapp-btn {
+  font-size: 20px;
+}
+
+.floating-whatsapp-btn {
+  font-size: 20px;
+  background-color: #25D366;
+  border-color: #25D366;
+  color: #FFFFFF;
+}
+
+.floating-whatsapp-btn:hover {
+  background-color: #1EBE5D;
+  border-color: #1EBE5D;
+  color: #FFFFFF;
+}
 /*----------------------------------------*/
 /*  2.4 Pagination
 /*----------------------------------------*/
@@ -2021,7 +2070,7 @@ img {
   width: 100%;
 }
 .pf-header-cart a {
-  background-color: var(--pf-2nd-primary-color);
+  background-color: var(--pf-primary-color);
   padding: 5px 13px;
   border-radius: 50px;
   color: var(--pf-theme-white-color);
@@ -2063,7 +2112,7 @@ img {
   color: var(--pf-theme-white-color);
 }
 .pf-header-button a {
-  background-color: var(--pf-2nd-primary-color);
+  background-color: var(--pf-primary-color);
   padding: 12px 24px;
   border-radius: 50px;
   color: var(--pf-theme-white-color);
@@ -5190,6 +5239,21 @@ blockquote .content p {
   transition: 0.3s;
 }
 
+.pf-team-bio p {
+  margin-bottom: 16px;
+}
+.pf-team-bio p:last-child {
+  margin-bottom: 0;
+}
+
+.pf-team-details-contact .pf-team-bio p {
+  margin-bottom: 18px !important;
+}
+
+.pf-team-details-contact .pf-team-bio p:last-child {
+  margin-bottom: 0 !important;
+}
+
 /*----------------------------------------*/
 /*  3.17 Booking
 /*----------------------------------------*/
@@ -5886,7 +5950,7 @@ body .input-quantity button:hover {
   flex: 0 0 auto;
 }
 .pf-team-details-award-title h3 {
-  font-weight: 700;
+  font-weight: 400;
   font-size: 20px;
 }
 .pf-team-details-award-btn span {
@@ -5912,7 +5976,7 @@ body .input-quantity button:hover {
 }
 .pf-team-details-skills-bar-title h3 {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 400;
   margin-bottom: 15px;
 }
 .pf-team-details-skills-bar-title span {
@@ -5937,7 +6001,7 @@ body .input-quantity button:hover {
 }
 .pf-team-details-contact-heading ul li {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .pf-team-contact-form {
@@ -5993,3 +6057,4 @@ body .input-quantity button:hover {
 }
 
 /*# sourceMappingURL=style.css.map */
+

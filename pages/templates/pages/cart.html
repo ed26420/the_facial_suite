@@ -28,7 +28,7 @@
                                         </div>
                                         <span>{{ item.product.name }}</span>
                                     </td>
-                                    <td><div class="pf-cart-product-price"><span>${{ item.get_total_price }}</span></div></td>
+                                    <td><div class="pf-cart-product-price"><span>AED {{ item.get_total_price }}</span></div></td>
                                     <td>
                                         <div class="pf-cart-quantity pf-shop-details-info">
                                             <div class="input-quantity pf-shop-details-cart-variation">
@@ -38,7 +38,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td><div class="pf-cart-totla-price"><span>${{ item.get_total_price }}</span></div></td>
+                                    <td><div class="pf-cart-totla-price"><span>AED {{ item.get_total_price }}</span></div></td>
                                 </tr>
                                 {% empty %}
                                 <tr><td colspan="4">Your cart is empty.</td></tr>
@@ -55,7 +55,7 @@
                             <ul>
                                 <li>
                                     <div class="item-title">Subtotal</div>
-                                    <div class="subtotal">${{ subtotal }}</div>
+                                    <div class="subtotal">AED {{ subtotal }}</div>
                                 </li>
                                 <li>
                                     <div class="item-title">VAT</div>
@@ -63,7 +63,7 @@
                                 </li>
                                 <li>
                                     <div class="item-title-total">Total</div>
-                                    <div class="subtotal-total">${{ subtotal }}</div>
+                                    <div class="subtotal-total">AED {{ subtotal }}</div>
                                 </li>
                             </ul>
                             <div class="pf-cart-sidebar-btn">
