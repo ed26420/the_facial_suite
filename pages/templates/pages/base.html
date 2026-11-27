@@ -1,13 +1,28 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="Skin Care">
+    <meta name="description" content="The Facial Suite in Arjan, Dubai offers advanced facials, customized skincare treatments, and semi-permanent makeup.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{base.web_title}}</title>
     <link rel="canonical" href="https://www.thefacialsuite.com/">
+     <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "The Facial Suite",
+    "url": "https://www.thefacialsuite.com",
+    "telephone": "+97142595120",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Retail 15, Vincitore Benessere, Street 3, Arjan",
+        "addressLocality": "Dubai",
+        "addressCountry": "AE"
+         }
+    }
+    </script>
     <link rel="shortcut icon" href="{{base.shortcut_icon.url}}" type="image/png">
     <link rel="stylesheet" href="{% static 'pages/css/magnific-popup.css' %}">
     <link rel="stylesheet" href="{% static 'pages/css/fontawesome-pro.css' %}">
@@ -46,8 +61,8 @@
         </div>
         <div class="pf-offcanvas-info mb-40">
             <h3 class="pf-offcanvas-title">{{base.colapsed_title_2}}</h3>
-            <span><a href="tel:1234567890">{{page.phone_field}}</a></span>
-            <span><a href="mailto:hello@example.com">{{page.email_field}}</a></span>
+            <span><a href="tel:{{ page.phone_field|cut:' ' }}">{{ page.phone_field }}</a></span>
+            <span><a href="mailto:{{ page.email_field }}">{{ page.email_field }}</a></span>
             <span><a href="{% url 'about' %}">{{page.address}}</a></span>
         </div>
         <div class="pf-offcanvas-social">
@@ -158,10 +173,10 @@
                                     </div>
                                     <div class="pf-footer-contact">
                                         <div class="pf-footer-phone">
-                                            <strong>Phone: </strong><a href="tel:1234567890">{{page.phone_field}}</a>
+                                            <strong>Phone: </strong><a href="tel:{{ page.phone_field|cut:' ' }}">{{ page.phone_field }}</a>
                                         </div>
                                         <div class="pf-footer-email">
-                                            <strong>Email: </strong><a href="mailto:contact@glownest.com">{{page.email_field}}</a>
+                                            <strong>Email: </strong><a href="mailto:{{ page.email_field }}">{{ page.email_field }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +226,7 @@
 
     <div class="floating-actions-stack">
         <!-- WhatsApp Button (Always visible on top) -->
-       <a href="https://wa.me/{{ receptionist_whatsapp|default:page.phone_field|cut:'+'|cut:' ' }}" target="_blank" rel="noopener noreferrer" class="floating-btn floating-whatsapp-btn" title="Chat on WhatsApp">
+      <a href="https://wa.me/{{ receptionist_whatsapp|default:page.phone_field|default:'971506505917'|cut:'+'|cut:' '|cut:'-' }}" target="_blank" rel="noopener noreferrer" class="floating-btn floating-whatsapp-btn" title="Chat on WhatsApp">
            <i class="fab fa-whatsapp"></i>
        </a>
 
